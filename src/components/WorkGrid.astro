@@ -57,7 +57,7 @@ const cards = [
             <span class="case-name">{cases[card.slug].name}</span>
             <span class="case-parenthetical">{card.parenthetical}</span>
           </p>
-          <div class="case-cover exhibit">
+          <div class="case-cover exhibit" style={`view-transition-name: cover-${card.slug}`}>
             <Picture
               src={covers[card.slug]}
               widths={[576, 1152]}

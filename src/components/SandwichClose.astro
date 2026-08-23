@@ -108,7 +108,7 @@ const next = cases[c.next];
   </div>
 
   <a class="next-case" href={`/project/${c.next}`} data-event="case_next_click" data-case={slug}>
-    <div class="next-thumb exhibit">
+    <div class="next-thumb exhibit" style={`view-transition-name: cover-${c.next}`}>
       <Picture
         src={covers[c.next]}
         widths={[280, 560]}

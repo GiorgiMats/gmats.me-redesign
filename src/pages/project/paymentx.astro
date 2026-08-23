@@ -65,7 +65,7 @@ const matrix = {
   <!-- key visual bento -->
   <section class="kv container" aria-label="Key visual">
     <div class="kv-grid">
-      <div class="kv-main d-cell exhibit">
+      <div class="kv-main d-cell exhibit" style="view-transition-name: cover-paymentx">
         <Picture
           src={bentoMain}
           widths={[792, 1584]}
@@ -209,7 +209,9 @@ const matrix = {
       research budget and a client who communicated in bursts, and
       <strong>every architectural mistake would be mine to find</strong>.
     </p>
-    <div class="inc-map">
+    <div class="inc-scrub" data-scrub>
+      <div class="inc-stage">
+        <div class="inc-map">
       <div class="inc-side inc-side-m" tabindex="0">
         <p class="d-caps inc-side-label">MERCHANTS</p>
         <PhoneMockup screen={phoneMerchant} alt="PaymentX merchant directory on mobile" width="204px" />
@@ -245,7 +247,23 @@ const matrix = {
         </ul>
       </div>
     </div>
-    <p class="fig-caption">FIG. 03 · TWO SIDES, OPPOSED WANTS, ONE GRAMMAR BETWEEN THEM</p>
+        <p class="fig-caption">FIG. 03 · TWO SIDES, OPPOSED WANTS, ONE GRAMMAR BETWEEN THEM</p>
+      </div>
+      <div class="inc-steps">
+        <div class="inc-step" data-step="merchants">
+          <p class="d-caps">01 · MERCHANTS</p>
+          <p>Merchants want leverage over providers, lower fees, faster settlement.</p>
+        </div>
+        <div class="inc-step" data-step="providers">
+          <p class="d-caps">02 · PROVIDERS</p>
+          <p>Providers want qualified merchants, without a race to the bottom.</p>
+        </div>
+        <div class="inc-step" data-step="one">
+          <p class="d-caps">03 · ONE PRODUCT</p>
+          <p>Two sides, opposed wants, one grammar between them.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- M3 · the decision (inset room) -->
@@ -381,7 +399,7 @@ const matrix = {
           <div class="m5-bars" role="img" aria-label="Before: refund in a modal, 14% of checkouts dropped. After: refund inline, 0 measured.">
             <div class="m5-bar">
               <p class="caps-xs">BEFORE · REFUND IN A MODAL</p>
-              <div class="m5-track"><span class="m5-fill" style="width: 14%"></span></div>
+              <div class="m5-track"><span class="m5-fill" style="width: 14%" data-fill="14%"></span></div>
               <p class="m5-bar-sub tnum">14% of checkouts dropped</p>
             </div>
             <div class="m5-bar">
@@ -537,7 +555,8 @@ const matrix = {
     chips={['ARCHITECTURE FROM ZERO', 'TWO SIDES, ONE SYSTEM', 'CHECKOUT DROP 14% → 0']}
   />
 
-  <script src="../../scripts/countup.ts"></script>
+  <script src="../../scripts/stat-motion.ts"></script>
+  <script src="../../scripts/scrub.ts"></script>
 </Base>
 
 <style>
@@ -803,6 +822,73 @@ const matrix = {
     border-right-color: var(--accent);
   }
 
+  /* ---- M2 scroll-scrub (enhancement; static layout is the fallback) ---- */
+  .inc-steps {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .inc-step p:last-child {
+    margin-top: 10px;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  .inc-scrub.scrub-on {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 64px;
+    align-items: start;
+  }
+  .scrub-on .inc-stage {
+    position: sticky;
+    top: 14vh;
+  }
+  .scrub-on .inc-map {
+    padding: 40px 32px;
+  }
+  .scrub-on .inc-steps {
+    display: block;
+    margin-top: 0;
+    padding-block: 16vh;
+  }
+  .scrub-on .inc-step {
+    min-height: 52vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0.3;
+    transition: opacity 0.25s ease;
+  }
+  .scrub-on .inc-step.step-active {
+    opacity: 1;
+  }
+
+  .inc-side,
+  .inc-centre {
+    transition: opacity 0.3s ease;
+  }
+  .scrub-on[data-state='merchants'] .inc-side-p,
+  .scrub-on[data-state='merchants'] .inc-centre {
+    opacity: 0.3;
+  }
+  .scrub-on[data-state='providers'] .inc-side-m,
+  .scrub-on[data-state='providers'] .inc-centre {
+    opacity: 0.3;
+  }
+  .scrub-on[data-state='one'] .inc-side-m,
+  .scrub-on[data-state='one'] .inc-side-p {
+    opacity: 0.45;
+  }
+  .scrub-on[data-state='one'] .inc-pill {
+    transform: scale(1.05);
+  }
+  .inc-pill {
+    transition: transform 0.3s ease;
+  }
+
   /* ---- M3 ---- */
   .m-para-strong {
     color: var(--ink);
@@ -1059,6 +1145,10 @@ const matrix = {
       align-items: center;
       padding: 32px 24px;
       gap: 32px;
+    }
+    .inc-steps {
+      grid-template-columns: 1fr;
+      gap: 16px;
     }
     .inc-line {
       display: none;
