@@ -33,7 +33,7 @@ export const cases: Record<CaseMeta['slug'], CaseMeta> = {
     receipt: '22 SCREENS × 2 MODES · 0 INVENTED METRICS',
     metaTitle: 'Docket: AML review console where AI cites its sources · Giorgi Matsukatovi',
     metaDescription:
-      'An AI-assisted source-of-funds review console for a GB-licensed remote casino. The model reads and cites; it never recommends. 22 screens, both modes, self-initiated.',
+      'An AI-assisted source-of-funds review console for a GB-licensed remote casino. The model reads and cites, it never recommends. 22 screens, both modes, self-initiated.',
     accent: '#3d4fe0',
     accentBright: '#6481e6',
     accentTint: '#e7eafc',
@@ -49,7 +49,7 @@ export const cases: Record<CaseMeta['slug'], CaseMeta> = {
     receipt: '50,000+ SIGNUPS · 15% REG-TO-PLAY',
     metaTitle: 'BLUFF: fifteen months on a real casino’s money flows · Giorgi Matsukatovi',
     metaDescription:
-      'Design for a live, $21M-backed casino and sportsbook: deposits, withdrawals, failure states, twelve games. Real numbers from the shipped product.',
+      'Design for a shipped, $21M-backed casino and sportsbook: deposits, withdrawals, failure states, twelve games. Real numbers from the shipped product.',
     accent: '#0057ff',
     accentBright: '#358aff',
     accentTint: '#e5f0ff',
@@ -82,7 +82,7 @@ export const cases: Record<CaseMeta['slug'], CaseMeta> = {
     receipt: '14% → 0 CHECKOUT DROP · 2,392 PROVIDERS',
     metaTitle: 'PaymentX: a payments marketplace designed from zero · Giorgi Matsukatovi',
     metaDescription:
-      'Two sides, opposed incentives, one designer. Architecture before pixels; refunds moved inline and the checkout drop disappeared.',
+      'Two sides, opposed incentives, one designer. Architecture before pixels, refunds moved inline and the checkout drop disappeared.',
     accent: '#5168b8',
     accentBright: '#6481e6',
     accentTint: '#e9edfc',
