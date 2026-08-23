@@ -50,6 +50,12 @@ svg {
   max-width: 100%;
 }
 
+/* Keep intrinsic aspect ratio when max-width constrains an <img> with
+   width/height attributes (cells that stretch set their own height). */
+img {
+  height: auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;
