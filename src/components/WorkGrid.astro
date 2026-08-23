@@ -49,7 +49,6 @@ const cards = [
 ---
 
 <div class="work-shell">
-  <div class="ghost-circle" aria-hidden="true"></div>
   <div class="work-grid container">
     {
       cards.map((card) => (
@@ -79,17 +78,6 @@ const cards = [
 <style>
   .work-shell {
     position: relative;
-  }
-
-  .ghost-circle {
-    position: absolute;
-    top: -80px;
-    left: 13.9%;
-    width: min(1040px, 72vw);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: var(--sunken);
-    z-index: 0;
   }
 
   .work-grid {
@@ -156,11 +144,6 @@ const cards = [
     .work-grid {
       grid-template-columns: 1fr;
       row-gap: 56px;
-    }
-    .ghost-circle {
-      left: 8%;
-      width: 84vw;
-      top: -40px;
     }
   }
 </style>

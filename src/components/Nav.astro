@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import { SITE } from '../data/site';
 
 // The logo is ALWAYS cobalt (inline SVG, hard-coded), even on themed
 // dossiers. The nav CTA takes var(--accent), so it follows the case hue.
@@ -40,7 +41,14 @@ const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/index';
       <span class="nav-dot" aria-hidden="true"></span>
       AVAILABLE
     </span>
-    <a href="/contact" class="nav-cta">
+    <a
+      href={SITE.calendly}
+      target="_blank"
+      rel="noopener"
+      class="nav-cta"
+      data-event="conversation_click"
+      data-channel="call"
+    >
       Book a call
       <Icon name="arrow-up-right" size={14} />
     </a>
@@ -55,7 +63,13 @@ const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/index';
       <a href="/project">work</a>
       <a href="/about">about</a>
       <a href="/contact">contact</a>
-      <a href="/contact" class="nav-mobile-cta">Book a call <Icon name="arrow-up-right" size={14} /></a>
+      <a
+        href={SITE.calendly}
+        target="_blank"
+        rel="noopener"
+        class="nav-mobile-cta"
+        data-event="conversation_click"
+        data-channel="call">Book a call <Icon name="arrow-up-right" size={14} /></a>
     </div>
   </details>
 </header>
