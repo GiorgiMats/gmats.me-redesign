@@ -1,0 +1,447 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+import portrait from '../assets/home/portrait.png';
+
+const title = 'About · Giorgi Matsukatovi';
+const description =
+  'The designer who came from code. Senior product designer in Tbilisi, 6+ years in: front-end origin, build-ready output, and the judgment those years bought.';
+
+const recsUrl = `${SITE.linkedin}details/recommendations/`;
+
+const recommendations = [
+  {
+    name: 'Tom Jones',
+    role: 'Director of Design, SuperDuper',
+    relationship: 'MANAGED GIORGI DIRECTLY',
+    quote:
+      'His work pairs careful visual craft with product thinking, and he understands that good design is about whether a feature actually gets used, not just how it looks.',
+  },
+  {
+    name: 'Owen Manby',
+    role: 'Delivery & Product Ops Lead · ex-Dyson, The Economist',
+    relationship: 'WORKED ON THE SAME TEAM',
+    quote:
+      "He brings a strong sense of product design principles and doesn't let them slip, even when timelines are tight. He's someone you can rely on to keep standards high while still getting work out the door.",
+  },
+  {
+    name: 'Joni Mortimore',
+    role: 'Founding Designer',
+    relationship: 'WORKED ON THE SAME TEAM',
+    quote:
+      "He's one of the fastest, most meticulous designers I've ever worked with — balancing pace with pixel-perfect execution in a way that makes complex projects feel effortlessly simple.",
+  },
+  {
+    name: 'Valeri Karageorgiev',
+    role: 'Founder, Onion Creative Studio',
+    relationship: 'WORKED ON THE SAME TEAM',
+    quote:
+      'He’s great at breaking down complex problems and turning them into clear, intuitive experiences, while still maintaining a strong sense for clean and well-crafted design.',
+  },
+  {
+    name: 'Grace Clancy',
+    role: 'Principal Producer',
+    relationship: 'WORKED ON THE SAME TEAM',
+    quote:
+      'Alongside being a great product designer, he is diligent and organised in the production and delivery of his work, which is always a treat for any Producer or PM.',
+  },
+  {
+    name: 'Darlena Tran',
+    role: 'Owner, The Darlin’ Garden',
+    relationship: 'MANAGED GIORGI DIRECTLY',
+    quote:
+      'Right off the bat, I was impressed by Giorgi’s initiative to come up with unique concepts and his ability to quickly iterate on our feedback. Giorgi’s design style is sleek, sophisticated, and modern.',
+  },
+  {
+    name: 'Bilal Dhouib',
+    role: 'Founding Head of Growth, Bud (acquired by Figma)',
+    relationship: 'MANAGED GIORGI DIRECTLY',
+    quote:
+      'Giorgi is an experienced designer and we’ve had the pleasure of working with him for nearly 5 years. Highly recommend having him on your team!',
+  },
+  {
+    name: 'Prateek Shukla',
+    role: 'Founder, Quantamise',
+    relationship: 'MANAGED GIORGI DIRECTLY',
+    quote:
+      'The best thing about Giorgi is his positive attitude towards each and every thing. He is a quick learner and an absolutely fantastic mentor.',
+  },
+];
+
+const howRows = [
+  ['Async-first', 'Written updates beat status calls, and decisions get a paper trail'],
+  ['Build-ready', 'What I hand over runs, it does not just render'],
+  ['Self-builds', 'This site is designed and built by me, which is the claim tested on itself'],
+  ['Availability', 'Freelance engagements now, and open to the right full-time role'],
+];
+---
+
+<Base title={title} description={description}>
+  <section class="a-hero container">
+    <div class="a-hero-left">
+      <p class="chip caps-a">(ABOUT)</p>
+      <h1>The designer who came from <em>code.</em></h1>
+      <p class="a-bio">
+        Giorgi Matsukatovi, senior product designer in Tbilisi, 6+ years in. I started in
+        front-end, moved into design because the screens I was building deserved better decisions,
+        and I still ship what I draw. Along the way I have watched designers grow under me, which
+        taught me more about judgment than any portfolio did.
+      </p>
+    </div>
+    <div class="a-portrait exhibit">
+      <Picture
+        src={portrait}
+        widths={[380, 760]}
+        sizes="(max-width: 900px) 100vw, 380px"
+        formats={['avif', 'webp']}
+        alt="Giorgi Matsukatovi, black and white portrait"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <section class="a-theses container" aria-label="Two theses">
+    <article class="thesis" data-reach="about_thesis_reach" data-thesis="visual-quality">
+      <p class="caps-a accent">(THESIS 01)</p>
+      <h2>Visual quality converts.</h2>
+      <p>
+        People decide whether your product works by how it looks while working. That is not
+        shallow, it is how trust forms under uncertainty, and it is measurable in every funnel I
+        have touched. The door is open: show me a product that converted its way out of looking
+        broken and I will read every word.
+      </p>
+    </article>
+    <article class="thesis" data-reach="about_thesis_reach" data-thesis="designers-know-code">
+      <p class="caps-a accent">(THESIS 02)</p>
+      <h2>Designers should know code.</h2>
+      <p>
+        I came from front-end, and I ship what I draw. Knowing what a component costs to build
+        changes what you draw in the first place, and it removes the handoff where most design
+        quality dies. Not every designer needs to write production code. Every designer needs to
+        know what happens to their file after they close it.
+      </p>
+    </article>
+  </section>
+
+  <section class="a-how container" id="availability" aria-label="How I work">
+    <p class="caps-a how-label">HOW I WORK, FACTS ONLY</p>
+    <dl class="how-rows">
+      {
+        howRows.map(([key, value]) => (
+          <div class="how-row">
+            <dt>{key}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="a-recs" aria-label="LinkedIn recommendations">
+    <div class="recs-labelrow container">
+      <p class="caps-a">SAID BY PEOPLE I WORKED WITH · VERBATIM, FROM LINKEDIN</p>
+      <p class="caps-a tnum">08 RECOMMENDATIONS · SCROLL</p>
+    </div>
+    <div class="recs-rail" tabindex="0">
+      {
+        recommendations.map((rec) => (
+          <article class="rec-card">
+            <p class="rec-mark" aria-hidden="true">
+              “
+            </p>
+            <blockquote class="rec-quote">{rec.quote}</blockquote>
+            <div class="rec-att">
+              <p class="rec-name">{rec.name}</p>
+              <p class="rec-role">{rec.role}</p>
+              <a
+                class="rec-rel caps-a"
+                href={recsUrl}
+                target="_blank"
+                rel="noopener"
+                data-event="outbound_click"
+                data-channel="linkedin"
+                data-cta="false"
+              >
+                {rec.relationship} · ON LINKEDIN
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="a-close">
+    <h2>That’s the person. The work is one click away.</h2>
+    <a href="/project" class="pill pill-solid a-close-cta">See the work</a>
+  </section>
+</Base>
+
+<style>
+  .caps-a {
+    font-size: var(--fs-caps-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--ink-secondary);
+  }
+  .caps-a.accent {
+    color: var(--accent);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+  }
+
+  /* ---- hero ---- */
+  .a-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 64px;
+    padding-top: 88px;
+    padding-bottom: 72px;
+  }
+
+  .a-hero-left {
+    max-width: 613px;
+  }
+  .a-hero h1 {
+    margin-top: 28px;
+    font-size: clamp(2.0625rem, 4.45vw, 4rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: var(--ink);
+  }
+  .a-hero em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .a-bio {
+    margin-top: 28px;
+    max-width: 600px;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: var(--ink-secondary);
+  }
+
+  .a-portrait {
+    flex-shrink: 0;
+    width: 380px;
+    border-radius: var(--r-card);
+  }
+  .a-portrait :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ---- theses ---- */
+  .a-theses {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding-top: 40px;
+    padding-bottom: 72px;
+  }
+
+  .thesis {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 44px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .thesis h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .thesis p:last-child {
+    max-width: 900px;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  /* ---- how i work ---- */
+  .a-how {
+    padding-top: 40px;
+    padding-bottom: 72px;
+    scroll-margin-top: 24px;
+  }
+  .how-label {
+    font-size: var(--fs-caps);
+  }
+  .how-rows {
+    margin: 20px 0 0;
+  }
+  .how-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .how-row:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .how-row dt {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .how-row dd {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--ink-secondary);
+    text-align: right;
+  }
+
+  /* ---- recommendations rail ---- */
+  .a-recs {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .recs-labelrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .recs-labelrow p:first-child {
+    font-size: var(--fs-caps);
+  }
+
+  /* Native horizontal overflow with scroll-snap and edge peek — every card
+     in the DOM, no buttons, no JS. This is NOT a carousel. */
+  .recs-rail {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-inline: var(--page-gutter);
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+  }
+
+  .rec-card {
+    flex: 0 0 384px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 32px;
+    min-height: 344px;
+  }
+
+  .rec-mark {
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .rec-quote {
+    margin: 16px 0 0;
+    font-size: var(--fs-small);
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .rec-att {
+    margin-top: auto;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .rec-name {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .rec-role {
+    font-size: 0.8125rem;
+    color: var(--ink-secondary);
+  }
+  .rec-rel {
+    margin-top: 4px;
+    font-size: var(--fs-caps-xs);
+  }
+  .rec-rel:hover {
+    color: var(--accent);
+  }
+
+  /* ---- close ---- */
+  .a-close {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 80px var(--page-gutter) 120px;
+  }
+  .a-close h2 {
+    font-size: clamp(1.625rem, 2.8vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .a-close-cta {
+    margin-top: 24px;
+    padding: 16px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .a-hero {
+      flex-direction: column;
+      gap: 40px;
+      padding-top: 32px;
+      padding-bottom: 48px;
+    }
+    .a-portrait {
+      width: 100%;
+    }
+    .thesis {
+      padding: 28px 24px;
+    }
+    .thesis h2 {
+      font-size: 1.5rem;
+    }
+    .how-row {
+      flex-direction: column;
+      gap: 6px;
+    }
+    .how-row dd {
+      text-align: left;
+    }
+    .recs-labelrow {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .rec-card {
+      flex-basis: 300px;
+      padding: 24px;
+      min-height: 0;
+    }
+    .a-close {
+      padding-top: 56px;
+      padding-bottom: 80px;
+    }
+  }
+</style>

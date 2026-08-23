@@ -1,0 +1,66 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  screen: ImageMetadata;
+  alt: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const { screen, alt, class: className, loading = 'lazy' } = Astro.props;
+---
+
+<figure class:list={['browser', className]}>
+  <div class="browser-bar" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="browser-screen">
+    <Picture
+      src={screen}
+      widths={[680, 1360]}
+      sizes="(max-width: 900px) 100vw, 736px"
+      formats={['avif', 'webp']}
+      alt={alt}
+      loading={loading}
+    />
+  </div>
+</figure>
+
+<style>
+  .browser {
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-exhibit);
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 40px;
+    padding-left: 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .browser-bar span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+  .browser-bar span:nth-child(1) {
+    background: #f26d63;
+  }
+  .browser-bar span:nth-child(2) {
+    background: #f2bd4c;
+  }
+  .browser-bar span:nth-child(3) {
+    background: #58c366;
+  }
+  .browser-screen :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

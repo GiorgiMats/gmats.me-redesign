@@ -1,0 +1,688 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import ArtefactButtons from '../../components/ArtefactButtons.astro';
+import SandwichClose from '../../components/SandwichClose.astro';
+import { cases } from '../../data/cases';
+import '../../styles/dossier.css';
+
+import heroExh from '../../assets/docket/hero.png';
+import reviewView from '../../assets/docket/review-view.png';
+import claimFull from '../../assets/docket/claim-full.png';
+import citedLine from '../../assets/docket/cited-line.png';
+import fail1 from '../../assets/docket/fail-1.png';
+import fail2 from '../../assets/docket/fail-2.png';
+import fail3 from '../../assets/docket/fail-3.png';
+import fail4 from '../../assets/docket/fail-4.png';
+import inkMode from '../../assets/docket/ink-mode.png';
+import sealedRecord from '../../assets/docket/sealed-record.png';
+import twoClocks from '../../assets/docket/two-clocks.png';
+import masterStyle from '../../assets/docket/master-style.png';
+import closeBrowser from '../../assets/docket/close-browser.png';
+import closePhone from '../../assets/docket/close-phone.png';
+import closeCell1 from '../../assets/docket/close-cell1.png';
+import closeCell2 from '../../assets/docket/close-cell2.png';
+
+const c = cases.docket;
+
+const dod = [
+  { item: 'Claim model, five failure states, sealed record', open: false },
+  { item: 'Both modes audited: 3,560 checks, zero failures', open: false },
+  { item: 'Tipping-off logic reviewed against the statute', open: false },
+  { item: 'Findability pass across the queue', open: true },
+  { item: 'Loading and skeleton states', open: true },
+  { item: 'Handoff spec, remaining gaps', open: true },
+  { item: 'Success metrics: specified, not instrumented', open: true },
+];
+---
+
+<Base title={c.metaTitle} description={c.metaDescription} caseTheme="docket" ogImage="/og/docket.png">
+  <!-- hero -->
+  <section class="d-hero container">
+    <p class="d-chip">(CASE 01 · SELF-INITIATED · 5 DAYS)</p>
+    <h1 class="dk-h1">
+      Records what was checked.<br /><span class="dk-ghost">Not just what was decided.</span>
+    </h1>
+    <p class="d-intro">
+      Docket is an AI-assisted compliance review console for anti-money-laundering analysts,
+      framed for a GB-licensed remote casino and designed end to end in five days as a
+      self-initiated build. Audit trails prove who decided and rarely what was checked; Docket
+      makes the checking itself the record. No client, no users, no invented metrics.
+    </p>
+    <dl class="dk-kv">
+      <div>
+        <dt class="d-caps">ROLE</dt>
+        <dd>Designer, end to end</dd>
+      </div>
+      <div>
+        <dt class="d-caps">CLIENT</dt>
+        <dd>Self-initiated, no client</dd>
+      </div>
+      <div>
+        <dt class="d-caps">TIMELINE</dt>
+        <dd>Five days, August 2026</dd>
+      </div>
+      <div>
+        <dt class="d-caps">STATUS</dt>
+        <dd>Design complete; 9 of 14 DoD items closed</dd>
+      </div>
+    </dl>
+    <p class="dk-receipts tnum">22 SCREENS × 2 MODES · 3,560 CONTRAST CHECKS · 0 FAILURES</p>
+    <div class="d-hero-artefacts">
+      <ArtefactButtons slug="docket" />
+    </div>
+  </section>
+
+  <!-- hero exhibit -->
+  <section class="container dk-hero-exh">
+    <figure>
+      <div class="d-cell exhibit">
+        <Picture
+          src={heroExh}
+          widths={[720, 1200, 2400]}
+          sizes="(max-width: 900px) 100vw, 1200px"
+          formats={['avif', 'webp']}
+          alt="The Docket queue: every case, its flags, and where the work stands"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="fig-caption">
+        FIG. 01 · THE DOCKET — EVERY CASE, ITS FLAGS, AND WHERE THE WORK STANDS
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ENTRY 01 · the stake -->
+  <div class="entry container cv-auto">
+    <div class="entry-left">
+      <span class="entry-num">ENTRY 01</span>
+      <span class="entry-name">The stake</span>
+    </div>
+    <span class="entry-status"><span class="entry-dot"></span>RECORDED</span>
+  </div>
+  <section class="dk-body container cv-auto">
+    <h2 class="m-claim">The claim became the atomic unit.</h2>
+    <p class="m-para">
+      An audit trail proves who decided. It almost never proves what was checked, which is the
+      question an analyst actually faces months later, in front of a reviewer. A pass across
+      Hummingbird, Unit21, Sumsub and WorkFusion found no product that treats individual claims as
+      first-class objects with their own verification state. So that became the move:
+      <strong
+        >the claim, one verifiable statement with a source, a verdict and an asserter, is Docket’s
+        atom</strong
+      >, and everything else is built out of it.
+    </p>
+    <div class="zig">
+      <div class="zig-row">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={reviewView}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="The Docket review view: claims on the left, evidence on the right"
+            loading="lazy"
+          />
+        </div>
+        <div class="zig-cap">
+          <p class="d-caps">FIG. 02 · THE REVIEW VIEW</p>
+          <p>
+            Claims on the left, the evidence on the right. The analyst works through statements,
+            not documents, and the screen keeps both in view.
+          </p>
+        </div>
+      </div>
+      <div class="zig-row zig-row-flip">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={claimFull}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="One claim in full: statement, citations and decision constraint"
+            loading="lazy"
+          />
+        </div>
+        <div class="zig-cap">
+          <p class="d-caps">FIG. 03 · ONE CLAIM, IN FULL</p>
+          <p>
+            A statement, its citations, and the decision constraint it carries. The verdict
+            belongs to a person; the model only reports what it read.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRY 02 · the mechanic -->
+  <div class="entry container cv-auto">
+    <div class="entry-left">
+      <span class="entry-num">ENTRY 02</span>
+      <span class="entry-name">The mechanic</span>
+    </div>
+    <span class="entry-status"><span class="entry-dot"></span>VERIFIED</span>
+  </div>
+  <section class="dk-body container cv-auto">
+    <h2 class="m-claim">Verification takes two seconds, not a search.</h2>
+    <p class="m-para">
+      Click a claim and the cited line highlights inside the source document, with the OCR
+      boundary drawn around exactly what the model read. That is the whole mechanic.
+      <strong
+        >The model reports its boundaries instead of performing confidence, and it never
+        recommends</strong
+      >: it reads, it cites, and the verdict stays with the analyst. An assistant in a regulated
+      review earns trust by showing its work, not by being sure.
+    </p>
+    <figure class="dk-wide">
+      <div class="d-cell exhibit">
+        <Picture
+          src={citedLine}
+          widths={[720, 1200, 2400]}
+          sizes="(max-width: 900px) 100vw, 1200px"
+          formats={['avif', 'webp']}
+          alt="A cited line highlighted at source with the OCR boundary visible"
+          loading="lazy"
+        />
+      </div>
+      <figcaption class="fig-caption">
+        FIG. 04 · THE CITED LINE — HIGHLIGHTED AT SOURCE, OCR BOUNDARY VISIBLE
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ENTRY 03 · when the model is wrong -->
+  <div class="entry container cv-auto">
+    <div class="entry-left">
+      <span class="entry-num">ENTRY 03</span>
+      <span class="entry-name">When the model is wrong</span>
+    </div>
+    <span class="entry-status"><span class="entry-dot"></span>PRESERVED</span>
+  </div>
+  <section class="dk-body container cv-auto" data-reach="case_proof_reach" data-case="docket">
+    <h2 class="m-claim">Five failure states, none of them erased.</h2>
+    <p class="m-para">
+      Override, a citation that will not resolve, two sources that conflict, a rule that changed
+      mid-case, and the model going down entirely. Each one is a designed state, and each one
+      preserves the record instead of cleaning it up: when an analyst overrides the model, the
+      model’s reading stays in the file next to the human verdict.
+      <strong>Being wrong is allowed. Hiding it is not.</strong>
+    </p>
+    <div class="fail-bento">
+      {
+        [
+          { img: fail1, alt: 'Failure state: analyst override, model reading preserved' },
+          { img: fail2, alt: 'Failure state: a citation that will not resolve' },
+          { img: fail3, alt: 'Failure state: two sources that conflict' },
+          { img: fail4, alt: 'Failure state: a rule that changed mid-case' },
+        ].map((f) => (
+          <div class="d-cell exhibit">
+            <Picture
+              src={f.img}
+              widths={[588, 1176]}
+              sizes="(max-width: 900px) 100vw, 588px"
+              formats={['avif', 'webp']}
+              alt={f.alt}
+              loading="lazy"
+            />
+          </div>
+        ))
+      }
+    </div>
+    <p class="fig-caption">
+      FIG. 05 · OVERRIDE · UNRESOLVABLE CITATION · CONFLICTING SOURCES · RULE CHANGED
+    </p>
+  </section>
+  <section class="dk-ink cv-auto">
+    <div class="container">
+      <div class="zig-row">
+        <div class="d-cell zig-img">
+          <Picture
+            src={inkMode}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="Docket's dark mode: the same record in the ink theme"
+            loading="lazy"
+          />
+        </div>
+        <div class="zig-cap zig-cap-ink">
+          <p class="d-caps dk-ink-label">FIG. 06 · INK</p>
+          <p>
+            The console’s dark mode is a first-class theme, not an afterthought: the same record,
+            44 frames audited in both modes, 3,560 contrast checks, zero failures.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRY 04 · the record -->
+  <div class="entry container cv-auto">
+    <div class="entry-left">
+      <span class="entry-num">ENTRY 04</span>
+      <span class="entry-name">The record</span>
+    </div>
+    <span class="entry-status"><span class="entry-dot"></span>SEALED</span>
+  </div>
+  <section class="dk-body container cv-auto">
+    <h2 class="m-claim">The reasoning ships with the decision.</h2>
+    <p class="m-para">
+      The output of a review is a time-ordered, version-stamped record of what was checked, in
+      which order, against which version of which rule, and why a contradiction did not block
+      approval. It is sealed with the analyst’s and the reporting officer’s signatures. The most
+      delicate law in the product is handled the same way:
+      <strong>tipping-off protection keys off the state of the case</strong>, whether a disclosure
+      exists, rather than a list of banned phrases, and the reporting officer’s screen carries the
+      two statutory clocks in plain sight.
+    </p>
+    <div class="zig">
+      <div class="zig-row">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={sealedRecord}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="The sealed record: time-ordered, versioned, signed twice"
+            loading="lazy"
+          />
+        </div>
+        <div class="zig-cap">
+          <p class="d-caps">FIG. 07 · THE SEALED RECORD</p>
+          <p>
+            Time-ordered, versioned, signed twice. This page is what the analyst hands a reviewer
+            months later, and it answers the question before it is asked.
+          </p>
+        </div>
+      </div>
+      <div class="zig-row zig-row-flip">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={twoClocks}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="The reporting officer's view with the two statutory clocks"
+            loading="lazy"
+          />
+        </div>
+        <div class="zig-cap">
+          <p class="d-caps">FIG. 08 · THE TWO CLOCKS</p>
+          <p>
+            The reporting officer’s view: statutory deadlines as timelines, not as tribal
+            knowledge. The law sits in the interface, where it is hardest to forget.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTRY 05 · the review -->
+  <div class="entry container cv-auto">
+    <div class="entry-left">
+      <span class="entry-num">ENTRY 05</span>
+      <span class="entry-name">The review</span>
+    </div>
+    <span class="entry-status"><span class="entry-dot"></span>CORRECTED</span>
+  </div>
+  <section class="dk-body container cv-auto">
+    <h2 class="m-claim">Three critics tried to break it. They found things.</h2>
+    <p class="m-para">
+      Before the design was called done, three independent critic passes went through it. They
+      found <strong>a misquoted regulation, a licence condition that does not exist, and a
+      tipping-off block that was legally wrong</strong>, and all three were corrected in the file.
+      The system underneath held: one component set spanning two axes, paper and ink, pointer and
+      touch, with no per-mode variants.
+    </p>
+    <div class="dk-stats">
+      <div class="dk-stat">
+        <p class="d-stat-value" data-countup aria-live="polite">3,560</p>
+        <p class="d-caps">CONTRAST CHECKS, RUN ACROSS 44 FRAMES</p>
+      </div>
+      <div class="dk-stat">
+        <p class="d-stat-value" data-countup aria-live="polite">550</p>
+        <p class="d-caps">INTERACTIVE TARGETS AUDITED</p>
+      </div>
+      <div class="dk-stat">
+        <p class="d-stat-value tnum">0</p>
+        <p class="d-caps">ACCESSIBILITY FAILURES</p>
+      </div>
+    </div>
+    <figure class="dk-wide">
+      <div class="d-cell exhibit">
+        <Picture
+          src={masterStyle}
+          widths={[720, 1200, 2400]}
+          sizes="(max-width: 900px) 100vw, 1200px"
+          formats={['avif', 'webp']}
+          alt="The master style frame: tokens, type and both modes on one sheet"
+          loading="lazy"
+        />
+      </div>
+      <figcaption class="fig-caption">
+        FIG. 09 · THE MASTER STYLE FRAME — TOKENS, TYPE AND BOTH MODES ON ONE SHEET
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- NOT DONE ledger -->
+  <section class="not-done container cv-auto">
+    <h2 class="nd-claim">Not done, and saying so.</h2>
+    <p class="nd-para">
+      Nine of fourteen definition-of-done items were closed when this was written. The open ones
+      stay on the record, because a record that only lists finished things is marketing.
+    </p>
+    <ul class="dod">
+      {
+        dod.map((row) => (
+          <li>
+            <span class="dod-item">{row.item}</span>
+            <span class:list={['entry-status', { 'status-open': row.open }]}>
+              <span class:list={['entry-dot', { 'dot-open': row.open }]} />
+              {row.open ? 'OPEN' : 'CLOSED'}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <SandwichClose
+    slug="docket"
+    browserScreen={closeBrowser}
+    browserAlt="The Docket queue on desktop"
+    phoneScreen={closePhone}
+    phoneAlt="Docket on mobile"
+    cell1={closeCell1}
+    cell1Alt="Docket review view detail"
+    cell2={closeCell2}
+    cell2Alt="Docket case record detail"
+    signoffCaps="SELF-INITIATED · THE RECORD IS THE PRODUCT"
+    chips={['CLAIMS AS THE ATOM', 'FIVE FAILURE STATES, PRESERVED', '3,560 CHECKS · 0 FAILURES']}
+    nextClaim="FlowLift. Sixty screens in seven days, with every decision argued."
+  />
+
+  <script src="../../scripts/countup.ts"></script>
+</Base>
+
+<style>
+  /* ---- hero ---- */
+  .dk-h1 {
+    margin-top: 28px;
+    font-size: clamp(2.0625rem, 5.3vw, 4.75rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.07;
+    color: var(--ink);
+    text-wrap: initial;
+  }
+  .dk-ghost {
+    color: rgba(26, 27, 30, 0.24);
+  }
+  .dk-kv {
+    margin: 44px 0 0;
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+  .dk-kv div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 220px;
+  }
+  .dk-kv dd {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .dk-receipts {
+    margin-top: 28px;
+    font-size: var(--fs-caps);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--accent);
+  }
+
+  .dk-hero-exh {
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
+  /* ---- entry ledger divider ---- */
+  .entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-top: 3px double var(--border);
+    border-bottom: 1px solid var(--border);
+    padding-block: 24px;
+    margin-top: 72px;
+  }
+  .entry-left {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .entry-num {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .entry-name {
+    font-size: 1.6875rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .entry-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--fs-caps-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--ink-secondary);
+  }
+  .entry-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .dot-open {
+    background: transparent;
+    border: 1.5px solid var(--ink-secondary);
+  }
+
+  /* ---- entry bodies ---- */
+  .dk-body {
+    padding-top: 48px;
+  }
+  .dk-wide {
+    margin-top: 48px;
+  }
+
+  .zig {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .zig-row {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  .zig-row-flip {
+    flex-direction: row-reverse;
+  }
+  .zig-img {
+    flex: 0 0 63%;
+  }
+  .zig-img :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .zig-cap {
+    max-width: 392px;
+  }
+  .zig-cap p:last-child {
+    margin-top: 12px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  .fail-bento {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* ---- ink band (the one dark passage — mirrors the product's ink mode) ---- */
+  .dk-ink {
+    margin-top: 64px;
+    background: var(--ink-surface);
+    padding-block: 96px;
+  }
+  .dk-ink .zig-img :global(img) {
+    border-radius: var(--r-cell);
+    outline: 1px solid rgba(255, 255, 255, 0.08);
+    outline-offset: -1px;
+  }
+  .dk-ink-label {
+    color: var(--accent-bright);
+  }
+  .zig-cap-ink p:last-child {
+    color: var(--on-ink-secondary);
+  }
+
+  /* ---- stats ---- */
+  .dk-stats {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .dk-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* ---- NOT DONE ledger ---- */
+  .not-done {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .nd-claim {
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .nd-para {
+    margin-top: 16px;
+    max-width: 680px;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+  .dod {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    max-width: 870px;
+  }
+  .dod li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-top: 1px solid var(--border);
+    padding: 16px 4px;
+  }
+  .dod li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+  .dod-item {
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .status-open {
+    color: var(--ink-secondary);
+  }
+
+  /* ---- mobile ---- */
+  @media (max-width: 900px) {
+    .dk-kv {
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .dk-hero-exh {
+      padding-top: 24px;
+      padding-bottom: 40px;
+    }
+    .entry {
+      margin-top: 48px;
+      flex-wrap: wrap;
+      row-gap: 12px;
+    }
+    .entry-name {
+      font-size: 1.25rem;
+    }
+    .dk-body {
+      padding-top: 32px;
+    }
+    .zig-row,
+    .zig-row-flip {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .zig-img {
+      flex-basis: auto;
+      width: 100%;
+    }
+    .zig-cap {
+      max-width: none;
+    }
+    .fail-bento {
+      grid-template-columns: 1fr;
+    }
+    .dk-ink {
+      padding-block: 56px;
+      margin-top: 48px;
+    }
+    .dk-stats {
+      grid-template-columns: 1fr;
+    }
+    .not-done {
+      padding-block: 64px;
+    }
+    .dod li {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+</style>

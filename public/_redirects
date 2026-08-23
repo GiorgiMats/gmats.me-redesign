@@ -1,0 +1,16 @@
+# Cloudflare Pages evaluates rules top-to-bottom, first match wins, and
+# redirects beat static assets — so the four real case pages are pinned
+# with 200 rewrites BEFORE the legacy catch-all.
+/project/paymentx  /project/paymentx  200
+/project/docket    /project/docket    200
+/project/bluff     /project/bluff     200
+/project/flowlift  /project/flowlift  200
+
+# Legacy URLs on filed job applications and old posts — zero breakage (P4).
+/project/ultramessenger  /project?from=ultramessenger  301
+/project/metastream      /project?from=metastream      301
+/project/bluff-v2        /project/bluff                301
+
+# Catch-all for Dribbble-era legacy links into the /project namespace.
+# The ?from marker keeps these hits countable in Cloudflare (P6 guardrail).
+/project/*  /project?from=legacy  301

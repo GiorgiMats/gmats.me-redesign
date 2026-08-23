@@ -1,0 +1,149 @@
+---
+import Icon from './Icon.astro';
+import { SITE } from '../data/site';
+
+// Footer is brand-constant on every page (case theming never touches it).
+// Sitemap: WORK (four cases) · SITE · ELSEWHERE. No /rescue — by IA contract.
+---
+
+<footer class="footer" id="sitemap">
+  <div class="footer-inner container">
+    <div class="footer-top">
+      <a class="footer-hello" href="/contact" aria-label="Say hello: contact">
+        say hell<span class="footer-o">o</span>
+      </a>
+      <div class="footer-sitemap">
+        <div class="footer-col">
+          <p class="footer-label caps-sm">WORK</p>
+          <a href="/project/docket">docket</a>
+          <a href="/project/bluff">bluff</a>
+          <a href="/project/flowlift">flowlift</a>
+          <a href="/project/paymentx">paymentx</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label caps-sm">SITE</p>
+          <a href="/about">about</a>
+          <a href="/contact">contact</a>
+          <a href="/project">project index</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label caps-sm">ELSEWHERE</p>
+          <a href={SITE.linkedin} rel="me noopener" target="_blank">
+            <Icon name="linkedin-logo" size={16} />
+            LinkedIn
+          </a>
+          <a href={SITE.dribbble} rel="me noopener" target="_blank">
+            <Icon name="dribbble-logo" size={16} />
+            Dribbble
+          </a>
+          <a href={SITE.x} rel="me noopener" target="_blank">
+            <Icon name="x-logo" size={16} />
+            X
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom caps-sm">
+      <p>GMATS · GIORGI MATSUKATOVI · SENIOR PRODUCT DESIGNER</p>
+      <p class="tnum">{SITE.coordinates} · TBILISI / REMOTE</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink-surface);
+    color: var(--on-ink);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+    padding-top: 96px;
+    padding-bottom: 48px;
+  }
+
+  .footer-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .footer-hello {
+    font-size: clamp(3.25rem, 7.6vw, 6.875rem); /* 110 at 1440 */
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1;
+    color: var(--on-ink);
+    white-space: nowrap;
+  }
+  .footer-o {
+    color: var(--cobalt-bright);
+  }
+
+  .footer-sitemap {
+    display: flex;
+    gap: 64px;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .footer-col a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--on-ink);
+  }
+  .footer-col a:hover {
+    color: var(--cobalt-bright);
+  }
+
+  .footer-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: #9ea3ad;
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid #3d4047;
+    padding-top: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: #9ea3ad;
+  }
+
+  @media (max-width: 900px) {
+    .footer-inner {
+      gap: 48px;
+      padding-top: 64px;
+    }
+    .footer-top {
+      flex-direction: column;
+    }
+    .footer-sitemap {
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

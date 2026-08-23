@@ -1,0 +1,881 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import ArtefactButtons from '../../components/ArtefactButtons.astro';
+import SandwichClose from '../../components/SandwichClose.astro';
+import { cases } from '../../data/cases';
+import '../../styles/dossier.css';
+
+import heroExh from '../../assets/bluff/hero.png';
+import landingMain from '../../assets/bluff/landing-main.png';
+import landingFounding from '../../assets/bluff/landing-founding.png';
+import landingVip from '../../assets/bluff/landing-vip.png';
+import deposit from '../../assets/bluff/deposit.png';
+import withdraw from '../../assets/bluff/withdraw.png';
+import statesMatrix from '../../assets/bluff/states-matrix.png';
+import emailRecovery from '../../assets/bluff/email-recovery.png';
+import phoneSignup from '../../assets/bluff/phone-signup.png';
+import gamePlinko from '../../assets/bluff/game-plinko.png';
+import gameMines from '../../assets/bluff/game-mines.png';
+import gameBlackjack from '../../assets/bluff/game-blackjack.png';
+import gameDice from '../../assets/bluff/game-dice.png';
+import flappyDashed from '../../assets/bluff/flappy-dashed.png';
+import flappyMidgame from '../../assets/bluff/flappy-midgame.png';
+import notifications from '../../assets/bluff/notifications.png';
+import vip from '../../assets/bluff/vip.png';
+import systemLayer from '../../assets/bluff/system-layer.png';
+import closeBrowser from '../../assets/bluff/close-browser.png';
+import closePhone from '../../assets/bluff/close-phone.png';
+import closeCell1 from '../../assets/bluff/close-cell1.png';
+import closeCell2 from '../../assets/bluff/close-cell2.png';
+
+const c = cases.bluff;
+
+const dividers = [
+  { num: '01', label: 'The launch' },
+  { num: '02', label: 'The money' },
+  { num: '03', label: 'The failure states' },
+  { num: '04', label: 'The games' },
+  { num: '05', label: 'The quiet surfaces' },
+];
+---
+
+<Base title={c.metaTitle} description={c.metaDescription} caseTheme="bluff" ogImage="/og/bluff.png">
+  <!-- hero -->
+  <section class="d-hero container">
+    <p class="d-chip">(CASE 02 · IGAMING · 15 MONTHS)</p>
+    <h1 class="bf-h1">Fifteen months on a real casino’s <em>money flows.</em></h1>
+    <p class="d-intro">
+      BLUFF was a live, crypto-native casino and sportsbook backed by a publicly reported $21M
+      raise. I was on it for fifteen months as senior product designer: onboarding, money flows,
+      twelve in-house games, VIP, notifications, and the post-ship quality work in between.
+      <strong>The raise is public record; every other number here is my own count.</strong>
+    </p>
+    <dl class="bf-kv">
+      <div>
+        <dt class="d-caps">ROLE</dt>
+        <dd>Senior Product Designer</dd>
+      </div>
+      <div>
+        <dt class="d-caps">TEAM</dt>
+        <dd>Superduper, with Tom Jones as design lead</dd>
+      </div>
+      <div>
+        <dt class="d-caps">TIMELINE</dt>
+        <dd>2025 to 2026</dd>
+      </div>
+      <div>
+        <dt class="d-caps">STATUS</dt>
+        <dd>Shipped; the product has since pivoted</dd>
+      </div>
+    </dl>
+    <p class="bf-receipts tnum">50,000+ SIGNUPS · 15% REG-TO-PLAY · $21M RAISE</p>
+    <div class="d-hero-artefacts">
+      <ArtefactButtons slug="bluff" />
+    </div>
+  </section>
+
+  <!-- hero exhibit -->
+  <section class="container bf-hero-exh">
+    <figure>
+      <div class="d-cell exhibit">
+        <Picture
+          src={heroExh}
+          widths={[720, 1200, 2400]}
+          sizes="(max-width: 900px) 100vw, 1200px"
+          formats={['avif', 'webp']}
+          alt="BLUFF casino home, as shipped: deposit banner, daily picks and the games row"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="fig-caption">FIG. 01 · CASINO HOME, AS SHIPPED</figcaption>
+    </figure>
+  </section>
+
+  <!-- CHAPTER 01 · the launch -->
+  <div class="fx-div cv-auto">
+    <div class="fx-div-inner container">
+      <div class="fx-div-left">
+        <span class="fx-bar" aria-hidden="true"></span>
+        <p class="fx-chapter tnum">CHAPTER {dividers[0].num}</p>
+        <p class="fx-label">{dividers[0].label}</p>
+      </div>
+      <span class="fx-ghost tnum" aria-hidden="true">{dividers[0].num}</span>
+    </div>
+  </div>
+  <section class="bf-ch bf-ch-white cv-auto">
+    <div class="container">
+      <h2 class="m-claim">Fifty thousand signups before the product existed.</h2>
+      <p class="m-para">
+        The pre-launch landing page had six jobs at once: sell urgency without spamming, explain
+        the Blink Points loop without documentation, make Founding Member scarcity feel real,
+        pitch three reward types, drive referrals through quests, and talk to migrating VIP
+        players separately from newcomers. Two audiences, one page, layered so each read finds
+        its own reasons. It drove
+        <strong
+          >50,000+ signups before the platform launched, 15% registration-to-play, and 12%
+          conversion on referred users</strong
+        >. The lesson I kept: softness on a financial page reads as confidence.
+      </p>
+      <div class="bf-stats">
+        <div class="bf-stat">
+          <p class="d-stat-value" data-countup aria-live="polite">50,000+</p>
+          <p class="d-caps">SIGNUPS BEFORE LAUNCH</p>
+        </div>
+        <div class="bf-stat">
+          <p class="d-stat-value" data-countup aria-live="polite">15%</p>
+          <p class="d-caps">REGISTRATION TO PLAY</p>
+        </div>
+        <div class="bf-stat">
+          <p class="d-stat-value" data-countup aria-live="polite">12%</p>
+          <p class="d-caps">CONVERSION ON REFERRED USERS</p>
+        </div>
+      </div>
+      <div class="bf-landing-bento">
+        <div class="d-cell exhibit bf-landing-main">
+          <Picture
+            src={landingMain}
+            widths={[792, 1584]}
+            sizes="(max-width: 900px) 100vw, 792px"
+            formats={['avif', 'webp']}
+            alt="The pre-launch landing hero"
+            loading="lazy"
+          />
+        </div>
+        <div class="bf-landing-col">
+          <div class="d-cell exhibit">
+            <Picture
+              src={landingFounding}
+              widths={[384, 768]}
+              sizes="(max-width: 900px) 100vw, 384px"
+              formats={['avif', 'webp']}
+              alt="The Founding Member section"
+              loading="lazy"
+            />
+          </div>
+          <div class="d-cell exhibit">
+            <Picture
+              src={landingVip}
+              widths={[384, 768]}
+              sizes="(max-width: 900px) 100vw, 384px"
+              formats={['avif', 'webp']}
+              alt="The VIP status match section"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+      <p class="fig-caption">FIG. 02 · THE PRE-LAUNCH PAGE — HERO, FOUNDING MEMBER, VIP MATCHING</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 02 · the money -->
+  <div class="fx-div cv-auto">
+    <div class="fx-div-inner container">
+      <div class="fx-div-left">
+        <span class="fx-bar" aria-hidden="true"></span>
+        <p class="fx-chapter tnum">CHAPTER {dividers[1].num}</p>
+        <p class="fx-label">{dividers[1].label}</p>
+      </div>
+      <span class="fx-ghost tnum" aria-hidden="true">{dividers[1].num}</span>
+    </div>
+  </div>
+  <section class="bf-ch cv-auto" data-reach="case_proof_reach" data-case="bluff">
+    <div class="container">
+      <h2 class="m-claim">Every money surface is a trust surface.</h2>
+      <p class="m-para">
+        Deposits, withdrawals, buying crypto, bet history, transaction history. On a casino these
+        are not account plumbing, they are the product’s argument that it can be trusted with a
+        balance. I designed them calm on purpose: clear amounts, explicit states, history a
+        player can audit without asking support. When you’re designing for a casino,
+        <strong>trust is conversion</strong>, and the surfaces that look like pure craft are
+        conversion surfaces too.
+      </p>
+      <div class="zig">
+        <div class="zig-row">
+          <div class="d-cell exhibit zig-img">
+            <Picture
+              src={deposit}
+              widths={[760, 1520]}
+              sizes="(max-width: 900px) 100vw, 760px"
+              formats={['avif', 'webp']}
+              alt="The deposit screen: amounts, fees and network state stated flat"
+              loading="lazy"
+            />
+          </div>
+          <div class="zig-cap">
+            <p class="d-caps">FIG. 03 · DEPOSIT</p>
+            <p>
+              Amounts, fees and the state of the network stated flat. A player about to move
+              money gets no spectacle here, just certainty about what happens next.
+            </p>
+          </div>
+        </div>
+        <div class="zig-row zig-row-flip">
+          <div class="d-cell exhibit zig-img">
+            <Picture
+              src={withdraw}
+              widths={[760, 1520]}
+              sizes="(max-width: 900px) 100vw, 760px"
+              formats={['avif', 'webp']}
+              alt="The withdrawal screen mirroring the deposit grammar"
+              loading="lazy"
+            />
+          </div>
+          <div class="zig-cap">
+            <p class="d-caps">FIG. 04 · WITHDRAW</p>
+            <p>
+              The withdrawal path mirrors the deposit grammar exactly, so taking money out never
+              feels different from putting it in. That symmetry is deliberate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 03 · the failure states -->
+  <div class="fx-div cv-auto">
+    <div class="fx-div-inner container">
+      <div class="fx-div-left">
+        <span class="fx-bar" aria-hidden="true"></span>
+        <p class="fx-chapter tnum">CHAPTER {dividers[2].num}</p>
+        <p class="fx-label">{dividers[2].label}</p>
+      </div>
+      <span class="fx-ghost tnum" aria-hidden="true">{dividers[2].num}</span>
+    </div>
+  </div>
+  <section class="bf-ch bf-ch-white cv-auto">
+    <div class="container">
+      <h2 class="m-claim">Twenty-four ways to lose a player.</h2>
+      <p class="m-para">
+        Mapping every way signup and payments could fail, I stopped counting at 24 conditions
+        across email, phone and OTP. The constraint that made it matter:
+        <strong>real money already debited</strong>, a regulated product, and a support team
+        logging every one of these calls as a payments bug. An error message here is not copy, it
+        is the difference between a retry and a chargeback.
+      </p>
+      <figure class="bf-wide">
+        <div class="d-cell exhibit">
+          <Picture
+            src={statesMatrix}
+            widths={[720, 1200, 2400]}
+            sizes="(max-width: 900px) 100vw, 1200px"
+            formats={['avif', 'webp']}
+            alt="The dynamic states matrix: every condition, every surface, one document"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="fig-caption">
+          FIG. 05 · THE DYNAMIC STATES MATRIX — EVERY CONDITION, EVERY SURFACE, ONE DOCUMENT
+        </figcaption>
+      </figure>
+      <p class="m-para">
+        I split the failure states by one question:
+        <strong>can the player fix this themselves?</strong> Three states came out: retry now,
+        retry later, stop and contact us. Persistence followed the same logic, errors dismiss on
+        retry unless the condition persists, like a country restriction, and every persistent
+        error offers an escape hatch, SMS failing over to email.
+      </p>
+      <div class="bf-thrown">
+        <p class="d-caps bf-thrown-label">THROWN AWAY</p>
+        <p class="tnum">
+          The obvious answer was a message per error code, all 24. <strong>I killed it:</strong>
+          most codes came from the provider and could not be mapped to an action the player could
+          take, so it would have produced 24 sentences with the same meaning.
+        </p>
+      </div>
+      <div class="bf-result">
+        <p class="bf-result-num tnum">24 → 3</p>
+        <p class="bf-result-txt tnum">
+          Nine screens shared one message before. Three states after. Two weeks, copy and an
+          existing state, no new engineering.
+        </p>
+      </div>
+      <div class="zig">
+        <div class="zig-row">
+          <div class="d-cell exhibit zig-img">
+            <Picture
+              src={emailRecovery}
+              widths={[760, 1520]}
+              sizes="(max-width: 900px) 100vw, 760px"
+              formats={['avif', 'webp']}
+              alt="Email signup error recovery"
+              loading="lazy"
+            />
+          </div>
+          <div class="zig-cap">
+            <p class="d-caps">FIG. 06 · EMAIL SIGNUP, ERROR RECOVERY</p>
+            <p>
+              The message names what happened and the one action that fixes it. Nothing else
+              earns a place on the screen while money or access is in question.
+            </p>
+          </div>
+        </div>
+        <div class="zig-row zig-row-flip">
+          <div class="d-cell exhibit zig-img">
+            <Picture
+              src={phoneSignup}
+              widths={[760, 1520]}
+              sizes="(max-width: 900px) 100vw, 760px"
+              formats={['avif', 'webp']}
+              alt="Phone signup, built mobile-first"
+              loading="lazy"
+            />
+          </div>
+          <div class="zig-cap">
+            <p class="d-caps">FIG. 07 · PHONE SIGNUP</p>
+            <p>
+              Built as a native mobile experience first, then adapted to desktop, because that is
+              the order players actually arrive in.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 04 · the games -->
+  <div class="fx-div cv-auto">
+    <div class="fx-div-inner container">
+      <div class="fx-div-left">
+        <span class="fx-bar" aria-hidden="true"></span>
+        <p class="fx-chapter tnum">CHAPTER {dividers[3].num}</p>
+        <p class="fx-label">{dividers[3].label}</p>
+      </div>
+      <span class="fx-ghost tnum" aria-hidden="true">{dividers[3].num}</span>
+    </div>
+  </div>
+  <section class="bf-ch cv-auto">
+    <div class="container">
+      <h2 class="m-claim">Twelve games that read as one product.</h2>
+      <p class="m-para">
+        Roulette, Baccarat, Hi-Lo, Mines, Wheel, Keno, Limbo, Plinko, Dice, Blackjack, Crash, and
+        Flappy Fortune. The design problem was never one game, it was
+        <strong>coherence across twelve products that each wanted a personality</strong>. The
+        pattern that held it together is a shared profit-and-multiplier display that recurs in
+        every game’s mid-round UI, so a player who learns one game has learned the grammar of all
+        of them.
+      </p>
+      <p class="bf-games-strip d-caps">
+        ROULETTE · BACCARAT · HI-LO · MINES · WHEEL · KENO · LIMBO · PLINKO · DICE · BLACKJACK ·
+        CRASH · FLAPPY FORTUNE
+      </p>
+      <div class="bf-games-bento">
+        {
+          [
+            { img: gamePlinko, alt: 'Plinko' },
+            { img: gameMines, alt: 'Mines' },
+            { img: gameBlackjack, alt: 'Blackjack' },
+            { img: gameDice, alt: 'Dice' },
+          ].map((g) => (
+            <div class="d-cell exhibit">
+              <Picture
+                src={g.img}
+                widths={[588, 1176]}
+                sizes="(max-width: 900px) 100vw, 588px"
+                formats={['avif', 'webp']}
+                alt={`${g.alt}: one shared grammar, its own personality`}
+                loading="lazy"
+              />
+            </div>
+          ))
+        }
+      </div>
+      <p class="fig-caption">FIG. 08 · PLINKO, MINES, BLACKJACK, DICE — ONE GRAMMAR, FOUR PERSONALITIES</p>
+
+      <h3 class="bf-subclaim">One game existed nowhere else.</h3>
+      <p class="m-para">
+        Flappy Fortune is BLUFF’s exclusive: a spatial game where the player chooses both whether
+        to continue and which lane to fly through, multiplier climbing until the loss. The
+        decision that made it legible: <strong>incoming pillars draw as dashed outlines</strong>,
+        so a future state never reads as a wall. And the change that made it feel like a game
+        rather than a sprite test came after the first build, anchoring the bird and scrolling
+        the environment past it.
+      </p>
+      <div class="zig">
+        <div class="zig-row">
+          <div class="d-cell exhibit zig-img">
+            <Picture
+              src={flappyDashed}
+              widths={[760, 1520]}
+              sizes="(max-width: 900px) 100vw, 760px"
+              formats={['avif', 'webp']}
+              alt="Flappy Fortune: incoming pillars drawn as dashed outlines"
+              loading="lazy"
+            />
+          </div>
+          <div class="zig-cap">
+            <p class="d-caps">FIG. 09 · INCOMING, AS A DASHED PROMISE</p>
+            <p>
+              Dashed outlines mark pillars that have not arrived yet, so the player never
+              mistakes a future state for a wall that is already solid.
+            </p>
+          </div>
+        </div>
+        <div class="zig-row zig-row-flip">
+          <div class="d-cell exhibit zig-img">
+            <Picture
+              src={flappyMidgame}
+              widths={[760, 1520]}
+              sizes="(max-width: 900px) 100vw, 760px"
+              formats={['avif', 'webp']}
+              alt="Flappy Fortune mid-game: profit, next-tile profit and cashout"
+              loading="lazy"
+            />
+          </div>
+          <div class="zig-cap">
+            <p class="d-caps">FIG. 10 · MID-GAME</p>
+            <p>
+              During a run the interface hides its noise: current profit, profit on the next
+              tile, and the cashout action. Everything else waits.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 05 · the quiet surfaces -->
+  <div class="fx-div cv-auto">
+    <div class="fx-div-inner container">
+      <div class="fx-div-left">
+        <span class="fx-bar" aria-hidden="true"></span>
+        <p class="fx-chapter tnum">CHAPTER {dividers[4].num}</p>
+        <p class="fx-label">{dividers[4].label}</p>
+      </div>
+      <span class="fx-ghost tnum" aria-hidden="true">{dividers[4].num}</span>
+    </div>
+  </div>
+  <section class="bf-ch bf-ch-white cv-auto">
+    <div class="container">
+      <h2 class="m-claim">Calm is a feature in a casino.</h2>
+      <p class="m-para">
+        Notifications were built around the Smartico API’s constraints: four categories,
+        promotions, account activity, gameplay events and VIP updates, with single-line copy,
+        soft read-unread contrast and large tap targets. The register is
+        <strong>deliberately dismissible rather than spectacle</strong>. The same restraint
+        carried VIP: status is information a player checks, not a firework the product sets off.
+      </p>
+      <div class="zig">
+        <div class="zig-row">
+          <div class="d-cell exhibit zig-img">
+            <Picture
+              src={notifications}
+              widths={[760, 1520]}
+              sizes="(max-width: 900px) 100vw, 760px"
+              formats={['avif', 'webp']}
+              alt="The notifications panel"
+              loading="lazy"
+            />
+          </div>
+          <div class="zig-cap">
+            <p class="d-caps">FIG. 11 · NOTIFICATIONS</p>
+            <p>
+              Category labels, one line of copy, a soft read-unread contrast. A panel a player
+              can clear in seconds and trust not to shout.
+            </p>
+          </div>
+        </div>
+        <div class="zig-row zig-row-flip">
+          <div class="d-cell exhibit zig-img">
+            <Picture
+              src={vip}
+              widths={[760, 1520]}
+              sizes="(max-width: 900px) 100vw, 760px"
+              formats={['avif', 'webp']}
+              alt="The VIP status screen"
+              loading="lazy"
+            />
+          </div>
+          <div class="zig-cap">
+            <p class="d-caps">FIG. 12 · VIP</p>
+            <p>
+              Progress and status as plain information. The value is in what it says, not in how
+              loudly it says it.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH06 · what survived -->
+  <section class="bf-ch cv-auto">
+    <div class="container">
+      <h2 class="m-claim">What survived was the reasoning.</h2>
+      <p class="m-para">
+        Underneath the screens sat system work: BLUFF-specific components on the Superduper
+        design system template, bet input cards, multi-state game control panels, notification
+        cards, VIP status components. Every component shipped with its edge states designed,
+        empty, loading, partial data, error, mid-action, success, and a post-ship QA tracker kept
+        quality under review for three months after launch.
+      </p>
+      <figure class="bf-wide">
+        <div class="d-cell exhibit">
+          <Picture
+            src={systemLayer}
+            widths={[720, 1200, 2400]}
+            sizes="(max-width: 900px) 100vw, 1200px"
+            formats={['avif', 'webp']}
+            alt="The system layer: parameters and tokens"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="fig-caption">FIG. 13 · THE SYSTEM LAYER — PARAMETERS AND TOKENS</figcaption>
+      </figure>
+      <p class="m-para">
+        In 2026 BLUFF pivoted from casino and sportsbook to pack opening. The content changed;
+        the interface system still runs the product. Which is the point I’d defend from all
+        fifteen months: <strong>what survives the next redesign is never the visual choices</strong>,
+        those always change and they should. What survives is the reasoning, why a state behaves
+        the way it does, why an error persists instead of dismissing.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATED FLAT -->
+  <section class="bf-limit container cv-auto">
+    <div class="bf-limit-card">
+      <p class="d-caps bf-limit-label">STATED FLAT</p>
+      <p>
+        Retry later is still not a real instruction, and I don’t know what the right one is. And
+        nothing above cites the cashier’s own numbers; the landing page had analytics I can
+        publish, the money flows didn’t. What’s here is checkable instead.
+      </p>
+    </div>
+  </section>
+
+  <SandwichClose
+    slug="bluff"
+    browserScreen={closeBrowser}
+    browserAlt="BLUFF casino home on desktop"
+    phoneScreen={closePhone}
+    phoneAlt="BLUFF on mobile"
+    cell1={closeCell1}
+    cell1Alt="BLUFF screen detail"
+    cell2={closeCell2}
+    cell2Alt="BLUFF screen detail"
+    signoffCaps="FIFTEEN MONTHS · THE MONEY FLOWS"
+    chips={['24 → 3 ERROR STATES', '12 IN-HOUSE GAMES', '50,000+ PRE-LAUNCH SIGNUPS']}
+    nextClaim="PaymentX. A two-sided payments marketplace, designed from zero."
+  />
+
+  <script src="../../scripts/countup.ts"></script>
+</Base>
+
+<style>
+  /* ---- hero ---- */
+  .bf-h1 {
+    margin-top: 28px;
+    font-size: clamp(2.0625rem, 5.3vw, 4.75rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.07;
+    color: var(--ink);
+  }
+  .bf-h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .bf-kv {
+    margin: 44px 0 0;
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+  .bf-kv div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 220px;
+  }
+  .bf-kv dd {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .bf-receipts {
+    margin-top: 28px;
+    font-size: var(--fs-caps);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--accent);
+  }
+  .bf-hero-exh {
+    padding-top: 40px;
+    padding-bottom: 88px;
+  }
+
+  /* ---- ink chapter divider spreads (the Stockify register, made ours) ---- */
+  .fx-div {
+    background: var(--ink-surface);
+    overflow: hidden;
+  }
+  .fx-div-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    min-height: 340px;
+  }
+  .fx-bar {
+    display: block;
+    width: 56px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent-bright);
+  }
+  .fx-chapter {
+    margin-top: 18px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--accent-bright);
+  }
+  .fx-label {
+    margin-top: 14px;
+    font-size: clamp(1.75rem, 3.2vw, 2.875rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--on-ink);
+  }
+  .fx-ghost {
+    font-size: clamp(120px, 16vw, 230px);
+    font-weight: 500;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.14);
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  /* ---- chapters (light sections alternate white/ground) ---- */
+  .bf-ch {
+    padding-block: 88px;
+  }
+  .bf-ch-white {
+    background: var(--surface);
+  }
+
+  .bf-stats {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .bf-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .bf-ch-white .bf-stat {
+    background: var(--ground);
+  }
+
+  .bf-landing-bento {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: 792fr 384fr;
+    gap: 24px;
+  }
+  .bf-landing-main :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .bf-landing-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .bf-landing-col :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .bf-landing-col .d-cell {
+    flex: 1;
+  }
+
+  .bf-wide {
+    margin-top: 44px;
+    margin-bottom: 44px;
+  }
+
+  .zig {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .zig-row {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  .zig-row-flip {
+    flex-direction: row-reverse;
+  }
+  .zig-img {
+    flex: 0 0 63%;
+  }
+  .zig-img :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .zig-cap {
+    max-width: 392px;
+  }
+  .zig-cap p:last-child {
+    margin-top: 12px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  .bf-thrown {
+    margin-top: 44px;
+    max-width: 972px;
+    background: var(--sunken);
+    border-radius: var(--r-card);
+    padding: 32px 36px;
+  }
+  .bf-ch-white .bf-thrown {
+    background: var(--ground);
+  }
+  .bf-thrown-label {
+    margin-bottom: 12px;
+  }
+  .bf-thrown p:last-child {
+    max-width: 900px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  .bf-result {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    max-width: 916px;
+  }
+  .bf-result-num {
+    font-size: clamp(3rem, 5.9vw, 5.25rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .bf-result-txt {
+    max-width: 560px;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  .bf-games-strip {
+    margin-top: 44px;
+    font-size: var(--fs-caps);
+    line-height: 1.6;
+    letter-spacing: var(--track-caps);
+  }
+  .bf-games-bento {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .bf-subclaim {
+    margin-top: 72px;
+    font-size: 1.75rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  /* ---- stated flat ---- */
+  .bf-limit {
+    padding-top: 24px;
+    padding-bottom: 48px;
+  }
+  .bf-limit-card {
+    max-width: 980px;
+    background: var(--sunken);
+    border-radius: var(--r-card);
+    padding: 36px 40px;
+  }
+  .bf-limit-label {
+    margin-bottom: 12px;
+  }
+  .bf-limit-card p:last-child {
+    max-width: 900px;
+    font-size: 1.125rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ---- mobile ---- */
+  @media (max-width: 900px) {
+    .bf-kv {
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .bf-hero-exh {
+      padding-top: 24px;
+      padding-bottom: 48px;
+    }
+    .fx-div-inner {
+      min-height: 200px;
+      padding-block: 32px;
+    }
+    .fx-ghost {
+      font-size: 96px;
+      -webkit-text-stroke-width: 1.5px;
+    }
+    .bf-ch {
+      padding-block: 56px;
+    }
+    .bf-stats,
+    .bf-games-bento {
+      grid-template-columns: 1fr;
+    }
+    .bf-landing-bento {
+      grid-template-columns: 1fr;
+    }
+    .zig-row,
+    .zig-row-flip {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .zig-img {
+      flex-basis: auto;
+      width: 100%;
+    }
+    .zig-cap {
+      max-width: none;
+    }
+    .bf-result {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .bf-subclaim {
+      margin-top: 48px;
+    }
+  }
+</style>

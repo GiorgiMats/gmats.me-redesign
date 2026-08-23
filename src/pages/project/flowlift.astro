@@ -1,0 +1,716 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import ArtefactButtons from '../../components/ArtefactButtons.astro';
+import SandwichClose from '../../components/SandwichClose.astro';
+import { cases } from '../../data/cases';
+import '../../styles/dossier.css';
+
+import heroExh from '../../assets/flowlift/hero.png';
+import workflow from '../../assets/flowlift/workflow.png';
+import dsAtoms from '../../assets/flowlift/ds-atoms.png';
+import dsMolecules from '../../assets/flowlift/ds-molecules.png';
+import leakRanking from '../../assets/flowlift/leak-ranking.png';
+import leakDetail from '../../assets/flowlift/leak-detail.png';
+import proof from '../../assets/flowlift/proof.png';
+import copilot from '../../assets/flowlift/copilot.png';
+import tablet from '../../assets/flowlift/tablet.png';
+import ios from '../../assets/flowlift/ios.png';
+import lockscreen from '../../assets/flowlift/lockscreen.png';
+import onboarding from '../../assets/flowlift/onboarding.png';
+import closeBrowser from '../../assets/flowlift/close-browser.png';
+import closePhone from '../../assets/flowlift/close-phone.png';
+import closeCell1 from '../../assets/flowlift/close-cell1.png';
+import closeCell2 from '../../assets/flowlift/close-cell2.png';
+
+const c = cases.flowlift;
+---
+
+<Base title={c.metaTitle} description={c.metaDescription} caseTheme="flowlift" ogImage="/og/flowlift.png">
+  <!-- hero -->
+  <section class="d-hero container">
+    <p class="d-chip">(CASE 03 · SELF-INITIATED · 7 DAYS)</p>
+    <h1 class="fl-h1">Seven days from nothing to <em>four platforms.</em></h1>
+    <p class="d-intro">
+      FlowLift is a B2B SaaS activation layer designed and built end to end in seven days, with me
+      directing AI workflows: research, strategy, a design system, and roughly 60 screens across
+      desktop, tablet, mobile web and native iOS.
+    </p>
+    <div class="fl-disclosure">
+      <p class="d-caps fl-disclosure-label">STATED FIRST</p>
+      <p>
+        FlowLift has no users. The customer in every screen, InvoicePilot, is invented, and its
+        data is a single hand-reconciled dataset, not a live feed. Nothing here is validated by
+        behaviour; what this case proves is decision quality and delivery.
+      </p>
+    </div>
+    <dl class="fl-kv">
+      <div>
+        <dt class="d-caps">ROLE</dt>
+        <dd>Designer, directing AI workflows</dd>
+      </div>
+      <div>
+        <dt class="d-caps">CLIENT</dt>
+        <dd>Self-initiated</dd>
+      </div>
+      <div>
+        <dt class="d-caps">TIMELINE</dt>
+        <dd>Seven days, 2026</dd>
+      </div>
+      <div>
+        <dt class="d-caps">BASIS</dt>
+        <dd>No users, invented data</dd>
+      </div>
+    </dl>
+    <p class="fl-receipts tnum">~60 SCREENS · 4 PLATFORMS · 7 DAYS · 1 DESIGN SYSTEM</p>
+    <div class="day-rail" role="img" aria-label="Seven-day rail from day one to day seven">
+      <span class="d-caps rail-day tnum">DAY 01</span>
+      <span class="rail-dots" aria-hidden="true">
+        <span class="rail-dot rail-dot-end"></span>
+        <span class="rail-dot"></span>
+        <span class="rail-dot"></span>
+        <span class="rail-dot"></span>
+        <span class="rail-dot"></span>
+        <span class="rail-dot"></span>
+        <span class="rail-dot rail-dot-end"></span>
+      </span>
+      <span class="d-caps rail-day tnum">DAY 07</span>
+    </div>
+    <div class="d-hero-artefacts">
+      <ArtefactButtons slug="flowlift" />
+    </div>
+  </section>
+
+  <!-- hero exhibit -->
+  <section class="container fl-hero-exh">
+    <figure>
+      <div class="d-cell exhibit">
+        <Picture
+          src={heroExh}
+          widths={[720, 1200, 2400]}
+          sizes="(max-width: 900px) 100vw, 1200px"
+          formats={['avif', 'webp']}
+          alt="The FlowLift dashboard rendered on InvoicePilot, the invented customer"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption class="fig-caption">
+        FIG. 01 · THE DASHBOARD — INVOICEPILOT, THE INVENTED CUSTOMER, RENDERED IN FULL
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- LOG 01 -->
+  <div class="log container cv-auto">
+    <div class="log-left">
+      <span class="log-num tnum">LOG 01</span>
+      <span class="log-name">The thesis kill</span>
+    </div>
+    <span class="log-ghost tnum" aria-hidden="true">01</span>
+  </div>
+  <section class="fl-body container cv-auto">
+    <h2 class="m-claim">The first thesis didn’t survive research.</h2>
+    <p class="m-para">
+      The week began with an adversarial pass on my own idea. The starting thesis, an all-in-one
+      Conversion OS, went to research agents whose job was to break it, and it broke: too big to
+      trust, and competing with the stack a buyer already runs. What survived was smaller and
+      sharper: <strong>an activation layer on top of the analytics you already have</strong>.
+      Keep your stack, we tell you what to fix.
+    </p>
+    <figure class="fl-wide">
+      <div class="d-cell exhibit">
+        <Picture
+          src={workflow}
+          widths={[720, 1200, 2400]}
+          sizes="(max-width: 900px) 100vw, 1200px"
+          formats={['avif', 'webp']}
+          alt="The week's workflow strip: every path runs through a judgment gate"
+          loading="lazy"
+        />
+      </div>
+      <figcaption class="fig-caption">
+        FIG. 02 · THE WEEK’S WORKFLOW — EVERY PATH RUNS THROUGH A JUDGMENT GATE
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- LOG 02 -->
+  <div class="log container cv-auto">
+    <div class="log-left">
+      <span class="log-num tnum">LOG 02</span>
+      <span class="log-name">System before screens</span>
+    </div>
+    <span class="log-ghost tnum" aria-hidden="true">02</span>
+  </div>
+  <section class="fl-body container cv-auto">
+    <h2 class="m-claim">No screen existed before the system.</h2>
+    <p class="m-para">
+      Tokens first, then atoms with every state designed, buttons through avatars, each with
+      default, hover, focus, pressed, disabled, error, empty and loading, then molecules, then
+      screens assembled only from approved parts. The tempting shortcut, per-platform components,
+      <strong>was killed on day one</strong>: faster for the first twenty screens, unmaintainable
+      by the sixtieth. When a component changed, sixty screens changed with it.
+    </p>
+    <div class="fl-bento-2">
+      <div class="d-cell exhibit">
+        <Picture
+          src={dsAtoms}
+          widths={[588, 1176]}
+          sizes="(max-width: 900px) 100vw, 588px"
+          formats={['avif', 'webp']}
+          alt="FlowLift atoms with full state coverage"
+          loading="lazy"
+        />
+      </div>
+      <div class="d-cell exhibit">
+        <Picture
+          src={dsMolecules}
+          widths={[588, 1176]}
+          sizes="(max-width: 900px) 100vw, 588px"
+          formats={['avif', 'webp']}
+          alt="FlowLift molecules assembled from approved atoms"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <p class="fig-caption">
+      FIG. 03 · ATOMS AND MOLECULES — FULL STATE COVERAGE BEFORE A SINGLE SCREEN
+    </p>
+  </section>
+
+  <!-- LOG 03 -->
+  <div class="log container cv-auto">
+    <div class="log-left">
+      <span class="log-num tnum">LOG 03</span>
+      <span class="log-name">The product</span>
+    </div>
+    <span class="log-ghost tnum" aria-hidden="true">03</span>
+  </div>
+  <section class="fl-body container cv-auto" data-reach="case_proof_reach" data-case="flowlift">
+    <h2 class="m-claim">Leaks, ranked by what they cost.</h2>
+    <p class="m-para">
+      The dashboard ranks trial-funnel leaks in dollars, rendered on InvoicePilot, the invented
+      customer whose one hand-reconciled dataset sits behind every screen. The product’s signature
+      came from a rejection: the first funnel visual was a generic bar chart, and
+      <strong>I killed it for a custom activation-path diagram</strong>, green for trials that
+      connected, coral for the ones that leaked. And every AI suggestion in the product carries
+      Apply and Dismiss, a number-backed rationale and an audit trail, because an assistant that
+      cannot show its work cannot be trusted with revenue.
+    </p>
+    <div class="zig">
+      <div class="zig-row">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={leakRanking}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="The leak ranking: every leak is a row with a dollar figure"
+            loading="lazy"
+          />
+        </div>
+        <div class="zig-cap">
+          <p class="d-caps">FIG. 04 · THE LEAK RANKING</p>
+          <p>
+            Every leak is a row with a dollar figure and an owner. The interface argues in money
+            because that is the language a buyer already trusts.
+          </p>
+        </div>
+      </div>
+      <div class="zig-row zig-row-flip">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={leakDetail}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="Leak detail with the activation-path diagram"
+            loading="lazy"
+          />
+        </div>
+        <div class="zig-cap">
+          <p class="d-caps">FIG. 05 · LEAK DETAIL</p>
+          <p>
+            The activation-path diagram that replaced the bar chart: green for connected trials,
+            coral for the leak, a cohort heatmap underneath.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="fl-bento-2">
+      <div class="d-cell exhibit">
+        <Picture
+          src={proof}
+          widths={[588, 1176]}
+          sizes="(max-width: 900px) 100vw, 588px"
+          formats={['avif', 'webp']}
+          alt="Fix proof: treated versus control"
+          loading="lazy"
+        />
+      </div>
+      <div class="d-cell exhibit">
+        <Picture
+          src={copilot}
+          widths={[588, 1176]}
+          sizes="(max-width: 900px) 100vw, 588px"
+          formats={['avif', 'webp']}
+          alt="The copilot: an assistant that shows its sources"
+          loading="lazy"
+        />
+      </div>
+    </div>
+    <p class="fig-caption">
+      FIG. 06 · PROOF AND COPILOT — TREATED VS CONTROL, AND AN ASSISTANT THAT SHOWS ITS SOURCES
+    </p>
+  </section>
+
+  <!-- LOG 04 -->
+  <div class="log container cv-auto">
+    <div class="log-left">
+      <span class="log-num tnum">LOG 04</span>
+      <span class="log-name">Four platforms</span>
+    </div>
+    <span class="log-ghost tnum" aria-hidden="true">04</span>
+  </div>
+  <section class="fl-body container cv-auto">
+    <h2 class="m-claim">One grammar survived four platforms.</h2>
+    <p class="m-para">
+      Desktop, tablet, mobile web and native iOS, including a lock-screen live activity and a
+      home-screen widget, all reflowed from the same tokens and the same data hierarchy.
+      <strong>Which platform was allowed to be ugly was decided on day one</strong>, before a
+      single screen could argue about it.
+    </p>
+    <div class="fl-platforms">
+      <div class="d-cell exhibit fl-plat-tall">
+        <Picture
+          src={tablet}
+          widths={[486, 972]}
+          sizes="(max-width: 900px) 100vw, 486px"
+          formats={['avif', 'webp']}
+          alt="FlowLift on tablet"
+          loading="lazy"
+        />
+      </div>
+      <div class="fl-plat-col">
+        <div class="d-cell exhibit">
+          <Picture
+            src={ios}
+            widths={[690, 1380]}
+            sizes="(max-width: 900px) 100vw, 690px"
+            formats={['avif', 'webp']}
+            alt="FlowLift native iOS dashboard"
+            loading="lazy"
+          />
+        </div>
+        <div class="d-cell exhibit">
+          <Picture
+            src={lockscreen}
+            widths={[690, 1380]}
+            sizes="(max-width: 900px) 100vw, 690px"
+            formats={['avif', 'webp']}
+            alt="The lock-screen live activity"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+    <p class="fig-caption">FIG. 07 · TABLET, NATIVE IOS, AND THE LOCK-SCREEN LIVE ACTIVITY</p>
+  </section>
+
+  <!-- LOG 05 -->
+  <div class="log container cv-auto">
+    <div class="log-left">
+      <span class="log-num tnum">LOG 05</span>
+      <span class="log-name">The honest week</span>
+    </div>
+    <span class="log-ghost tnum" aria-hidden="true">05</span>
+  </div>
+  <section class="fl-body container cv-auto">
+    <h2 class="m-claim">The AI was fast and frequently wrong.</h2>
+    <p class="m-para">
+      The week was me directing it. I set the bar, originated the strategy, caught the misses and
+      made every accept or reject call, and reviewer agents audited the builder agents before
+      anything reached me. The split was deliberate: judgment stayed mine, and the volume work
+      went to the workflows.
+      <strong
+        >When the production cost of a screen falls to near zero, the value moves entirely to the
+        decisions</strong
+      >.
+    </p>
+    <div class="split-table">
+      <div class="split-col">
+        <p class="d-caps split-head split-head-mine">JUDGMENT · MINE</p>
+        <ul>
+          <li>Positioning and product strategy</li>
+          <li>Information architecture</li>
+          <li>Brand, colour and type direction</li>
+          <li>The senior quality bar</li>
+          <li>Every accept or reject decision</li>
+        </ul>
+      </div>
+      <div class="split-col">
+        <p class="d-caps split-head">VOLUME · THE WORKFLOWS</p>
+        <ul>
+          <li>Multi-agent research and synthesis</li>
+          <li>Option generation at speed</li>
+          <li>Building the screens in Figma</li>
+          <li>Token and component sweeps</li>
+          <li>Adversarial QA passes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="zig">
+      <div class="zig-row">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={onboarding}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="Onboarding's last screen with Lift, the mascot"
+            loading="lazy"
+          />
+        </div>
+        <div class="zig-cap">
+          <p class="d-caps">FIG. 08 · ONBOARDING’S LAST SCREEN</p>
+          <p>
+            Lift, the mascot, appears only at milestones. Personality was designed, not
+            defaulted, and it stays out of the way the rest of the time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATED FLAT (honesty text never animates) -->
+  <section class="fl-limit container cv-auto">
+    <div class="fl-limit-card">
+      <p class="d-caps fl-limit-label">STATED FLAT</p>
+      <p class="tnum">
+        Speed was never the hard part, and this case proves nothing about whether anyone wants the
+        product. Roughly 8.5 screens a day is a real number; every number inside the screens is
+        invented, and stays labelled that way.
+      </p>
+    </div>
+  </section>
+
+  <SandwichClose
+    slug="flowlift"
+    browserScreen={closeBrowser}
+    browserAlt="The FlowLift dashboard on desktop"
+    phoneScreen={closePhone}
+    phoneAlt="FlowLift on mobile"
+    cell1={closeCell1}
+    cell1Alt="FlowLift screen detail"
+    cell2={closeCell2}
+    cell2Alt="FlowLift screen detail"
+    signoffCaps="SEVEN DAYS · NO USERS, SAID TWICE"
+    chips={['~60 SCREENS · 4 PLATFORMS', 'SYSTEM BEFORE SCREENS', 'NO USERS · INVENTED DATA']}
+    nextClaim="BLUFF. Fifteen months on a real casino’s money flows."
+  />
+
+  <script src="../../scripts/countup.ts"></script>
+</Base>
+
+<style>
+  /* ---- hero ---- */
+  .fl-h1 {
+    margin-top: 28px;
+    font-size: clamp(2.0625rem, 5.3vw, 4.75rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.07;
+    color: var(--ink);
+  }
+  .fl-h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .fl-disclosure {
+    margin-top: 36px;
+    max-width: 900px;
+    background: var(--accent-tint);
+    border-radius: var(--r-card);
+    padding: 28px 32px;
+  }
+  .fl-disclosure-label {
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .fl-disclosure p:last-child {
+    max-width: 836px;
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .fl-kv {
+    margin: 40px 0 0;
+    display: flex;
+    gap: 64px;
+    flex-wrap: wrap;
+  }
+  .fl-kv div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 220px;
+  }
+  .fl-kv dd {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .fl-receipts {
+    margin-top: 28px;
+    font-size: var(--fs-caps);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--accent);
+  }
+
+  .day-rail {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    max-width: 900px;
+  }
+  .rail-day {
+    color: var(--ink);
+  }
+  .rail-dots {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .rail-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .rail-dot-end {
+    background: var(--accent);
+  }
+
+  .fl-hero-exh {
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
+  /* ---- LOG dividers ---- */
+  .log {
+    margin-top: 80px;
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .log-left {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .log-num {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--accent);
+  }
+  .log-name {
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .log-ghost {
+    font-size: clamp(96px, 11vw, 160px);
+    font-weight: 500;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px color-mix(in srgb, var(--accent) 22%, transparent);
+    user-select: none;
+  }
+
+  /* ---- bodies ---- */
+  .fl-body {
+    padding-top: 40px;
+  }
+  .fl-wide {
+    margin-top: 48px;
+  }
+
+  .fl-bento-2 {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .zig {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .zig-row {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  .zig-row-flip {
+    flex-direction: row-reverse;
+  }
+  .zig-img {
+    flex: 0 0 63%;
+  }
+  .zig-img :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .zig-cap {
+    max-width: 392px;
+  }
+  .zig-cap p:last-child {
+    margin-top: 12px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  .fl-platforms {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 486fr 690fr;
+    gap: 24px;
+  }
+  .fl-plat-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .fl-plat-tall :global(img),
+  .fl-plat-col :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---- split table (machine layer stays commodity-quiet) ---- */
+  .split-table {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .split-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 28px 32px 12px;
+  }
+  .split-head {
+    margin-bottom: 4px;
+  }
+  .split-head-mine {
+    color: var(--accent);
+  }
+  .split-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .split-col li {
+    border-top: 1px solid var(--border);
+    padding: 14px 0;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .split-col li:first-child {
+    border-top: none;
+    margin-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ---- stated flat ---- */
+  .fl-limit {
+    padding-top: 96px;
+    padding-bottom: 48px;
+  }
+  .fl-limit-card {
+    max-width: 980px;
+    background: var(--sunken);
+    border-radius: var(--r-card);
+    padding: 36px 40px;
+  }
+  .fl-limit-label {
+    margin-bottom: 12px;
+  }
+  .fl-limit-card p:last-child {
+    max-width: 900px;
+    font-size: 1.125rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  /* ---- mobile ---- */
+  @media (max-width: 900px) {
+    .fl-disclosure {
+      padding: 20px 20px;
+    }
+    .fl-kv {
+      gap: 24px;
+      margin-top: 28px;
+    }
+    .fl-hero-exh {
+      padding-top: 24px;
+      padding-bottom: 40px;
+    }
+    .log {
+      margin-top: 48px;
+      padding-top: 24px;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .log-name {
+      font-size: 1.375rem;
+    }
+    .log-ghost {
+      font-size: 72px;
+      -webkit-text-stroke-width: 1.5px;
+    }
+    .fl-bento-2,
+    .fl-platforms,
+    .split-table {
+      grid-template-columns: 1fr;
+    }
+    .zig-row,
+    .zig-row-flip {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .zig-img {
+      flex-basis: auto;
+      width: 100%;
+    }
+    .zig-cap {
+      max-width: none;
+    }
+    .fl-limit {
+      padding-top: 64px;
+    }
+  }
+</style>

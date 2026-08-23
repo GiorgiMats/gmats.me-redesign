@@ -1,0 +1,254 @@
+/* ==========================================================================
+   Shared dossier patterns — the case-study grammar all four cases speak.
+   Case-specific register (ink dividers, log rails, ledger rows) lives in
+   each page's scoped styles; this file carries only the common molecules.
+   ========================================================================== */
+
+.d-caps {
+  font-size: var(--fs-caps-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--track-caps);
+  line-height: var(--lh-caps);
+  font-feature-settings: 'case' 1;
+  color: var(--ink-secondary);
+}
+
+.d-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-caps-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--track-caps);
+  line-height: var(--lh-caps);
+  font-feature-settings: 'case' 1;
+  color: var(--ink-secondary);
+}
+
+/* --- hero --- */
+.d-hero {
+  padding-top: 72px;
+  padding-bottom: 48px;
+}
+.d-h1 {
+  margin-top: 32px;
+  font-size: clamp(2.0625rem, 7.2vw, 6.5rem); /* 104 at 1440, 33 at 390 */
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+  color: var(--ink);
+  text-wrap: initial;
+}
+.d-h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.d-intro {
+  margin-top: 32px;
+  max-width: 680px;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+}
+.d-intro strong {
+  color: var(--ink);
+}
+.d-hero-artefacts {
+  margin-top: 32px;
+}
+
+/* --- metadata strip (Kosas block: outcomes at the top) --- */
+.d-meta {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding-block: 36px;
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+}
+.d-meta-kv {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.d-meta-kv dd {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.d-meta-outcomes {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.d-meta-outcomes ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.d-meta-outcomes li {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: var(--fs-small);
+  color: var(--ink);
+}
+.d-meta-outcomes li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* --- molecule head: claim ≤8 words + ghost number --- */
+.m-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+.m-claim {
+  max-width: 880px;
+  font-size: clamp(1.75rem, 3.2vw, 2.875rem); /* 46 desktop, 28 mobile */
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: var(--ink);
+}
+.m-claim em {
+  font-style: normal;
+  color: var(--accent);
+}
+.m-num {
+  flex-shrink: 0;
+  font-size: clamp(2rem, 3.2vw, 2.875rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: #ccd1da;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- molecule paragraph: ONE 40–130-word para, bolded my-call phrase --- */
+.m-para {
+  margin-top: 28px;
+  max-width: 680px;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+}
+.m-para strong {
+  color: var(--ink);
+}
+
+/* --- figure caption --- */
+.fig-caption {
+  margin-top: 20px;
+  font-size: var(--fs-caps-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--track-caps);
+  line-height: 1.4;
+  font-feature-settings: 'case' 1;
+  color: var(--ink-secondary);
+}
+
+/* --- the inset white card (decision room) --- */
+.d-inset-wrap {
+  padding: 24px;
+}
+.d-inset {
+  max-width: 1392px;
+  margin-inline: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-inset);
+  padding: 96px;
+}
+
+/* --- chapter head: caps label + ghost number --- */
+.ch-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+.ch-label {
+  padding-top: 20px;
+  font-size: var(--fs-caps);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--track-caps);
+  line-height: var(--lh-caps);
+  font-feature-settings: 'case' 1;
+  color: var(--ink);
+}
+.ch-caption {
+  margin-top: 24px;
+  max-width: 680px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* --- image cells --- */
+.d-cell {
+  border-radius: var(--r-cell);
+  overflow: hidden;
+}
+.d-cell img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.d-cell-tint {
+  background: var(--accent-tint);
+}
+.d-cell-sunken {
+  background: var(--sunken);
+}
+
+/* --- stats --- */
+.d-stat-value {
+  font-size: clamp(2.5rem, 4.4vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 900px) {
+  .d-hero {
+    padding-top: 28px;
+  }
+  .d-meta {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .d-meta-outcomes {
+    margin-left: 0;
+  }
+  .d-inset-wrap {
+    padding: 12px;
+  }
+  .d-inset {
+    padding: 40px 24px;
+    border-radius: 24px;
+  }
+  .m-num {
+    color: #d6dae1;
+  }
+}

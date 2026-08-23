@@ -1,0 +1,1131 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import PhoneMockup from '../../components/PhoneMockup.astro';
+import BrowserMockup from '../../components/BrowserMockup.astro';
+import ArtefactButtons from '../../components/ArtefactButtons.astro';
+import SandwichClose from '../../components/SandwichClose.astro';
+import { cases } from '../../data/cases';
+import '../../styles/dossier.css';
+
+import bentoMain from '../../assets/paymentx/bento-main.png';
+import bentoDirectory from '../../assets/paymentx/bento-directory.png';
+import bentoHire from '../../assets/paymentx/bento-hire.png';
+import bentoWebsites from '../../assets/paymentx/bento-websites.png';
+import phoneMerchant from '../../assets/paymentx/phone-merchant.png';
+import phoneProvider from '../../assets/paymentx/phone-provider.png';
+import modelRendered from '../../assets/paymentx/model-rendered.png';
+import merchantGrammar from '../../assets/paymentx/merchant-grammar.png';
+import providerGrammar from '../../assets/paymentx/provider-grammar.png';
+import inlineRefund from '../../assets/paymentx/inline-refund.png';
+import directoryTrust from '../../assets/paymentx/directory-trust.png';
+import chABrowser from '../../assets/paymentx/ch-a-browser.png';
+import chAPhone from '../../assets/paymentx/ch-a-phone.png';
+import chBScene1 from '../../assets/paymentx/ch-b-scene1.png';
+import chBScene2 from '../../assets/paymentx/ch-b-scene2.png';
+import chDPhone1 from '../../assets/paymentx/ch-d-phone1.png';
+import chDPhone2 from '../../assets/paymentx/ch-d-phone2.png';
+import closeBrowser from '../../assets/paymentx/close-browser.png';
+import closePhone from '../../assets/paymentx/close-phone.png';
+import closeCell1 from '../../assets/paymentx/close-cell1.png';
+import closeCell2 from '../../assets/paymentx/close-cell2.png';
+
+const c = cases.paymentx;
+
+const matrix = {
+  cols: ['PAYMENT PROCESSORS', 'FREELANCE MARKETPLACES', 'BANKING APPS', 'PAYMENTX'],
+  rows: [
+    { label: 'Merchants accept payments', cells: [true, false, false, true] },
+    { label: 'Providers get hired like freelancers', cells: [false, true, false, true] },
+    { label: 'Providers compete for the work', cells: [false, true, false, true] },
+    { label: 'All of it in one product', cells: [false, false, false, true] },
+  ],
+};
+---
+
+<Base title={c.metaTitle} description={c.metaDescription} caseTheme="paymentx" ogImage="/og/paymentx.png">
+  <!-- hero -->
+  <section class="d-hero container">
+    <p class="d-chip">(CASE 04 · PAYMENTS MARKETPLACE)</p>
+    <h1 class="d-h1">A payments marketplace designed <em>from zero.</em></h1>
+    <p class="d-intro">
+      PaymentX connects merchants who need payment providers with providers competing for that
+      business. There was no product to copy, no research corpus and no second designer.
+      <strong
+        >I designed the architecture, both sides and the design system, and every screen on this
+        page is the real product</strong
+      >.
+    </p>
+    <div class="d-hero-artefacts">
+      <ArtefactButtons slug="paymentx" />
+    </div>
+  </section>
+
+  <!-- key visual bento -->
+  <section class="kv container" aria-label="Key visual">
+    <div class="kv-grid">
+      <div class="kv-main d-cell exhibit">
+        <Picture
+          src={bentoMain}
+          widths={[792, 1584]}
+          sizes="(max-width: 900px) 100vw, 792px"
+          formats={['avif', 'webp']}
+          alt="PaymentX provider directory on desktop, staged on the case scene"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="kv-dir d-cell exhibit">
+        <Picture
+          src={bentoDirectory}
+          widths={[384, 768]}
+          sizes="(max-width: 900px) 100vw, 384px"
+          formats={['avif', 'webp']}
+          alt="PaymentX directory on mobile"
+          loading="eager"
+        />
+      </div>
+      <div class="kv-stat" role="img" aria-label="Checkout drop: 14% before, 0 after the inline refund call">
+        <p class="d-caps">CHECKOUT DROP</p>
+        <p class="kv-stat-line tnum">14% → 0</p>
+        <p class="d-caps">AFTER THE INLINE REFUND CALL</p>
+      </div>
+      <div class="kv-cell d-cell exhibit">
+        <Picture
+          src={bentoHire}
+          widths={[384, 768]}
+          sizes="(max-width: 900px) 100vw, 384px"
+          formats={['avif', 'webp']}
+          alt="PaymentX hiring flow on mobile"
+          loading="lazy"
+        />
+      </div>
+      <div class="kv-cell d-cell exhibit">
+        <Picture
+          src={bentoWebsites}
+          widths={[384, 768]}
+          sizes="(max-width: 900px) 100vw, 384px"
+          formats={['avif', 'webp']}
+          alt="PaymentX websites screen on mobile"
+          loading="lazy"
+        />
+      </div>
+      <div class="kv-fact">
+        <p class="kv-fact-num tnum" data-countup aria-live="polite">2,392</p>
+        <p class="kv-fact-caps">PROVIDERS IN THE DIRECTORY</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- metadata strip -->
+  <section class="container">
+    <dl class="d-meta">
+      <div class="d-meta-kv">
+        <dt class="d-caps">ROLE</dt>
+        <dd>Sole product designer</dd>
+      </div>
+      <div class="d-meta-kv">
+        <dt class="d-caps">SCOPE</dt>
+        <dd>Architecture, both sides, design system</dd>
+      </div>
+      <div class="d-meta-outcomes">
+        <p class="d-caps">OUTCOMES</p>
+        <ul>
+          <li>Architecture from zero, no references</li>
+          <li>Two sides running one component system</li>
+          <li class="tnum">Checkout drop 14% → 0 after the inline refund call</li>
+        </ul>
+      </div>
+    </dl>
+  </section>
+
+  <!-- M1 · the moment -->
+  <section class="mol container cv-auto">
+    <div class="m-head">
+      <h2 class="m-claim">No references existed. That was the brief.</h2>
+      <span class="m-num" aria-hidden="true">01</span>
+    </div>
+    <p class="m-para">
+      A client arrived over Discord with a marketplace idea: merchants hiring payment providers
+      the way you would hire a freelancer. Nothing comparable existed to steal patterns from, and
+      both sides needed opposite things from the same product. The usual starting points,
+      competitor teardowns and pattern libraries, were <strong>worth nothing here</strong>.
+    </p>
+    <div class="matrix">
+      <div class="matrix-scroll">
+        <table>
+          <thead>
+            <tr>
+              <td></td>
+              {matrix.cols.map((col, i) => <th class:list={['d-caps', { 'col-px': i === 3 }]} scope="col">{col}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            {
+              matrix.rows.map((row) => (
+                <tr>
+                  <th scope="row">{row.label}</th>
+                  {row.cells.map((on, i) =>
+                    i === 3 ? (
+                      <td class="cell-px">
+                        <span class="pill-dot">
+                          <span class="dot dot-accent" aria-hidden="true" />
+                          <span class="sr-only">yes</span>
+                        </span>
+                      </td>
+                    ) : (
+                      <td>
+                        {on ? (
+                          <>
+                            <span class="dot dot-ink" aria-hidden="true" />
+                            <span class="sr-only">yes</span>
+                          </>
+                        ) : (
+                          <span class="dash">—</span>
+                        )}
+                      </td>
+                    )
+                  )}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="fig-caption">FIG. 02 · CATEGORY MAP, NOT A FEATURE AUDIT · NOTHING COMBINED ALL FOUR</p>
+  </section>
+
+  <!-- M2 · the constraint -->
+  <section class="mol container cv-auto">
+    <div class="m-head">
+      <h2 class="m-claim">Two sides, opposed incentives, one designer.</h2>
+      <span class="m-num" aria-hidden="true">02</span>
+    </div>
+    <p class="m-para">
+      Merchants want leverage over providers, providers want qualified merchants without a race to
+      the bottom, and the product had to serve both without a sales team translating. Add no
+      research budget and a client who communicated in bursts, and
+      <strong>every architectural mistake would be mine to find</strong>.
+    </p>
+    <div class="inc-map">
+      <div class="inc-side inc-side-m" tabindex="0">
+        <p class="d-caps inc-side-label">MERCHANTS</p>
+        <PhoneMockup screen={phoneMerchant} alt="PaymentX merchant directory on mobile" width="204px" />
+        <ul class="inc-wants">
+          <li>Leverage over providers</li>
+          <li>Lower fees, faster settlement</li>
+        </ul>
+      </div>
+      <div class="inc-centre">
+        <div class="inc-arrows" aria-hidden="true">
+          <div class="inc-arrow-row">
+            <span class="inc-arrow-label caps-xs">HIRE THROUGH</span>
+            <span class="inc-line inc-line-right"></span>
+          </div>
+        </div>
+        <div class="inc-pill">
+          <p class="inc-pill-title">ONE PRODUCT</p>
+          <p class="inc-pill-sub">one component grammar</p>
+        </div>
+        <div class="inc-arrows" aria-hidden="true">
+          <div class="inc-arrow-row">
+            <span class="inc-arrow-label caps-xs">PAY INTO · GET PAID FROM</span>
+            <span class="inc-line inc-line-both"></span>
+          </div>
+        </div>
+      </div>
+      <div class="inc-side inc-side-p" tabindex="0">
+        <p class="d-caps inc-side-label">PROVIDERS</p>
+        <PhoneMockup screen={phoneProvider} alt="PaymentX provider statistics on mobile" width="204px" />
+        <ul class="inc-wants">
+          <li>Qualified merchants</li>
+          <li>No race to the bottom</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fig-caption">FIG. 03 · TWO SIDES, OPPOSED WANTS, ONE GRAMMAR BETWEEN THEM</p>
+  </section>
+
+  <!-- M3 · the decision (inset room) -->
+  <div class="d-inset-wrap cv-auto">
+    <section class="d-inset" data-reach="case_proof_reach" data-case="paymentx">
+      <div class="m-head">
+        <h2 class="m-claim">Architecture before pixels. Weeks of it.</h2>
+        <span class="m-num" aria-hidden="true">03</span>
+      </div>
+      <p class="m-para m-para-strong">
+        I mapped both sides’ jobs, money flows and failure states before opening a single screen
+        file, because with two user types sharing one system, a wrong object model would poison
+        every screen after it. I fixed what a provider is, what a website is and where money
+        changes hands, and I drew every screen out of that model.
+      </p>
+      <div class="m3-visuals">
+        <div class="m3-placeholder">
+          <p class="d-caps">FIG. 04 · OBJECT MODEL DIAGRAM · IMAGE PENDING</p>
+        </div>
+        <div class="m3-placeholder m3-placeholder-sm">
+          <p class="d-caps">FIG. 05 · TOKEN TIERS DIAGRAM · IMAGE PENDING</p>
+        </div>
+      </div>
+      <div class="m3-rendered">
+        <p class="d-caps">THE MODEL, RENDERED</p>
+        <div class="m3-strip">
+          <Picture
+            src={modelRendered}
+            widths={[1008, 2016]}
+            sizes="(max-width: 900px) 100vw, 1008px"
+            formats={['avif', 'webp']}
+            alt="Three real PaymentX screens drawn from the object model"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- M4 · the thrown-away -->
+  <section class="mol container cv-auto">
+    <div class="m-head">
+      <h2 class="m-claim">The obvious split got killed.</h2>
+      <span class="m-num" aria-hidden="true">04</span>
+    </div>
+    <p class="m-para">
+      The obvious build was two separate apps, one per side, and every adjacent marketplace seemed
+      to validate it. <strong>I killed it.</strong> It doubles every future feature, and trust
+      earned on one side never transfers to the other. I ran both sides on one component grammar
+      instead, so a merchant reading a provider profile sees the same language the provider wrote
+      it in.
+    </p>
+    <div class="m4-pair">
+      <figure>
+        <div class="d-cell exhibit">
+          <Picture
+            src={merchantGrammar}
+            widths={[584, 1168]}
+            sizes="(max-width: 900px) 100vw, 584px"
+            formats={['avif', 'webp']}
+            alt="Merchant-side screen on the shared component grammar"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="fig-caption">FIG. 06 · MERCHANT SIDE, SAME GRAMMAR</figcaption>
+      </figure>
+      <figure>
+        <div class="d-cell exhibit">
+          <Picture
+            src={providerGrammar}
+            widths={[584, 1168]}
+            sizes="(max-width: 900px) 100vw, 584px"
+            formats={['avif', 'webp']}
+            alt="Provider-side screen on the shared component grammar"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="fig-caption">FIG. 07 · PROVIDER SIDE, SAME GRAMMAR</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- M5 · the result (tint band) -->
+  <section class="m5 cv-auto">
+    <div class="container">
+      <div class="m-head">
+        <h2 class="m-claim">Refunds moved inline. The drop disappeared.</h2>
+        <span class="m-num" aria-hidden="true">05</span>
+      </div>
+      <p class="m-para">
+        My sharpest single call in the system: a refund behind a modal read as a dead end at the
+        exact moment trust decides, so
+        <strong>I moved refunds inline into the checkout flow and the 14% checkout drop went to zero</strong
+        >. I made the directory argue the same way, ratings, limits and processor badges first,
+        2,392 providers listed, price last.
+      </p>
+      <div class="m5-visuals">
+        <figure>
+          <div class="d-cell">
+            <Picture
+              src={inlineRefund}
+              widths={[460, 920]}
+              sizes="(max-width: 900px) 100vw, 460px"
+              formats={['avif', 'webp']}
+              alt="The inline refund, in the checkout flow"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="fig-caption">FIG. 08 · THE INLINE REFUND, IN FLOW</figcaption>
+        </figure>
+        <figure>
+          <div class="d-cell">
+            <Picture
+              src={directoryTrust}
+              widths={[460, 920]}
+              sizes="(max-width: 900px) 100vw, 460px"
+              formats={['avif', 'webp']}
+              alt="The provider directory, trust signals first"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="fig-caption">FIG. 09 · THE DIRECTORY, TRUST FIRST</figcaption>
+        </figure>
+        <div class="m5-stats">
+          <div class="m5-stat">
+            <p class="d-stat-value">14% → 0</p>
+            <p class="d-caps">CHECKOUT DROP, AFTER THE CALL</p>
+          </div>
+          <div class="m5-stat">
+            <p class="d-stat-value" data-countup aria-live="polite">2,392</p>
+            <p class="d-caps">PROVIDERS IN THE DIRECTORY</p>
+          </div>
+          <div class="m5-bars" role="img" aria-label="Before: refund in a modal, 14% of checkouts dropped. After: refund inline, 0 measured.">
+            <div class="m5-bar">
+              <p class="caps-xs">BEFORE · REFUND IN A MODAL</p>
+              <div class="m5-track"><span class="m5-fill" style="width: 14%"></span></div>
+              <p class="m5-bar-sub tnum">14% of checkouts dropped</p>
+            </div>
+            <div class="m5-bar">
+              <p class="caps-xs">AFTER · REFUND INLINE</p>
+              <div class="m5-track"></div>
+              <p class="m5-bar-sub m5-bar-zero tnum">0 measured</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="m5-artefacts">
+        <ArtefactButtons slug="paymentx" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CH A · the merchant side -->
+  <section class="chap container cv-auto">
+    <div class="ch-head">
+      <p class="ch-label">THE MERCHANT SIDE · A</p>
+      <span class="m-num" aria-hidden="true">07</span>
+    </div>
+    <p class="ch-caption">
+      I gave merchants one room for everything they rent: the provider directory, their websites,
+      spend and limits per gateway.
+    </p>
+    <div class="cha-bento">
+      <div class="cha-browser d-cell-tint d-cell">
+        <BrowserMockup screen={chABrowser} alt="Merchant desktop: the provider directory" class="cha-browser-mock" />
+      </div>
+      <div class="cha-phone d-cell-sunken d-cell">
+        <PhoneMockup screen={chAPhone} alt="Merchant websites screen on mobile" width="270px" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CH B · the provider side (zigzag) -->
+  <section class="chap container cv-auto">
+    <div class="ch-head">
+      <p class="ch-label">THE PROVIDER SIDE · B</p>
+      <span class="m-num" aria-hidden="true">08</span>
+    </div>
+    <p class="ch-caption">
+      Providers compete on the things merchants risk money on, so I made profiles lead with
+      ratings, limits and processor badges.
+    </p>
+    <div class="zig">
+      <div class="zig-row">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={chBScene1}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="Provider profile card with gateways, earnings and capacity"
+            loading="lazy"
+          />
+        </div>
+        <p class="zig-caption">
+          I put a provider’s whole offer on one card: gateways, monthly earnings, capacity, and
+          which merchants rent them today.
+        </p>
+      </div>
+      <div class="zig-row zig-row-flip">
+        <div class="d-cell exhibit zig-img">
+          <Picture
+            src={chBScene2}
+            widths={[760, 1520]}
+            sizes="(max-width: 900px) 100vw, 760px"
+            formats={['avif', 'webp']}
+            alt="Provider statistics screen"
+            loading="lazy"
+          />
+        </div>
+        <p class="zig-caption">
+          Statistics read like a payslip, earned, processed, fee and active merchants, because
+          providers decide with the same numbers merchants see.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH C · the public site -->
+  <section class="chap container cv-auto">
+    <div class="ch-head">
+      <p class="ch-label">THE PUBLIC SITE · C</p>
+      <span class="m-num" aria-hidden="true">09</span>
+    </div>
+    <p class="ch-caption">
+      I wrote the public site to sell both sides the same promise, hire payment providers the way
+      you hire freelancers.
+    </p>
+    <div class="chc-scene d-cell-tint d-cell">
+      <div class="chc-placeholder">
+        <div class="browser-bar-ph" aria-hidden="true"><span></span><span></span><span></span></div>
+        <p class="d-caps">MARKETING SITE HERO · IMAGE PENDING</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CH D · mobile, both sides -->
+  <section class="chap container cv-auto">
+    <div class="ch-head">
+      <p class="ch-label">MOBILE, BOTH SIDES · D</p>
+      <span class="m-num" aria-hidden="true">10</span>
+    </div>
+    <p class="ch-caption">
+      Both sides run the same grammar at 390 wide, and nothing about trust gets lost on the way
+      down.
+    </p>
+    <div class="chd-bento">
+      <div class="chd-cell d-cell-tint d-cell">
+        <PhoneMockup screen={chDPhone1} alt="Merchant directory at 390 wide" width="279px" />
+      </div>
+      <div class="chd-cell d-cell-sunken d-cell">
+        <PhoneMockup screen={chDPhone2} alt="Provider statistics at 390 wide" width="279px" />
+      </div>
+      <div class="chd-cell d-cell-tint d-cell">
+        <div class="chd-placeholder">
+          <p class="d-caps">MOBILE SCREEN · IMAGE PENDING</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- M6 · the limitation (its own room, a viewport before any CTA) -->
+  <section class="m6 container cv-auto">
+    <div class="m-head">
+      <h2 class="m-claim">The client vanished. The lesson stayed.</h2>
+      <span class="m-num" aria-hidden="true">06</span>
+    </div>
+    <div class="m6-card">
+      <p>
+        The client took the files before a public launch and the final payment never arrived, so I
+        have no usage metrics to show you. What I can show is the decision trail on this page. I
+        start every engagement at <strong>50% up front</strong> now, which makes this project the
+        cheapest lesson a client ever taught me.
+      </p>
+    </div>
+  </section>
+
+  <SandwichClose
+    slug="paymentx"
+    browserScreen={closeBrowser}
+    browserAlt="PaymentX provider directory on desktop"
+    phoneScreen={closePhone}
+    phoneAlt="PaymentX websites screen on mobile"
+    cell1={closeCell1}
+    cell1Alt="PaymentX directory on mobile, staged"
+    cell2={closeCell2}
+    cell2Alt="PaymentX statistics on mobile, staged"
+    signoffCaps="DESIGNED FROM ZERO · BOTH SIDES"
+    chips={['ARCHITECTURE FROM ZERO', 'TWO SIDES, ONE SYSTEM', 'CHECKOUT DROP 14% → 0']}
+  />
+
+  <script src="../../scripts/countup.ts"></script>
+</Base>
+
+<style>
+  .caps-xs {
+    font-size: var(--fs-caps-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--ink-secondary);
+  }
+
+  /* ---- key bento ---- */
+  .kv {
+    padding-top: 24px;
+    padding-bottom: 64px;
+  }
+  .kv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 24px;
+  }
+  .kv-main {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+  .kv-main :global(img),
+  .kv-dir :global(img),
+  .kv-cell :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .kv-dir,
+  .kv-cell {
+    aspect-ratio: 384 / 250;
+  }
+  .kv-stat,
+  .kv-fact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: var(--r-cell);
+    text-align: center;
+    padding: 24px;
+  }
+  .kv-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .kv-stat-line {
+    font-size: clamp(2.25rem, 3.9vw, 3.5rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: var(--accent);
+  }
+  .kv-fact {
+    background: var(--accent);
+  }
+  .kv-fact-num {
+    font-size: clamp(2.5rem, 4.4vw, 4rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: #fff;
+  }
+  .kv-fact-caps {
+    font-size: var(--fs-caps-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  /* ---- molecules ---- */
+  .mol {
+    padding-top: 96px;
+  }
+
+  /* ---- matrix ---- */
+  .matrix {
+    margin-top: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 16px 40px;
+  }
+  .matrix-scroll {
+    overflow-x: auto;
+  }
+  .matrix table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+  }
+  .matrix thead th {
+    padding: 20px 12px;
+    text-align: center;
+  }
+  .matrix thead .col-px {
+    color: var(--accent);
+  }
+  .matrix tbody tr {
+    border-top: 1px solid var(--border);
+  }
+  .matrix tbody th {
+    padding: 22px 0;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+    min-width: 240px;
+  }
+  .matrix tbody td {
+    text-align: center;
+    padding: 22px 12px;
+  }
+  .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+  .dot-ink {
+    background: var(--ink);
+  }
+  .dot-accent {
+    background: var(--accent);
+  }
+  .dash {
+    color: var(--ink-secondary);
+  }
+  .cell-px .pill-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 136px;
+    max-width: 100%;
+    height: 26px;
+    background: var(--accent-tint);
+    border-radius: var(--r-pill);
+  }
+
+  /* ---- incentive map (hover/focus highlights a side; static stays legible) ---- */
+  .inc-map {
+    margin-top: 40px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--accent-tint);
+    border-radius: var(--r-cell);
+    padding: 48px 64px;
+  }
+  .inc-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: opacity 0.2s ease;
+    border-radius: 16px;
+  }
+  .inc-map:has(.inc-side-m:hover) .inc-side-p,
+  .inc-map:has(.inc-side-m:focus-visible) .inc-side-p,
+  .inc-map:has(.inc-side-p:hover) .inc-side-m,
+  .inc-map:has(.inc-side-p:focus-visible) .inc-side-m {
+    opacity: 0.35;
+  }
+  .inc-side-label {
+    letter-spacing: var(--track-caps);
+  }
+  .inc-wants {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .inc-wants li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8125rem;
+    color: var(--ink);
+  }
+  .inc-wants li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .inc-centre {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    min-width: 0;
+  }
+  .inc-pill {
+    background: var(--surface);
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-exhibit);
+    padding: 22px 36px;
+    text-align: center;
+  }
+  .inc-pill-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+  }
+  .inc-pill-sub {
+    margin-top: 4px;
+    font-size: 0.8125rem;
+    color: var(--ink-secondary);
+  }
+  .inc-arrows {
+    width: 100%;
+  }
+  .inc-arrow-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .inc-line {
+    position: relative;
+    width: 80%;
+    border-top: 2px solid var(--accent);
+  }
+  .inc-line::before,
+  .inc-line::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    border: 4px solid transparent;
+  }
+  .inc-line-right::after {
+    right: -2px;
+    border-left-color: var(--accent);
+  }
+  .inc-line-right::before {
+    left: -2px;
+    border-right-color: var(--accent);
+  }
+  .inc-line-both::after {
+    right: -2px;
+    border-left-color: var(--accent);
+  }
+  .inc-line-both::before {
+    left: -2px;
+    border-right-color: var(--accent);
+  }
+
+  /* ---- M3 ---- */
+  .m-para-strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .m3-visuals {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 700fr 444fr;
+    gap: 32px;
+  }
+  .m3-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    border: 2px dashed var(--border);
+    border-radius: var(--r-cell);
+    text-align: center;
+    padding: 40px;
+  }
+  .m3-rendered {
+    margin-top: 56px;
+  }
+  .m3-strip {
+    margin-top: 24px;
+  }
+  .m3-strip :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ---- M4 ---- */
+  .m4-pair {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  /* ---- M5 (tint band) ---- */
+  .m5 {
+    margin-top: 96px;
+    background: var(--accent-tint);
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .m5-visuals {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: 460fr 460fr 245fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .m5-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .m5-stat .d-caps {
+    margin-top: 6px;
+  }
+  .m5-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 220px;
+  }
+  .m5-track {
+    margin-top: 8px;
+    height: 14px;
+    border-radius: 7px;
+    background: var(--surface);
+  }
+  .m5-fill {
+    display: block;
+    height: 100%;
+    border-radius: 7px;
+    background: var(--ink);
+  }
+  .m5-bar-sub {
+    margin-top: 8px;
+    font-size: 0.8125rem;
+    color: var(--ink);
+  }
+  .m5-bar-zero {
+    color: var(--accent);
+  }
+  .m5-artefacts {
+    margin-top: 48px;
+  }
+
+  /* ---- chapters ---- */
+  .chap {
+    padding-top: 96px;
+  }
+
+  .cha-bento {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+  .cha-browser {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px;
+    min-height: 640px;
+  }
+  .cha-browser :global(.cha-browser-mock) {
+    width: 100%;
+    max-width: 680px;
+  }
+  .cha-phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 24px;
+  }
+
+  .zig {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+  .zig-row {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+  .zig-img {
+    flex: 0 0 63%;
+  }
+  .zig-img :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .zig-caption {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    max-width: 340px;
+  }
+  .zig-row-flip {
+    flex-direction: row-reverse;
+  }
+
+  .chc-scene {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px;
+    min-height: 520px;
+  }
+  .chc-placeholder {
+    width: 100%;
+    max-width: 880px;
+    min-height: 420px;
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-exhibit);
+    display: flex;
+    flex-direction: column;
+  }
+  .browser-bar-ph {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 42px;
+    padding-left: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .browser-bar-ph span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .chc-placeholder .d-caps {
+    margin: auto;
+  }
+
+  .chd-bento {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .chd-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    min-height: 640px;
+  }
+  .chd-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 279px;
+    aspect-ratio: 270 / 567;
+    border: 2px dashed var(--border-on-tint);
+    border-radius: 32px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* ---- M6 limitation: its own room, a full viewport before any CTA ---- */
+  .m6 {
+    padding-top: 120px;
+    padding-bottom: 160px;
+  }
+  .m6-card {
+    margin-top: 36px;
+    background: var(--sunken);
+    border-radius: var(--r-card);
+    padding: 44px 48px;
+  }
+  .m6-card p {
+    max-width: 1000px;
+    font-size: 1.375rem;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .m6-card strong {
+    color: var(--accent);
+  }
+
+  /* ---- mobile ---- */
+  @media (max-width: 900px) {
+    .kv-grid {
+      grid-template-columns: 1fr;
+    }
+    .kv-main {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .kv-dir,
+    .kv-cell {
+      aspect-ratio: auto;
+    }
+    .mol,
+    .chap {
+      padding-top: 64px;
+    }
+    .matrix {
+      padding: 8px 20px;
+    }
+    .inc-map {
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 24px;
+      gap: 32px;
+    }
+    .inc-line {
+      display: none;
+    }
+    .m3-visuals {
+      grid-template-columns: 1fr;
+    }
+    .m3-placeholder {
+      min-height: 260px;
+    }
+    .m4-pair {
+      grid-template-columns: 1fr;
+    }
+    .m5 {
+      margin-top: 64px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+    .m5-visuals {
+      grid-template-columns: 1fr;
+    }
+    .cha-bento {
+      grid-template-columns: 1fr;
+    }
+    .cha-browser {
+      min-height: 0;
+      padding: 24px;
+    }
+    .cha-phone {
+      padding: 40px 24px;
+    }
+    .zig-row,
+    .zig-row-flip {
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .zig-img {
+      flex-basis: auto;
+      width: 100%;
+    }
+    .zig-caption {
+      max-width: none;
+    }
+    .chc-scene {
+      padding: 24px;
+      min-height: 0;
+    }
+    .chc-placeholder {
+      min-height: 260px;
+    }
+    .chd-bento {
+      grid-template-columns: 1fr;
+    }
+    .chd-cell {
+      min-height: 0;
+      padding: 40px 24px;
+    }
+    .m6 {
+      padding-top: 72px;
+      padding-bottom: 96px;
+    }
+    .m6-card {
+      padding: 28px 24px;
+    }
+    .m6-card p {
+      font-size: 1.125rem;
+    }
+  }
+</style>

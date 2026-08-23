@@ -1,0 +1,166 @@
+---
+import { Picture } from 'astro:assets';
+import { cases } from '../data/cases';
+
+import coverDocket from '../assets/home/cover-docket.png';
+import coverBluff from '../assets/home/cover-bluff.png';
+import coverFlowlift from '../assets/home/cover-flowlift.png';
+import coverPaymentx from '../assets/home/cover-paymentx.png';
+
+// The proof shelf: desktop 2×2, Docket+BLUFF peers on top; identical on
+// home and /project (same order, same receipts) by IA contract.
+const covers = {
+  docket: coverDocket,
+  bluff: coverBluff,
+  flowlift: coverFlowlift,
+  paymentx: coverPaymentx,
+} as const;
+
+const cards = [
+  {
+    slug: 'docket',
+    parenthetical: '(AI COMPLIANCE CONSOLE)',
+    claim: 'AI can draft the decision. It can’t be accountable for it.',
+    receipt: '22 SCREENS · 3,560 CONTRAST CHECKS · SELF-INITIATED, LABELLED',
+    alt: 'Docket: AML source-of-funds review console, queue and review screens',
+  },
+  {
+    slug: 'bluff',
+    parenthetical: '(IGAMING · 15 MONTHS)',
+    claim: 'Fifteen months on a real casino’s money flows.',
+    receipt: '50,000 SIGNUPS · 15% REG-TO-PLAY · $21M-BACKED',
+    alt: 'BLUFF: casino home screen with deposit banner and games row',
+  },
+  {
+    slug: 'flowlift',
+    parenthetical: '(MULTI-PLATFORM SPRINT)',
+    claim: 'Sixty screens, four platforms, seven days.',
+    receipt: '60 SCREENS · 4 PLATFORMS · 7 DAYS · LIMITS LABELLED',
+    alt: 'FlowLift: analytics dashboard with activation and recovered revenue',
+  },
+  {
+    slug: 'paymentx',
+    parenthetical: '(PAYMENTS MARKETPLACE)',
+    claim: 'A two-sided payments marketplace, from zero.',
+    receipt: 'ARCHITECTURE FROM ZERO · TWO SIDES · NO REFERENCES',
+    alt: 'PaymentX: marketing site hero with capacity marketplace screens',
+  },
+] as const;
+---
+
+<div class="work-shell">
+  <div class="ghost-circle" aria-hidden="true"></div>
+  <div class="work-grid container">
+    {
+      cards.map((card) => (
+        <a class="case-card" href={`/project/${card.slug}`}>
+          <p class="case-label">
+            <span class="case-name">{cases[card.slug].name}</span>
+            <span class="case-parenthetical">{card.parenthetical}</span>
+          </p>
+          <div class="case-cover exhibit">
+            <Picture
+              src={covers[card.slug]}
+              widths={[576, 1152]}
+              sizes="(max-width: 900px) 100vw, 576px"
+              formats={['avif', 'webp']}
+              alt={card.alt}
+              loading="lazy"
+            />
+          </div>
+          <p class="case-claim">{card.claim}</p>
+          <p class="case-receipt">{card.receipt}</p>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .work-shell {
+    position: relative;
+  }
+
+  .ghost-circle {
+    position: absolute;
+    top: -80px;
+    left: 13.9%;
+    width: min(1040px, 72vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--sunken);
+    z-index: 0;
+  }
+
+  .work-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 48px;
+    row-gap: 88px;
+    padding-top: 24px;
+  }
+
+  .case-card {
+    display: block;
+  }
+
+  .case-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .case-name {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .case-parenthetical {
+    font-size: var(--fs-caps-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--ink-secondary);
+  }
+
+  .case-cover {
+    border-radius: var(--r-card);
+    transition: transform 0.25s ease;
+  }
+  .case-card:hover .case-cover {
+    transform: translateY(-4px);
+  }
+
+  .case-claim {
+    margin-top: 18px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .case-receipt {
+    margin-top: 12px;
+    font-size: var(--fs-caps-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--ink-secondary);
+  }
+
+  @media (max-width: 900px) {
+    .work-grid {
+      grid-template-columns: 1fr;
+      row-gap: 56px;
+    }
+    .ghost-circle {
+      left: 8%;
+      width: 84vw;
+      top: -40px;
+    }
+  }
+</style>

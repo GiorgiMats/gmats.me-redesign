@@ -1,0 +1,65 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+// The Cuberto-derived native phone frame: ink body, inset screen, dynamic
+// island. Crisp vector frame beats a baked 3D render — stays in-system.
+interface Props {
+  screen: ImageMetadata;
+  alt: string;
+  /** CSS width of the whole device. */
+  width?: string;
+  class?: string;
+}
+
+const { screen, alt, width = '270px', class: className } = Astro.props;
+---
+
+<figure class:list={['phone', className]} style={`width: ${width}`}>
+  <div class="phone-screen">
+    <Picture
+      src={screen}
+      widths={[320, 640]}
+      sizes={width}
+      formats={['avif', 'webp']}
+      alt={alt}
+      loading="lazy"
+    />
+  </div>
+  <span class="phone-island" aria-hidden="true"></span>
+</figure>
+
+<style>
+  .phone {
+    position: relative;
+    aspect-ratio: 270 / 567;
+    background: var(--ink);
+    border-radius: 11.5% / 5.5%;
+    padding: 2.7%;
+    box-shadow: var(--shadow-device);
+    flex-shrink: 0;
+  }
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 9% / 4.3%;
+    overflow: hidden;
+    background: #fff;
+  }
+  .phone-screen :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .phone-island {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 4%;
+    background: var(--ink);
+    border-radius: 999px;
+  }
+</style>

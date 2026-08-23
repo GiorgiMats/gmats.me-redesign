@@ -1,0 +1,909 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import WorkGrid from '../components/WorkGrid.astro';
+import { SITE } from '../data/site';
+
+import heroPaymentx from '../assets/home/hero-paymentx.png';
+import portrait from '../assets/home/portrait.png';
+
+const title = 'Giorgi Matsukatovi · Senior Product Designer';
+const description =
+  'I design the screens that make people trust your AI product: the error states, the money flows, the moments that read generated today. Shipped as working product you can check.';
+---
+
+<Base title={title} description={description}>
+  <!-- ============ HERO ============ -->
+  <section class="hero container">
+    <div class="hero-meta caps-sm">
+      <p class="tnum">{SITE.coordinates} · TBILISI / REMOTE</p>
+      <p>GIORGI MATSUKATOVI · SENIOR PRODUCT DESIGNER · 6+ YEARS</p>
+    </div>
+    <h1 class="hero-h1">
+      <span class="only-desktop">Your AI product works.<br />It doesn’t <em>look</em> like it yet.</span>
+      <span class="only-mobile">Your AI product works.<br />It doesn’t <em>look</em><br />like it yet.</span>
+    </h1>
+    <div class="hero-row">
+      <p class="hero-sub">
+        I design the screens that make people trust it: the error states, the money flows, the
+        moments that read generated today. Shipped as working product you can check.
+      </p>
+      <div class="hero-ctas">
+        <a
+          href={`mailto:${SITE.email}`}
+          class="pill pill-solid hero-email"
+          data-event="outbound_click"
+          data-channel="email"
+          data-cta="true"
+        >
+          Email me
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+        <a
+          href={SITE.linkedin}
+          target="_blank"
+          rel="noopener"
+          class="hero-dm"
+          data-event="outbound_click"
+          data-channel="linkedin"
+          data-cta="true"
+        >
+          DM on LinkedIn
+          <Icon name="arrow-up-right" size={16} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXHIBIT BAND ============ -->
+  <section class="band container" aria-label="PaymentX product exhibit">
+    <figure class="band-exhibit exhibit">
+      <Picture
+        src={heroPaymentx}
+        widths={[640, 960, 1200, 2400]}
+        sizes="(max-width: 900px) 100vw, 1200px"
+        formats={['avif', 'webp']}
+        alt="PaymentX provider directory: a real product screen with search, provider cards and payment gateway filters"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <figcaption class="band-label caps-sm">PAYMENTX · FIG. 01 · PROVIDER DIRECTORY</figcaption>
+      <p class="band-basis caps-sm" aria-hidden="true">REAL PRODUCT SCREENS · NOT MOCKUPS</p>
+      <div class="band-stat" role="img" aria-label="Checkout drop: 14% before, 0 after the inline call">
+        <p class="caps-sm stat-label">CHECKOUT DROP</p>
+        <p class="stat-line tnum">
+          <span>14%</span>
+          <Icon name="arrow-right" size={22} class="stat-arrow" />
+          <span class="stat-zero">0</span>
+        </p>
+        <p class="caps-xs stat-basis">AFTER THE INLINE CALL</p>
+      </div>
+      <p class="band-chip caps-sm">
+        <Icon name="git-pull-request" size={16} />
+        FIX #3 APPROVED
+      </p>
+    </figure>
+  </section>
+
+  <!-- ============ JUDGMENT ============ -->
+  <section class="judgment-wrap" data-reach="home_beat_reach" data-beat="judgment">
+    <div class="judgment">
+      <p class="chip caps-sm">(THE PART YOU HIRE)</p>
+      <h2 class="judgment-statement">
+        <span class="ghost">Anyone can run the machine.</span> The calls are the product.
+      </h2>
+      <div class="judgment-cols">
+        <div class="portrait-col">
+          <div class="portrait exhibit">
+            <Picture
+              src={portrait}
+              widths={[380, 760]}
+              sizes="(max-width: 900px) 100vw, 380px"
+              formats={['avif', 'webp']}
+              alt="Giorgi Matsukatovi, black and white portrait"
+              loading="lazy"
+            />
+          </div>
+          <p class="lockup">
+            <span class="caps-sm lockup-name">GIORGI MATSUKATOVI</span>
+            <span class="caps-sm lockup-role">SENIOR PRODUCT DESIGNER · 6+ YEARS</span>
+          </p>
+        </div>
+        <div class="judgment-right">
+          <p class="judgment-lead">AI gets you to working. The part you hire is the judgment:</p>
+          <ul class="calls">
+            <li>What happens when the model is wrong</li>
+            <li>Which of the sixty screens gets killed</li>
+            <li>Why a refund can’t live in a modal</li>
+          </ul>
+          <p class="judgment-note">The cases below show the calls, marked in blue.</p>
+          <a href="/project" class="arrow-link">
+            See the calls
+            <Icon name="arrow-right" size={16} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <div class="ghost-marker" aria-hidden="true">selected work</div>
+  <section class="work cv-auto" data-reach="home_beat_reach" data-beat="work" aria-label="Selected work">
+    <WorkGrid />
+  </section>
+
+  <!-- ============ THE OFFER (/#offer) ============ -->
+  <section class="offer cv-auto" id="offer" data-reach="offer_view">
+    <div class="container">
+      <p class="chip chip-on-tint caps-sm">(THE OFFER)</p>
+      <div class="offer-head">
+        <h2 class="offer-h2">From repo link<br />to merged fixes.</h2>
+        <div class="offer-paras">
+          <p>
+            I direct Claude Code against your product’s code myself, so every fix arrives as a
+            change you can review, question and approve.
+          </p>
+          <p>
+            The $750 teardown comes first, so the first thing you risk is small and the first thing
+            you get is a list of what’s costing you customers.
+          </p>
+        </div>
+      </div>
+      <ol class="offer-rows">
+        <li>
+          <div class="offer-left">
+            <span class="offer-num tnum">01</span>
+            <Icon name="link-simple" size={22} class="offer-icon" />
+            <h3 class="offer-title">Send the repository link</h3>
+          </div>
+          <p class="offer-desc">That’s the whole onboarding. No workshop, no discovery deck.</p>
+        </li>
+        <li>
+          <div class="offer-left">
+            <span class="offer-num tnum">02</span>
+            <Icon name="magnifying-glass" size={22} class="offer-icon" />
+            <h3 class="offer-title">The teardown lands in days</h3>
+          </div>
+          <p class="offer-desc">
+            A list of what reads generated and what it’s costing you, every call marked.
+          </p>
+        </li>
+        <li>
+          <div class="offer-left">
+            <span class="offer-num tnum">03</span>
+            <Icon name="git-pull-request" size={22} class="offer-icon" />
+            <h3 class="offer-title">Fixes arrive ready to approve</h3>
+          </div>
+          <p class="offer-desc">
+            You review, question and approve each one. Stop whenever the value stops.
+          </p>
+        </li>
+      </ol>
+      <a href="/rescue" class="arrow-link" data-event="offer_expand">
+        The full offer, limits included
+        <Icon name="arrow-right" size={16} />
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ HIRING STRIP ============ -->
+  <div class="hiring-wrap">
+    <aside class="hiring">
+      <Icon name="briefcase" size={20} class="hiring-icon" />
+      <p>
+        Hiring for a full-time role?
+        <a href="/about#availability" data-event="employment_route_click">There’s a page for that too.</a>
+      </p>
+    </aside>
+  </div>
+
+  <!-- ============ TWO OPINIONS ============ -->
+  <section class="theses container cv-auto" aria-label="Two opinions">
+    <div class="opinion">
+      <Icon name="eye" size={24} />
+      <p class="caps-sm opinion-label">(OPINION 01)</p>
+      <p class="opinion-text">
+        Visual quality converts. People decide if your product works by how it looks while working.
+      </p>
+    </div>
+    <div class="opinion">
+      <Icon name="brackets-curly" size={24} />
+      <p class="caps-sm opinion-label">(OPINION 02)</p>
+      <p class="opinion-text">
+        Designers should know code. I came from front-end, and I ship what I draw.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CLOSE ============ -->
+  <section class="close cv-auto" data-reach="home_beat_reach" data-beat="close">
+    <h2 class="close-h2">Bold claim? Test me.</h2>
+    <p class="close-sub">
+      Send your product over and I’ll tell you which parts read generated, and I’ll stand by every
+      call unless you prove me wrong.
+    </p>
+    <a
+      href={`mailto:${SITE.email}`}
+      class="circle-cta"
+      data-event="outbound_click"
+      data-channel="email"
+      data-cta="true"
+    >
+      Email me
+      <Icon name="arrow-up-right" size={20} />
+    </a>
+    <a
+      href={SITE.linkedin}
+      target="_blank"
+      rel="noopener"
+      class="close-dm"
+      data-event="outbound_click"
+      data-channel="linkedin"
+      data-cta="true"
+    >
+      <Icon name="linkedin-logo" size={16} />
+      or DM on LinkedIn
+    </a>
+  </section>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Giorgi Matsukatovi',
+    jobTitle: 'Senior Product Designer',
+    url: SITE.url,
+    email: `mailto:${SITE.email}`,
+    sameAs: [SITE.linkedin, SITE.dribbble, SITE.x],
+  })} />
+</Base>
+
+<style>
+  /* ---------- shared atoms ---------- */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--ink-secondary);
+  }
+  .chip-on-tint {
+    border-color: var(--border-on-tint);
+  }
+
+  .caps-sm,
+  .caps-xs {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+  }
+
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .arrow-link:hover {
+    color: var(--accent-bright);
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--ink-secondary);
+  }
+
+  .hero-h1 {
+    font-size: clamp(2.0625rem, 6.4vw, 5.75rem); /* 92 at 1440, 33 at 390 */
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    color: var(--ink);
+    text-wrap: initial;
+  }
+  .hero-h1 em {
+    font-style: normal;
+    color: var(--cobalt);
+  }
+
+  .hero-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .hero-sub {
+    max-width: 560px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-shrink: 0;
+  }
+
+  .hero-email {
+    padding: 17px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .hero-dm {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .hero-dm:hover {
+    color: var(--accent);
+  }
+
+  /* ---------- exhibit band ---------- */
+  .band {
+    padding-top: 8px;
+    padding-bottom: 72px;
+  }
+
+  .band-exhibit {
+    position: relative;
+    border-radius: var(--r-card);
+    overflow: visible; /* floating stat card + chip overhang the edges */
+  }
+  .band-exhibit :global(img) {
+    border-radius: var(--r-card);
+    width: 100%;
+    height: auto;
+  }
+  .band-exhibit::after {
+    border-radius: var(--r-card);
+  }
+
+  .band-label {
+    position: absolute;
+    top: 28px;
+    left: 32px;
+    color: #fff;
+  }
+  .band-basis {
+    position: absolute;
+    bottom: 25px;
+    right: 32px;
+    color: #fff;
+  }
+
+  .band-stat {
+    position: absolute;
+    left: -56px;
+    bottom: 86px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 16px 20px;
+    box-shadow: 0 12px 32px rgba(20, 26, 36, 0.12);
+  }
+  .stat-label,
+  .stat-basis {
+    color: var(--ink-secondary);
+  }
+  .stat-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.875rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .stat-line :global(.stat-arrow) {
+    color: var(--cobalt);
+  }
+  .stat-zero {
+    color: var(--cobalt);
+  }
+
+  .band-chip {
+    position: absolute;
+    top: 16px;
+    right: -30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: #fff;
+    border-radius: var(--r-pill);
+    padding: 10px 14px;
+  }
+
+  /* ---------- judgment ---------- */
+  .judgment-wrap {
+    padding: 8px 24px;
+  }
+
+  .judgment {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-inset);
+    padding: 120px 96px 120px;
+    max-width: 1392px;
+    margin-inline: auto;
+  }
+
+  .judgment-statement {
+    margin-top: 48px;
+    max-width: 1000px;
+    font-size: clamp(1.625rem, 3.75vw, 3.375rem); /* 54 desktop */
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+    color: var(--ink);
+  }
+  .judgment-statement .ghost {
+    color: #b4b9c4;
+  }
+
+  .judgment-cols {
+    margin-top: 48px;
+    display: flex;
+    gap: 220px;
+    align-items: center;
+  }
+
+  .portrait-col {
+    flex-shrink: 0;
+    width: 380px;
+  }
+  .portrait {
+    border-radius: var(--r-card);
+  }
+  .portrait :global(img) {
+    width: 100%;
+    height: auto;
+  }
+  .lockup {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .lockup-name {
+    color: var(--ink);
+  }
+  .lockup-role {
+    color: var(--ink-secondary);
+  }
+
+  .judgment-right {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .judgment-lead {
+    font-size: 1.0625rem;
+    color: var(--ink-secondary);
+  }
+
+  .calls {
+    list-style: none;
+    padding: 0;
+    margin-top: 28px;
+  }
+  .calls li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .calls li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .judgment-note {
+    margin-top: 24px;
+    font-size: var(--fs-small);
+    color: var(--ink-secondary);
+  }
+  .judgment-right .arrow-link {
+    margin-top: 28px;
+  }
+
+  /* ---------- selected work ---------- */
+  .ghost-marker {
+    overflow: hidden;
+    height: clamp(100px, 14.6vw, 210px);
+    padding-left: clamp(24px, 7.6vw, 110px);
+    font-size: clamp(96px, 13.9vw, 200px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    white-space: nowrap;
+    color: rgba(26, 27, 30, 0.05);
+    user-select: none;
+  }
+
+  .work {
+    position: relative;
+    padding-bottom: 40px;
+  }
+
+  /* ---------- offer ---------- */
+  .offer {
+    margin-top: 40px;
+    background: var(--cobalt-tint);
+    padding-top: 140px;
+    padding-bottom: 120px;
+  }
+  .offer .chip {
+    background: var(--surface);
+  }
+
+  .offer-head {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .offer-h2 {
+    font-size: clamp(1.75rem, 3.75vw, 3.375rem);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.09;
+    color: var(--ink);
+  }
+
+  .offer-paras {
+    width: 560px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 1rem;
+    line-height: 1.62;
+    color: var(--ink-secondary);
+  }
+
+  .offer-rows {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0;
+    border-bottom: 1px solid var(--border-on-tint);
+  }
+  .offer-rows li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+    border-top: 1px solid var(--border-on-tint);
+    padding: 32px 0;
+  }
+
+  .offer-left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    min-width: 0;
+  }
+  .offer-num {
+    width: 40px;
+    font-size: var(--fs-small);
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .offer-left :global(.offer-icon) {
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .offer-title {
+    font-size: 1.6875rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .offer-desc {
+    width: 480px;
+    max-width: 100%;
+    flex-shrink: 0;
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  .offer .arrow-link {
+    margin-top: 40px;
+  }
+
+  /* ---------- hiring strip ---------- */
+  .hiring-wrap {
+    padding: 24px 24px 8px;
+  }
+  .hiring {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 1392px;
+    margin-inline: auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 24px 96px;
+  }
+  .hiring :global(.hiring-icon) {
+    color: var(--ink-secondary);
+  }
+  .hiring p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .hiring a {
+    color: var(--accent);
+    margin-left: 6px;
+  }
+  .hiring a:hover {
+    color: var(--accent-bright);
+  }
+
+  /* ---------- theses ---------- */
+  .theses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  .opinion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+  }
+  .opinion-label {
+    color: var(--ink-secondary);
+  }
+  .opinion-text {
+    font-size: 1.375rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  /* ---------- close ---------- */
+  .close {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px var(--page-gutter) 140px;
+  }
+
+  .close-h2 {
+    font-size: clamp(2.0625rem, 6.4vw, 5.75rem);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.06;
+    color: var(--ink);
+  }
+
+  .close-sub {
+    margin-top: 36px;
+    max-width: 520px;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+  }
+
+  .circle-cta {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 216px;
+    height: 216px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: background-color 0.15s ease, transform 0.2s ease;
+  }
+  .circle-cta:hover {
+    background: var(--accent-bright);
+    transform: scale(1.03);
+  }
+
+  .close-dm {
+    margin-top: 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .close-dm:hover {
+    color: var(--accent);
+  }
+
+  /* ---------- mobile (390 authored scale; fluid to 900) ---------- */
+  @media (max-width: 900px) {
+    .hero {
+      padding-top: 24px;
+      gap: 24px;
+    }
+    .hero-meta {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .hero-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    .hero-sub {
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .hero-ctas {
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-email {
+      padding: 14px 24px;
+    }
+
+    .band {
+      padding-bottom: 48px;
+    }
+    .band-label,
+    .band-basis {
+      display: none; /* the overlay caps don't fit the short mobile crop */
+    }
+    .band-stat {
+      left: -8px;
+      bottom: 24px;
+      padding: 12px 14px;
+      border-radius: 12px;
+    }
+    .stat-line {
+      font-size: 1.375rem;
+    }
+    .band-chip {
+      top: 10px;
+      right: -6px;
+      padding: 8px 12px;
+    }
+
+    .judgment-wrap {
+      padding: 8px 12px;
+    }
+    .judgment {
+      padding: 48px 24px;
+      border-radius: 24px;
+    }
+    .judgment-statement {
+      margin-top: 28px;
+    }
+    .judgment-cols {
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 36px;
+      align-items: flex-start;
+    }
+    .portrait-col {
+      width: 100%;
+    }
+    .calls li {
+      font-size: 1rem;
+    }
+
+    .offer {
+      padding-top: 72px;
+      padding-bottom: 72px;
+    }
+    .offer-head {
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 28px;
+    }
+    .offer-paras {
+      width: 100%;
+    }
+    .offer-rows li {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 24px 0;
+    }
+    .offer-left {
+      gap: 16px;
+    }
+    .offer-num {
+      width: 28px;
+    }
+    .offer-title {
+      font-size: 1.25rem;
+    }
+    .offer-desc {
+      width: 100%;
+    }
+
+    .hiring-wrap {
+      padding: 16px 12px 4px;
+    }
+    .hiring {
+      padding: 20px 24px;
+      flex-wrap: wrap;
+    }
+
+    .theses {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+    .opinion-text {
+      font-size: 1.125rem;
+    }
+
+    .close {
+      padding-bottom: 96px;
+    }
+    .close-sub {
+      margin-top: 24px;
+      font-size: 1rem;
+    }
+    .circle-cta {
+      width: 178px;
+      height: 178px;
+      font-size: 1.125rem;
+      /* centred on mobile, always — flex parent centres it */
+    }
+  }
+</style>

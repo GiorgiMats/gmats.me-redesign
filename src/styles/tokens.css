@@ -1,0 +1,150 @@
+/* ==========================================================================
+   gmats.me — design tokens (source of truth: HANDOVER-P9b.md §2–3)
+   Site constants everywhere; case dossiers swap --accent/--accent-bright/
+   --accent-tint via a data-case attribute on <html> — nothing else changes.
+   ========================================================================== */
+
+:root {
+  /* --- surfaces (cool blue-tinted paper, Option C) --- */
+  --ground: #f7f8fa;
+  --surface: #ffffff;
+  --sunken: #edf0f5;
+  --border: #e2e5ea;
+  --border-on-tint: #c9d5f0;
+
+  /* --- ink --- */
+  --ink: #1a1b1e;
+  --ink-secondary: #545860;
+
+  /* --- brand accent (cobalt). The logo is ALWAYS cobalt — use --cobalt
+         for the logo, never --accent, so case theming can't touch it. --- */
+  --cobalt: #2e5ce6;
+  --cobalt-bright: #3b82f6;
+  --cobalt-tint: #e7edfb;
+
+  --accent: var(--cobalt);
+  --accent-bright: var(--cobalt-bright);
+  --accent-tint: var(--cobalt-tint);
+  --case-grad-a: var(--cobalt);
+  --case-grad-b: var(--cobalt-bright);
+
+  /* --- ink-surface (footer, ink passages) --- */
+  --ink-surface: #1a1b1e;
+  --on-ink: #ffffff;
+  --on-ink-secondary: rgba(255, 255, 255, 0.64);
+  --on-ink-hairline: rgba(255, 255, 255, 0.14);
+
+  /* --- radii --- */
+  --r-cell: 24px;
+  --r-card: 20px;
+  --r-cell-m: 16px;
+  --r-inset: 32px;
+  --r-pill: 999px;
+
+  /* --- type ---
+     Manrope only, one family. Regular = body · Medium = ALL display and
+     labels (never Bold at display sizes) · SemiBold = caps machine layer. */
+  --font-sans: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui,
+    -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  /* Desktop scale (authored; mobile scale is authored separately, not
+     derived — see the md() overrides at the bottom). */
+  --fs-display: 4.75rem;      /* 76 — H1 */
+  --fs-display-2: 3.625rem;   /* 58 */
+  --fs-display-3: 3.375rem;   /* 54 — statements */
+  --fs-claim: 2.5rem;         /* 40 — molecule claim headings */
+  --fs-title: 1.6875rem;      /* 27 — card titles */
+  --fs-body-lg: 1.125rem;     /* 18 */
+  --fs-body: 1.0625rem;       /* 17 */
+  --fs-support: 1rem;         /* 16 */
+  --fs-small: 0.9375rem;      /* 15 */
+  --fs-caps: 0.75rem;         /* 12 */
+  --fs-caps-sm: 0.6875rem;    /* 11 */
+  --fs-caps-xs: 0.625rem;     /* 10 */
+
+  --lh-body: 1.65;
+  --lh-display: 1.06;
+  --lh-caps: 1;
+
+  --track-caps: 0.09em;
+
+  /* --- spacing rhythm (4px scale) --- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+  --sp-32: 128px;
+
+  /* --- layout --- */
+  --page-max: 1440px;
+  --page-gutter: 120px;
+  --content-max: 1200px;
+
+  /* --- depth: single soft shadow; exhibits carry depth, sections stay flat --- */
+  --shadow-exhibit: 0 4px 16px rgba(28, 23, 21, 0.1);
+  --shadow-device: 0 24px 48px rgba(26, 27, 30, 0.18);
+}
+
+/* --- case-accent theming: one token swap per dossier (branding.md §2) --- */
+[data-case='paymentx'] {
+  --accent: #5168b8;
+  --accent-bright: #6481e6;
+  --accent-tint: #e9edfc;
+  --case-grad-a: #5168b8;
+  --case-grad-b: #7493ff;
+}
+[data-case='docket'] {
+  --accent: #3d4fe0;
+  --accent-bright: #6481e6;
+  --accent-tint: #e7eafc;
+  --case-grad-a: #3d4fe0;
+  --case-grad-b: #6481e6;
+}
+[data-case='bluff'] {
+  --accent: #0057ff;
+  --accent-bright: #358aff;
+  --accent-tint: #e5f0ff;
+  --case-grad-a: #0057ff;
+  --case-grad-b: #358aff;
+}
+[data-case='flowlift'] {
+  --accent: #0f7e49;
+  --accent-bright: #1fb36b;
+  --accent-tint: #e8f8ef;
+  --case-grad-a: #0f7e49;
+  --case-grad-b: #1fb36b;
+}
+
+/* --- mobile authored scale (390; fluid clamp between 390 and 1440 — no
+       designed tablet breakpoint by decision, grid collapses ~900) --- */
+@media (max-width: 900px) {
+  :root {
+    --fs-display: 2.0625rem;    /* 33 */
+    --fs-display-2: 1.75rem;    /* 28 */
+    --fs-display-3: 1.625rem;   /* 26 */
+    --fs-claim: 1.75rem;        /* 28 */
+    --fs-title: 1.25rem;        /* 20 */
+    --fs-body-lg: 1rem;         /* 16 */
+    --fs-body: 1rem;            /* 16 */
+    --fs-support: 0.9375rem;    /* 15 */
+    --fs-small: 0.9375rem;      /* 15 */
+    --fs-caps: 0.6875rem;       /* 11 */
+    --fs-caps-sm: 0.625rem;     /* 10 */
+    --fs-caps-xs: 0.53125rem;   /* 8.5 — mobile caps floor */
+
+    --lh-body: 1.58;
+    --lh-display: 1.12;
+    --track-caps: 0.08em;
+
+    --r-cell: 16px;
+    --page-gutter: 24px;
+  }
+}

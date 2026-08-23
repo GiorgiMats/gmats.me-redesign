@@ -1,0 +1,220 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+
+const title = 'Contact · Giorgi Matsukatovi';
+const description =
+  'Starting is small and human. No form, no fields: email, a LinkedIn DM, or a 15-minute call if you want one. One human reads this inbox.';
+---
+
+<Base title={title} description={description}>
+  <section class="c-hero container">
+    <h1>Starting is small and <em>human.</em></h1>
+    <p class="c-sub">No form, no fields, nothing to fill. Pick whichever of these feels lightest.</p>
+  </section>
+
+  <section class="c-paths container" aria-label="Ways to reach me">
+    <a
+      class="path path-primary"
+      href={`mailto:${SITE.email}`}
+      data-event="outbound_click"
+      data-channel="email"
+      data-cta="true"
+    >
+      <p class="path-label caps-c accent">EMAIL, THE PRIMARY DOOR</p>
+      <p class="path-title">{SITE.email}</p>
+      <p class="path-desc">Write like you talk. Attach nothing if attaching is work.</p>
+      <button type="button" class="copy-btn" data-copy={SITE.email} hidden>Copy address</button>
+    </a>
+    <a
+      class="path"
+      href={SITE.linkedin}
+      target="_blank"
+      rel="noopener"
+      data-event="outbound_click"
+      data-channel="linkedin"
+      data-cta="true"
+    >
+      <p class="path-label caps-c">LINKEDIN</p>
+      <p class="path-title">DM any time</p>
+      <p class="path-desc">Shortest path if you already live there.</p>
+    </a>
+    <a
+      class="path"
+      href={`mailto:${SITE.email}?subject=15-minute%20call`}
+      data-event="conversation_click"
+      data-channel="call"
+    >
+      <p class="path-label caps-c">A CALL, IF YOU WANT ONE</p>
+      <p class="path-title">Book 15 minutes</p>
+      <p class="path-desc">Never required. The written reply comes either way.</p>
+    </a>
+  </section>
+
+  <p class="c-resp container">
+    One human reads this inbox, and you get a written reply within a business day.
+  </p>
+
+  <div class="c-recruiter container">
+    <aside class="recruiter-card">
+      <p>
+        <strong>Hiring for a full-time role?</strong>
+        <a href="/about#availability" data-event="employment_route_click"
+          >Availability and the deep-read route live on the about page.</a
+        >
+      </p>
+    </aside>
+  </div>
+
+  <script>
+    // Progressive enhancement: reveal the copy button only when JS runs.
+    // Copies the address and reports the email_copy key event.
+    const btn = document.querySelector<HTMLButtonElement>('.copy-btn');
+    if (btn) {
+      btn.hidden = false;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        navigator.clipboard.writeText(btn.dataset.copy!).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => (btn.textContent = 'Copy address'), 2000);
+        });
+        // @ts-expect-error gtag is injected after consent
+        if (typeof window.gtag === 'function') window.gtag('event', 'email_copy', { source_page: '/contact' });
+      });
+    }
+  </script>
+</Base>
+
+<style>
+  .caps-c {
+    font-size: var(--fs-caps-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    line-height: var(--lh-caps);
+    font-feature-settings: 'case' 1;
+    color: var(--ink-secondary);
+  }
+  .caps-c.accent {
+    color: var(--accent);
+  }
+
+  .c-hero {
+    padding-top: 96px;
+  }
+  .c-hero h1 {
+    font-size: clamp(2.0625rem, 3.9vw, 3.5rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .c-hero em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .c-sub {
+    margin-top: 20px;
+    font-size: 1.125rem;
+    color: var(--ink-secondary);
+  }
+
+  .c-paths {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 64px;
+    padding-bottom: 48px;
+    align-items: start;
+  }
+
+  .path {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 32px;
+    transition: border-color 0.15s ease, transform 0.2s ease;
+  }
+  .path:hover {
+    transform: translateY(-2px);
+  }
+  .path-primary {
+    border: 1.5px solid var(--accent);
+  }
+
+  .path-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+  .path-desc {
+    max-width: 320px;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    color: var(--ink-secondary);
+  }
+
+  .copy-btn {
+    align-self: flex-start;
+    margin-top: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .copy-btn:hover {
+    color: var(--accent-bright);
+  }
+
+  .c-resp {
+    padding-top: 8px;
+    font-size: 1rem;
+    color: var(--ink-secondary);
+  }
+
+  .c-recruiter {
+    padding-top: 40px;
+    padding-bottom: 120px;
+  }
+  .recruiter-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 22px 32px;
+  }
+  .recruiter-card p {
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .recruiter-card strong {
+    font-weight: 500;
+  }
+  .recruiter-card a {
+    margin-left: 8px;
+    color: var(--ink-secondary);
+  }
+  .recruiter-card a:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .c-hero {
+      padding-top: 40px;
+    }
+    .c-paths {
+      grid-template-columns: 1fr;
+      padding-top: 40px;
+    }
+    .c-recruiter {
+      padding-bottom: 72px;
+    }
+    .recruiter-card a {
+      margin-left: 0;
+      display: block;
+      margin-top: 6px;
+    }
+  }
+</style>

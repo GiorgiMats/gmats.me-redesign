@@ -1,0 +1,57 @@
+---
+import Icon from './Icon.astro';
+import { cases, type CaseMeta } from '../data/cases';
+
+// Artefact buttons are LINKS, not CTAs — the circle CTA stays the only
+// contact action. BLUFF carries two buttons; the others per their frames.
+interface Props {
+  slug: CaseMeta['slug'];
+}
+
+const { slug } = Astro.props;
+const c = cases[slug];
+---
+
+<div class="artefacts">
+  {
+    c.figmaUrl && (
+      <a class="artefact-btn" href={c.figmaUrl} target="_blank" rel="noopener">
+        View in Figma
+        <Icon name="arrow-up-right" size={14} />
+      </a>
+    )
+  }
+  {
+    c.liveUrl && (
+      <a class="artefact-btn" href={c.liveUrl} target="_blank" rel="noopener">
+        View live site
+        <Icon name="arrow-up-right" size={14} />
+      </a>
+    )
+  }
+</div>
+
+<style>
+  .artefacts {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .artefact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-pill);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--ink);
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .artefact-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>
