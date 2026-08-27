@@ -2,34 +2,37 @@
 import { Picture } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
-import PhoneMockup from '../../components/PhoneMockup.astro';
-import BrowserMockup from '../../components/BrowserMockup.astro';
 import ArtefactButtons from '../../components/ArtefactButtons.astro';
 import SandwichClose from '../../components/SandwichClose.astro';
 import { cases } from '../../data/cases';
 import '../../styles/dossier.css';
 
-import bentoMain from '../../assets/paymentx/bento-main.png';
-import bentoDirectory from '../../assets/paymentx/bento-directory.png';
-import bentoHire from '../../assets/paymentx/bento-hire.png';
-import bentoWebsites from '../../assets/paymentx/bento-websites.png';
-import phoneMerchant from '../../assets/paymentx/phone-merchant.png';
-import phoneProvider from '../../assets/paymentx/phone-provider.png';
-import modelRendered from '../../assets/paymentx/model-rendered.png';
-import merchantGrammar from '../../assets/paymentx/merchant-grammar.png';
-import providerGrammar from '../../assets/paymentx/provider-grammar.png';
-import inlineRefund from '../../assets/paymentx/inline-refund.png';
-import directoryTrust from '../../assets/paymentx/directory-trust.png';
-import chABrowser from '../../assets/paymentx/ch-a-browser.png';
-import chAPhone from '../../assets/paymentx/ch-a-phone.png';
-import chBScene1 from '../../assets/paymentx/ch-b-scene1.png';
-import chBScene2 from '../../assets/paymentx/ch-b-scene2.png';
-import chDPhone1 from '../../assets/paymentx/ch-d-phone1.png';
-import chDPhone2 from '../../assets/paymentx/ch-d-phone2.png';
-import closeBrowser from '../../assets/paymentx/close-browser.png';
-import closePhone from '../../assets/paymentx/close-phone.png';
-import closeCell1 from '../../assets/paymentx/close-cell1.png';
-import closeCell2 from '../../assets/paymentx/close-cell2.png';
+// His mockup board (Figma canvas 468:2427) — numbered frames, mapped to
+// slots per his placeholder drafts in the case frame. 16 and 18 are
+// byte-identical duplicates of 15 and stay unused.
+import kvMain from '../../assets/paymentx/new/mock-01.png';
+import kvProfile from '../../assets/paymentx/new/mock-02.png';
+import kvRental from '../../assets/paymentx/new/mock-03.png';
+import kvOffer from '../../assets/paymentx/new/mock-04.png';
+import modelLanes from '../../assets/paymentx/new/mock-05-lanes.png';
+import modelProvider from '../../assets/paymentx/new/mock-06.png';
+import modelWebsite from '../../assets/paymentx/new/mock-07.png';
+import m4Merchant from '../../assets/paymentx/new/mock-08.png';
+import m4Provider from '../../assets/paymentx/new/mock-09.png';
+import m5Transactions from '../../assets/paymentx/new/mock-10.png';
+import m5Directory from '../../assets/paymentx/new/mock-11.png';
+import chaAccounts from '../../assets/paymentx/new/mock-12.png';
+import chaPhone from '../../assets/paymentx/new/mock-13-phone.png';
+import chbGateway from '../../assets/paymentx/new/mock-14.png';
+import chbStats from '../../assets/paymentx/new/mock-15.png';
+import chcLanding from '../../assets/paymentx/new/mock-17-tall.png';
+import chdPhone1 from '../../assets/paymentx/new/mock-19-phone.png';
+import chdPhone2 from '../../assets/paymentx/new/mock-20-phone.png';
+import chdPhone3 from '../../assets/paymentx/new/mock-21-phone.png';
+import closeDark from '../../assets/paymentx/new/mock-22.png';
+import closePhone from '../../assets/paymentx/new/mock-23-phone.png';
+import closeCell1 from '../../assets/paymentx/new/mock-24.png';
+import closeCell2 from '../../assets/paymentx/new/mock-25.png';
 
 const c = cases.paymentx;
 
@@ -67,22 +70,22 @@ const matrix = {
     <div class="kv-grid">
       <div class="kv-main d-cell exhibit" style="view-transition-name: cover-paymentx">
         <Picture
-          src={bentoMain}
-          widths={[792, 1584]}
+          src={kvMain}
+          widths={[792, 1584, 2400]}
           sizes="(max-width: 900px) 100vw, 792px"
           formats={['avif', 'webp']}
-          alt="PaymentX provider directory on desktop, staged on the case scene"
+          alt="The merchant's website room: revenue, providers and payment performance for one site"
           loading="eager"
           fetchpriority="high"
         />
       </div>
-      <div class="kv-dir d-cell exhibit">
+      <div class="kv-cell d-cell exhibit">
         <Picture
-          src={bentoDirectory}
+          src={kvProfile}
           widths={[384, 768]}
           sizes="(max-width: 900px) 100vw, 384px"
           formats={['avif', 'webp']}
-          alt="PaymentX directory on mobile"
+          alt="A provider profile: gateways, potential offers and contact details"
           loading="eager"
         />
       </div>
@@ -93,21 +96,21 @@ const matrix = {
       </div>
       <div class="kv-cell d-cell exhibit">
         <Picture
-          src={bentoHire}
+          src={kvRental}
           widths={[384, 768]}
           sizes="(max-width: 900px) 100vw, 384px"
           formats={['avif', 'webp']}
-          alt="PaymentX hiring flow on mobile"
+          alt="A rental in detail: the provider's performance on one website"
           loading="lazy"
         />
       </div>
       <div class="kv-cell d-cell exhibit">
         <Picture
-          src={bentoWebsites}
+          src={kvOffer}
           widths={[384, 768]}
           sizes="(max-width: 900px) 100vw, 384px"
           formats={['avif', 'webp']}
-          alt="PaymentX websites screen on mobile"
+          alt="The Send Rental Offer modal, with the merchant verified by public key"
           loading="lazy"
         />
       </div>
@@ -212,41 +215,69 @@ const matrix = {
     <div class="inc-scrub" data-scrub>
       <div class="inc-stage">
         <div class="inc-map">
-      <div class="inc-side inc-side-m" tabindex="0">
-        <p class="d-caps inc-side-label">MERCHANTS</p>
-        <PhoneMockup screen={phoneMerchant} alt="PaymentX merchant directory on mobile" width="204px" />
-        <ul class="inc-wants">
-          <li>Leverage over providers</li>
-          <li>Lower fees, faster settlement</li>
-        </ul>
-      </div>
-      <div class="inc-centre">
-        <div class="inc-arrows" aria-hidden="true">
-          <div class="inc-arrow-row">
-            <span class="inc-arrow-label caps-xs">HIRE THROUGH</span>
-            <span class="inc-line inc-line-right"></span>
+          <div class="inc-side inc-side-m" tabindex="0">
+            <div class="side-head">
+              <span class="side-icon"><Icon name="storefront" size={22} /></span>
+              <span class="side-id">
+                <span class="caps-xs">DEMAND SIDE</span>
+                <span class="side-name">Merchants</span>
+              </span>
+            </div>
+            <div class="side-div" aria-hidden="true"></div>
+            <p class="caps-xs">WHAT THEY WANT</p>
+            <ul class="side-wants">
+              <li><Icon name="scales" size={16} class="want-icon" /> Leverage over providers</li>
+              <li><Icon name="trend-down" size={16} class="want-icon" /> Lower fees, faster settlement</li>
+            </ul>
+          </div>
+
+          <div class="inc-flows inc-flows-m" aria-hidden="true">
+            <div class="flow">
+              <span class="flow-pill caps-xs">HIRE THROUGH</span>
+              <span class="flow-line flow-to-r"></span>
+            </div>
+            <div class="flow">
+              <span class="flow-pill caps-xs">PAY INTO</span>
+              <span class="flow-line flow-to-r"></span>
+            </div>
+          </div>
+
+          <div class="inc-centre">
+            <span class="ring ring-outer" aria-hidden="true"></span>
+            <span class="ring ring-inner" aria-hidden="true"></span>
+            <div class="inc-core">
+              <p class="inc-core-title">ONE PRODUCT</p>
+              <p class="inc-core-sub">one component grammar</p>
+            </div>
+          </div>
+
+          <div class="inc-flows inc-flows-p" aria-hidden="true">
+            <div class="flow">
+              <span class="flow-pill caps-xs">COMPETE THROUGH</span>
+              <span class="flow-line flow-to-l"></span>
+            </div>
+            <div class="flow">
+              <span class="flow-pill caps-xs">GET PAID FROM</span>
+              <span class="flow-line flow-to-r"></span>
+            </div>
+          </div>
+
+          <div class="inc-side inc-side-p" tabindex="0">
+            <div class="side-head">
+              <span class="side-icon"><Icon name="bank" size={22} /></span>
+              <span class="side-id">
+                <span class="caps-xs">SUPPLY SIDE</span>
+                <span class="side-name">Providers</span>
+              </span>
+            </div>
+            <div class="side-div" aria-hidden="true"></div>
+            <p class="caps-xs">WHAT THEY WANT</p>
+            <ul class="side-wants">
+              <li><Icon name="seal-check" size={16} class="want-icon" /> Qualified merchants</li>
+              <li><Icon name="shield-check" size={16} class="want-icon" /> No race to the bottom</li>
+            </ul>
           </div>
         </div>
-        <div class="inc-pill">
-          <p class="inc-pill-title">ONE PRODUCT</p>
-          <p class="inc-pill-sub">one component grammar</p>
-        </div>
-        <div class="inc-arrows" aria-hidden="true">
-          <div class="inc-arrow-row">
-            <span class="inc-arrow-label caps-xs">PAY INTO · GET PAID FROM</span>
-            <span class="inc-line inc-line-both"></span>
-          </div>
-        </div>
-      </div>
-      <div class="inc-side inc-side-p" tabindex="0">
-        <p class="d-caps inc-side-label">PROVIDERS</p>
-        <PhoneMockup screen={phoneProvider} alt="PaymentX provider statistics on mobile" width="204px" />
-        <ul class="inc-wants">
-          <li>Qualified merchants</li>
-          <li>No race to the bottom</li>
-        </ul>
-      </div>
-    </div>
         <p class="fig-caption">FIG. 03 · TWO SIDES, OPPOSED WANTS, ONE GRAMMAR BETWEEN THEM</p>
       </div>
       <div class="inc-steps">
@@ -279,25 +310,149 @@ const matrix = {
         every screen after it. I fixed what a provider is, what a website is and where money
         changes hands, and I drew every screen out of that model.
       </p>
-      <div class="m3-visuals">
-        <div class="m3-placeholder">
-          <p class="d-caps">FIG. 04 · OBJECT MODEL DIAGRAM · IMAGE PENDING</p>
+
+      <!-- FIG 04 · the object model -->
+      <figure class="om-card">
+        <div class="om-scroll">
+          <div class="om-chain">
+            <div class="om-node">
+              <p class="caps-xs">SUPPLY SIDE</p>
+              <p class="om-name">Provider</p>
+              <p class="om-desc">Owns processing capacity<br />Sets limits, fees, payout terms</p>
+            </div>
+            <div class="om-link" aria-hidden="true">
+              <span class="caps-xs">LISTS</span>
+              <span class="flow-line flow-to-r"></span>
+            </div>
+            <div class="om-node om-node-asset">
+              <p class="caps-xs om-accent">THE ASSET</p>
+              <p class="om-name">Gateway account</p>
+              <p class="om-desc">Stripe · PayPal · Adyen<br />Monthly limit, fee %, payout schedule</p>
+            </div>
+            <div class="om-link" aria-hidden="true">
+              <span class="caps-xs">RENTS</span>
+              <span class="flow-line flow-to-r"></span>
+              <span class="om-link-sub">terms locked</span>
+            </div>
+            <div class="om-node">
+              <p class="caps-xs">DEMAND SIDE</p>
+              <p class="om-name">Merchant</p>
+              <p class="om-desc">Needs capacity to<br />process payments</p>
+            </div>
+            <div class="om-link" aria-hidden="true">
+              <span class="caps-xs">ALLOCATES</span>
+              <span class="flow-line flow-to-r"></span>
+            </div>
+            <div class="om-node">
+              <p class="caps-xs">WHERE MONEY FLOWS</p>
+              <p class="om-name">Website</p>
+              <p class="om-desc">Per-account spend cap<br />Live spend vs cap</p>
+            </div>
+          </div>
         </div>
-        <div class="m3-placeholder m3-placeholder-sm">
-          <p class="d-caps">FIG. 05 · TOKEN TIERS DIAGRAM · IMAGE PENDING</p>
+        <div class="om-ledger">
+          <span class="caps-xs">EVERY MOVE RECORDED</span>
+          <span class="om-ledger-name">Transaction ledger</span>
+          <span class="om-ledger-desc">status · fee · card mask · destination, filterable across every account and site</span>
         </div>
-      </div>
+        <figcaption class="om-caption">
+          Four objects, one chain: providers list gateway accounts, merchants rent them on locked
+          terms and allocate them to websites under hard caps. Once this model existed, the
+          navigation, detail pages and tables fell out of it instead of being invented one by one.
+        </figcaption>
+      </figure>
+
+      <!-- FIG 05 · the token tiers -->
+      <figure class="om-card">
+        <div class="om-scroll">
+          <div class="om-chain om-chain-tiers">
+            <div class="om-node">
+              <p class="caps-xs">TIER 1 · 55 TOKENS</p>
+              <p class="om-name">Primitive ramps</p>
+              <p class="om-desc">
+                Raw values, no meaning yet. Neutral 0–950 plus Blue, Green, Red, Rose, Orange,
+                Gold, Slate ramps.
+              </p>
+              <span class="tk-chip">Blue/500</span>
+            </div>
+            <div class="om-link" aria-hidden="true">
+              <span class="caps-xs">FEEDS</span>
+              <span class="flow-line flow-to-r"></span>
+            </div>
+            <div class="om-node">
+              <p class="caps-xs">TIER 2 · 31 × 2 MODES</p>
+              <p class="om-name">Semantic tokens</p>
+              <p class="om-desc">
+                Meaning, per theme. Each token resolves differently in Light and Dark: bg/canvas,
+                text/primary, brand/default…
+              </p>
+              <span class="tk-chip">brand/default</span>
+            </div>
+            <div class="om-link" aria-hidden="true">
+              <span class="caps-xs">FEEDS</span>
+              <span class="flow-line flow-to-r"></span>
+            </div>
+            <div class="om-node">
+              <p class="caps-xs">TIER 3 · 70 TOKENS</p>
+              <p class="om-name">Component tokens</p>
+              <p class="om-desc">
+                One per decision a component makes, aliased to semantics. Buttons, inputs and
+                tables never touch a raw hex.
+              </p>
+              <span class="tk-chip tk-chip-solid">Button/Primary/bg</span>
+            </div>
+          </div>
+        </div>
+        <div class="om-ledger">
+          <span class="caps-xs">ONE REAL CHAIN</span>
+          <span class="tk-chain tnum">
+            <span class="tk-chip">Blue/500</span>
+            <span class="tk-arrow" aria-hidden="true">→</span>
+            <span class="tk-chip">brand/default</span>
+            <span class="tk-arrow" aria-hidden="true">→</span>
+            <span class="tk-chip tk-chip-solid">Button/Primary/bg</span>
+          </span>
+          <span class="om-ledger-desc">flip the mode, everything follows</span>
+        </div>
+        <figcaption class="om-caption">
+          Three tiers, so one change to a primitive ramp ripples through both themes and every
+          component without anyone re-picking a hex.
+        </figcaption>
+      </figure>
+
       <div class="m3-rendered">
         <p class="d-caps">THE MODEL, RENDERED</p>
-        <div class="m3-strip">
-          <Picture
-            src={modelRendered}
-            widths={[1008, 2016]}
-            sizes="(max-width: 900px) 100vw, 1008px"
-            formats={['avif', 'webp']}
-            alt="Three real PaymentX screens drawn from the object model"
-            loading="lazy"
-          />
+        <div class="m3-cells">
+          <div class="d-cell exhibit">
+            <Picture
+              src={modelLanes}
+              widths={[420, 840]}
+              sizes="(max-width: 900px) 100vw, 320px"
+              formats={['avif', 'webp']}
+              alt="The screen map that fell out of the model: public site, merchant app, provider app, system overlays"
+              loading="lazy"
+            />
+          </div>
+          <div class="d-cell exhibit">
+            <Picture
+              src={modelProvider}
+              widths={[420, 840]}
+              sizes="(max-width: 900px) 100vw, 320px"
+              formats={['avif', 'webp']}
+              alt="The provider object, rendered: profile with reviews"
+              loading="lazy"
+            />
+          </div>
+          <div class="d-cell exhibit">
+            <Picture
+              src={modelWebsite}
+              widths={[420, 840]}
+              sizes="(max-width: 900px) 100vw, 320px"
+              formats={['avif', 'webp']}
+              alt="The website object, rendered: add a website, point its DNS"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -320,11 +475,11 @@ const matrix = {
       <figure>
         <div class="d-cell exhibit">
           <Picture
-            src={merchantGrammar}
+            src={m4Merchant}
             widths={[584, 1168]}
             sizes="(max-width: 900px) 100vw, 584px"
             formats={['avif', 'webp']}
-            alt="Merchant-side screen on the shared component grammar"
+            alt="The merchant's My Rentals: the same relationship, seen from the demand side"
             loading="lazy"
           />
         </div>
@@ -333,11 +488,11 @@ const matrix = {
       <figure>
         <div class="d-cell exhibit">
           <Picture
-            src={providerGrammar}
+            src={m4Provider}
             widths={[584, 1168]}
             sizes="(max-width: 900px) 100vw, 584px"
             formats={['avif', 'webp']}
-            alt="Provider-side screen on the shared component grammar"
+            alt="The provider's My Rentals: the same relationship, seen from the supply side"
             loading="lazy"
           />
         </div>
@@ -362,26 +517,26 @@ const matrix = {
       </p>
       <div class="m5-visuals">
         <figure>
-          <div class="d-cell">
+          <div class="d-cell exhibit m5-img">
             <Picture
-              src={inlineRefund}
-              widths={[460, 920]}
+              src={m5Transactions}
+              widths={[460, 920, 1600]}
               sizes="(max-width: 900px) 100vw, 460px"
               formats={['avif', 'webp']}
-              alt="The inline refund, in the checkout flow"
+              alt="The transaction ledger where every refund lives in flow: accepted and declined, filterable"
               loading="lazy"
             />
           </div>
           <figcaption class="fig-caption">FIG. 08 · THE INLINE REFUND, IN FLOW</figcaption>
         </figure>
         <figure>
-          <div class="d-cell">
+          <div class="d-cell exhibit m5-img">
             <Picture
-              src={directoryTrust}
-              widths={[460, 920]}
+              src={m5Directory}
+              widths={[460, 920, 1600]}
               sizes="(max-width: 900px) 100vw, 460px"
               formats={['avif', 'webp']}
-              alt="The provider directory, trust signals first"
+              alt="The provider directory: ratings, limits and processor badges first, price last"
               loading="lazy"
             />
           </div>
@@ -427,11 +582,25 @@ const matrix = {
       spend and limits per gateway.
     </p>
     <div class="cha-bento">
-      <div class="cha-browser d-cell-tint d-cell">
-        <BrowserMockup screen={chABrowser} alt="Merchant desktop: the provider directory" class="cha-browser-mock" />
+      <div class="d-cell exhibit cha-browser">
+        <Picture
+          src={chaAccounts}
+          widths={[792, 1584, 2400]}
+          sizes="(max-width: 900px) 100vw, 792px"
+          formats={['avif', 'webp']}
+          alt="The merchant's providers and accounts room: 43 accounts, spend and limits per gateway, one toggle each"
+          loading="lazy"
+        />
       </div>
-      <div class="cha-phone d-cell-sunken d-cell">
-        <PhoneMockup screen={chAPhone} alt="Merchant websites screen on mobile" width="270px" />
+      <div class="d-cell exhibit cha-phone">
+        <Picture
+          src={chaPhone}
+          widths={[384, 768]}
+          sizes="(max-width: 900px) 100vw, 384px"
+          formats={['avif', 'webp']}
+          alt="The same website room at 390 wide"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
@@ -450,11 +619,11 @@ const matrix = {
       <div class="zig-row">
         <div class="d-cell exhibit zig-img">
           <Picture
-            src={chBScene1}
-            widths={[760, 1520]}
+            src={chbGateway}
+            widths={[760, 1520, 2400]}
             sizes="(max-width: 900px) 100vw, 760px"
             formats={['avif', 'webp']}
-            alt="Provider profile card with gateways, earnings and capacity"
+            alt="A provider's gateway account: earnings, capacity, terms and the merchants renting it"
             loading="lazy"
           />
         </div>
@@ -466,11 +635,11 @@ const matrix = {
       <div class="zig-row zig-row-flip">
         <div class="d-cell exhibit zig-img">
           <Picture
-            src={chBScene2}
-            widths={[760, 1520]}
+            src={chbStats}
+            widths={[760, 1520, 2400]}
             sizes="(max-width: 900px) 100vw, 760px"
             formats={['avif', 'webp']}
-            alt="Provider statistics screen"
+            alt="The provider's statistics: earned, processed, fee and active merchants"
             loading="lazy"
           />
         </div>
@@ -492,12 +661,22 @@ const matrix = {
       I wrote the public site to sell both sides the same promise, hire payment providers the way
       you hire freelancers.
     </p>
-    <div class="chc-scene d-cell-tint d-cell">
-      <div class="chc-placeholder">
-        <div class="browser-bar-ph" aria-hidden="true"><span></span><span></span><span></span></div>
-        <p class="d-caps">MARKETING SITE HERO · IMAGE PENDING</p>
-      </div>
+    <div
+      class="chc-scroll d-cell exhibit"
+      tabindex="0"
+      role="region"
+      aria-label="The full public site landing page, scrollable"
+    >
+      <Picture
+        src={chcLanding}
+        widths={[800, 1600]}
+        sizes="(max-width: 900px) 100vw, 1104px"
+        formats={['avif', 'webp']}
+        alt="The public landing page, top to bottom: promise, mechanism, security, pricing, proof and FAQ"
+        loading="lazy"
+      />
     </div>
+    <p class="fig-caption">FIG. 10 · THE PUBLIC SITE, TOP TO BOTTOM · SCROLL INSIDE THE FRAME</p>
   </section>
 
   <!-- CH D · mobile, both sides -->
@@ -511,16 +690,35 @@ const matrix = {
       down.
     </p>
     <div class="chd-bento">
-      <div class="chd-cell d-cell-tint d-cell">
-        <PhoneMockup screen={chDPhone1} alt="Merchant directory at 390 wide" width="279px" />
+      <div class="d-cell exhibit chd-cell">
+        <Picture
+          src={chdPhone1}
+          widths={[384, 768]}
+          sizes="(max-width: 900px) 100vw, 384px"
+          formats={['avif', 'webp']}
+          alt="The provider directory at 390 wide"
+          loading="lazy"
+        />
       </div>
-      <div class="chd-cell d-cell-sunken d-cell">
-        <PhoneMockup screen={chDPhone2} alt="Provider statistics at 390 wide" width="279px" />
+      <div class="d-cell exhibit chd-cell">
+        <Picture
+          src={chdPhone2}
+          widths={[384, 768]}
+          sizes="(max-width: 900px) 100vw, 384px"
+          formats={['avif', 'webp']}
+          alt="The provider's gateways at 390 wide"
+          loading="lazy"
+        />
       </div>
-      <div class="chd-cell d-cell-tint d-cell">
-        <div class="chd-placeholder">
-          <p class="d-caps">MOBILE SCREEN · IMAGE PENDING</p>
-        </div>
+      <div class="d-cell exhibit chd-cell">
+        <Picture
+          src={chdPhone3}
+          widths={[384, 768]}
+          sizes="(max-width: 900px) 100vw, 384px"
+          formats={['avif', 'webp']}
+          alt="The merchant's transactions at 390 wide"
+          loading="lazy"
+        />
       </div>
     </div>
   </section>
@@ -543,14 +741,16 @@ const matrix = {
 
   <SandwichClose
     slug="paymentx"
-    browserScreen={closeBrowser}
-    browserAlt="PaymentX provider directory on desktop"
+    stagedBrowser={true}
+    phoneFill={true}
+    browserScreen={closeDark}
+    browserAlt="The merchant's website room in dark mode"
     phoneScreen={closePhone}
-    phoneAlt="PaymentX websites screen on mobile"
+    phoneAlt="The merchant's website room at 390 wide"
     cell1={closeCell1}
-    cell1Alt="PaymentX directory on mobile, staged"
+    cell1Alt="Adding a gateway in dark mode: connect, verify read-only credentials, set terms"
     cell2={closeCell2}
-    cell2Alt="PaymentX statistics on mobile, staged"
+    cell2Alt="The DNS settings modal in dark mode"
     signoffCaps="DESIGNED FROM ZERO · BOTH SIDES"
     chips={['ARCHITECTURE FROM ZERO', 'TWO SIDES, ONE SYSTEM', 'CHECKOUT DROP 14% → 0']}
   />
@@ -586,13 +786,11 @@ const matrix = {
     grid-row: 1 / 3;
   }
   .kv-main :global(img),
-  .kv-dir :global(img),
   .kv-cell :global(img) {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  .kv-dir,
   .kv-cell {
     aspect-ratio: 384 / 250;
   }
@@ -706,24 +904,26 @@ const matrix = {
     border-radius: var(--r-pill);
   }
 
-  /* ---- incentive map (hover/focus highlights a side; static stays legible) ---- */
+  /* ---- incentive map (his redesigned diagram; hover/scrub dims a side) ---- */
   .inc-map {
+    position: relative;
     margin-top: 40px;
     display: flex;
-    align-items: stretch;
-    justify-content: space-between;
-    gap: 24px;
+    align-items: center;
+    gap: 8px;
     background: var(--accent-tint);
     border-radius: var(--r-cell);
-    padding: 48px 64px;
+    padding: 48px 32px;
+    min-height: 420px;
+    overflow: hidden;
   }
   .inc-side {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    transition: opacity 0.2s ease;
+    flex: 0 0 300px;
+    background: var(--surface);
     border-radius: 16px;
+    padding: 20px;
+    transition: opacity 0.3s ease;
+    z-index: 1;
   }
   .inc-map:has(.inc-side-m:hover) .inc-side-p,
   .inc-map:has(.inc-side-m:focus-visible) .inc-side-p,
@@ -731,95 +931,151 @@ const matrix = {
   .inc-map:has(.inc-side-p:focus-visible) .inc-side-m {
     opacity: 0.35;
   }
-  .inc-side-label {
-    letter-spacing: var(--track-caps);
+  .side-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
-  .inc-wants {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .side-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .side-id {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 3px;
   }
-  .inc-wants li {
+  .side-name {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .side-div {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0 12px;
+  }
+  .side-wants {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .side-wants li {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     color: var(--ink);
   }
-  .inc-wants li::before {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--accent);
+  .side-wants :global(.want-icon) {
+    color: var(--accent);
+    flex-shrink: 0;
   }
 
-  .inc-centre {
+  .inc-flows {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
+    gap: 64px;
     min-width: 0;
+    z-index: 2;
+    transition: opacity 0.3s ease;
   }
-  .inc-pill {
-    background: var(--surface);
-    border-radius: var(--r-card);
-    box-shadow: var(--shadow-exhibit);
-    padding: 22px 36px;
-    text-align: center;
+  /* lanes borrow the ring band, so arrows reach into the circles like the
+     source diagram and pills never slide under a side card */
+  .inc-flows-m {
+    margin-right: -36px;
   }
-  .inc-pill-title {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    color: var(--accent);
+  .inc-flows-p {
+    margin-left: -36px;
   }
-  .inc-pill-sub {
-    margin-top: 4px;
-    font-size: 0.8125rem;
-    color: var(--ink-secondary);
-  }
-  .inc-arrows {
-    width: 100%;
-  }
-  .inc-arrow-row {
+  .flow {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
-  .inc-line {
+  .flow-pill {
+    background: var(--surface);
+    border-radius: var(--r-pill);
+    padding: 5px 10px;
+    white-space: nowrap;
+  }
+  .flow-line {
     position: relative;
-    width: 80%;
-    border-top: 2px solid var(--accent);
+    width: 100%;
+    border-top: 1.5px solid #a2a8b8;
   }
-  .inc-line::before,
-  .inc-line::after {
+  .flow-line::after {
     content: '';
     position: absolute;
-    top: -5px;
+    top: -4.5px;
     border: 4px solid transparent;
   }
-  .inc-line-right::after {
-    right: -2px;
-    border-left-color: var(--accent);
+  .flow-to-r::after {
+    right: -1px;
+    border-left-color: #a2a8b8;
   }
-  .inc-line-right::before {
-    left: -2px;
-    border-right-color: var(--accent);
+  .flow-to-l::after {
+    left: -1px;
+    border-right-color: #a2a8b8;
   }
-  .inc-line-both::after {
-    right: -2px;
-    border-left-color: var(--accent);
+
+  .inc-centre {
+    position: relative;
+    flex: 0 0 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
   }
-  .inc-line-both::before {
-    left: -2px;
-    border-right-color: var(--accent);
+  .ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+  }
+  .ring-outer {
+    width: 300px;
+    height: 300px;
+  }
+  .ring-inner {
+    width: 210px;
+    height: 210px;
+    border-color: color-mix(in srgb, var(--accent) 32%, transparent);
+  }
+  .inc-core {
+    position: relative;
+    z-index: 1;
+    background: var(--accent);
+    border-radius: 16px;
+    padding: 20px 30px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .inc-core-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #fff;
+  }
+  .inc-core-sub {
+    margin-top: 4px;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.78);
   }
 
   /* ---- M2 scroll-scrub (enhancement; static layout is the fallback) ---- */
@@ -838,8 +1094,8 @@ const matrix = {
 
   .inc-scrub.scrub-on {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 64px;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    gap: 40px;
     align-items: start;
   }
   .scrub-on .inc-stage {
@@ -847,7 +1103,23 @@ const matrix = {
     top: 14vh;
   }
   .scrub-on .inc-map {
-    padding: 40px 32px;
+    padding: 40px 24px;
+    gap: 8px;
+  }
+  .scrub-on .inc-side {
+    flex-basis: 240px;
+  }
+  .scrub-on .inc-centre {
+    flex-basis: 240px;
+    height: 240px;
+  }
+  .scrub-on .ring-outer {
+    width: 240px;
+    height: 240px;
+  }
+  .scrub-on .ring-inner {
+    width: 170px;
+    height: 170px;
   }
   .scrub-on .inc-steps {
     display: block;
@@ -866,59 +1138,164 @@ const matrix = {
     opacity: 1;
   }
 
-  .inc-side,
-  .inc-centre {
-    transition: opacity 0.3s ease;
-  }
   .scrub-on[data-state='merchants'] .inc-side-p,
+  .scrub-on[data-state='merchants'] .inc-flows-p,
   .scrub-on[data-state='merchants'] .inc-centre {
     opacity: 0.3;
   }
   .scrub-on[data-state='providers'] .inc-side-m,
+  .scrub-on[data-state='providers'] .inc-flows-m,
   .scrub-on[data-state='providers'] .inc-centre {
     opacity: 0.3;
   }
   .scrub-on[data-state='one'] .inc-side-m,
-  .scrub-on[data-state='one'] .inc-side-p {
+  .scrub-on[data-state='one'] .inc-side-p,
+  .scrub-on[data-state='one'] .inc-flows-m,
+  .scrub-on[data-state='one'] .inc-flows-p {
     opacity: 0.45;
   }
-  .scrub-on[data-state='one'] .inc-pill {
-    transform: scale(1.05);
-  }
-  .inc-pill {
-    transition: transform 0.3s ease;
+  .scrub-on[data-state='one'] .inc-core {
+    transform: scale(1.06);
   }
 
-  /* ---- M3 ---- */
+  /* ---- M3: object model + token tiers (HTML figures) ---- */
   .m-para-strong {
     color: var(--ink);
     font-weight: 600;
   }
-  .m3-visuals {
+  .om-card {
     margin-top: 48px;
-    display: grid;
-    grid-template-columns: 700fr 444fr;
-    gap: 32px;
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: var(--r-card);
+    padding: 32px 36px;
   }
-  .m3-placeholder {
+  .om-card + .om-card {
+    margin-top: 32px;
+  }
+  .om-scroll {
+    overflow-x: auto;
+  }
+  .om-chain {
     display: flex;
+    align-items: stretch;
+    gap: 12px;
+    min-width: 900px;
+  }
+  .om-node {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+  .om-node-asset {
+    border: 1.5px solid var(--accent);
+  }
+  .om-accent {
+    color: var(--accent);
+  }
+  .om-name {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .om-desc {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+  }
+  .om-link {
+    flex: 0 0 76px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 420px;
-    border: 2px dashed var(--border);
-    border-radius: var(--r-cell);
-    text-align: center;
-    padding: 40px;
+    gap: 8px;
   }
+  .om-link .flow-line {
+    width: 100%;
+  }
+  .om-link-sub {
+    font-size: 0.6875rem;
+    color: var(--ink-secondary);
+  }
+  .om-ledger {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .om-ledger-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .om-ledger-desc {
+    margin-left: auto;
+    font-size: 0.8125rem;
+    color: var(--ink-secondary);
+  }
+  .om-caption {
+    margin-top: 20px;
+    max-width: 1000px;
+    font-size: var(--fs-small);
+    line-height: 1.6;
+    color: var(--ink-secondary);
+  }
+
+  .tk-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: var(--accent-tint);
+    color: var(--accent);
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+  .om-node .tk-chip {
+    margin-top: 4px;
+  }
+  .tk-chip-solid {
+    background: var(--accent);
+    color: #fff;
+  }
+  .tk-chain {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tk-arrow {
+    color: var(--ink-secondary);
+  }
+
   .m3-rendered {
     margin-top: 56px;
   }
-  .m3-strip {
+  .m3-cells {
     margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
-  .m3-strip :global(img) {
+  .m3-cells .d-cell {
+    aspect-ratio: 320 / 200;
+  }
+  .m3-cells :global(img) {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
   }
 
   /* ---- M4 ---- */
@@ -927,6 +1304,10 @@ const matrix = {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
+  }
+  .m4-pair :global(img) {
+    width: 100%;
+    height: auto;
   }
 
   /* ---- M5 (tint band) ---- */
@@ -942,6 +1323,10 @@ const matrix = {
     grid-template-columns: 460fr 460fr 245fr;
     gap: 32px;
     align-items: start;
+  }
+  .m5-img :global(img) {
+    width: 100%;
+    height: auto;
   }
   .m5-stats {
     display: flex;
@@ -992,22 +1377,32 @@ const matrix = {
     grid-template-columns: 2fr 1fr;
     gap: 24px;
   }
-  .cha-browser {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 56px;
-    min-height: 640px;
+  .cha-browser,
+  .cha-phone {
+    border-radius: var(--r-cell);
+    overflow: hidden;
   }
-  .cha-browser :global(.cha-browser-mock) {
-    width: 100%;
-    max-width: 680px;
+  /* the browser scene sets the row height (his 792/640 cell), the phone
+     scene stretches to match and crop-fills its near-identical ratio */
+  .cha-browser {
+    aspect-ratio: 792 / 640;
   }
   .cha-phone {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 56px 24px;
+    position: relative;
+  }
+  .cha-browser :global(picture) {
+    display: block;
+    height: 100%;
+  }
+  .cha-phone :global(picture) {
+    position: absolute;
+    inset: 0;
+  }
+  .cha-browser :global(img),
+  .cha-phone :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .zig {
@@ -1038,40 +1433,17 @@ const matrix = {
     flex-direction: row-reverse;
   }
 
-  .chc-scene {
+  /* scrollable full-page landing (the BLUFF landing-scroll pattern) */
+  .chc-scroll {
     margin-top: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 80px;
-    min-height: 520px;
+    height: 640px;
+    overflow-y: auto;
+    border-radius: var(--r-cell);
+    overscroll-behavior: contain;
   }
-  .chc-placeholder {
+  .chc-scroll :global(img) {
     width: 100%;
-    max-width: 880px;
-    min-height: 420px;
-    background: var(--surface);
-    border-radius: 12px;
-    box-shadow: var(--shadow-exhibit);
-    display: flex;
-    flex-direction: column;
-  }
-  .browser-bar-ph {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    height: 42px;
-    padding-left: 18px;
-    border-bottom: 1px solid var(--border);
-  }
-  .browser-bar-ph span {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--border);
-  }
-  .chc-placeholder .d-caps {
-    margin: auto;
+    height: auto;
   }
 
   .chd-bento {
@@ -1080,23 +1452,9 @@ const matrix = {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
-  .chd-cell {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 24px;
-    min-height: 640px;
-  }
-  .chd-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 279px;
-    aspect-ratio: 270 / 567;
-    border: 2px dashed var(--border-on-tint);
-    border-radius: 32px;
-    padding: 20px;
-    text-align: center;
+  .chd-cell :global(img) {
+    width: 100%;
+    height: auto;
   }
 
   /* ---- M6 limitation: its own room, a full viewport before any CTA ---- */
@@ -1129,7 +1487,6 @@ const matrix = {
       grid-column: auto;
       grid-row: auto;
     }
-    .kv-dir,
     .kv-cell {
       aspect-ratio: auto;
     }
@@ -1143,21 +1500,48 @@ const matrix = {
     .inc-map {
       flex-direction: column;
       align-items: center;
-      padding: 32px 24px;
-      gap: 32px;
+      padding: 32px 20px;
+      gap: 28px;
+      min-height: 0;
+    }
+    .inc-side {
+      flex-basis: auto;
+      width: 100%;
+    }
+    .inc-flows {
+      display: none;
+    }
+    .inc-centre {
+      flex-basis: auto;
+      height: 200px;
+    }
+    .ring-outer {
+      width: 200px;
+      height: 200px;
+    }
+    .ring-inner {
+      width: 140px;
+      height: 140px;
     }
     .inc-steps {
       grid-template-columns: 1fr;
       gap: 16px;
     }
-    .inc-line {
-      display: none;
+    .om-card {
+      padding: 20px;
     }
-    .m3-visuals {
+    .om-ledger-desc {
+      margin-left: 0;
+    }
+    .m3-cells {
       grid-template-columns: 1fr;
     }
-    .m3-placeholder {
-      min-height: 260px;
+    .m3-cells .d-cell {
+      aspect-ratio: auto;
+    }
+    .m3-cells :global(img) {
+      height: auto;
+      object-fit: contain;
     }
     .m4-pair {
       grid-template-columns: 1fr;
@@ -1173,12 +1557,9 @@ const matrix = {
     .cha-bento {
       grid-template-columns: 1fr;
     }
-    .cha-browser {
-      min-height: 0;
-      padding: 24px;
-    }
+    /* stacked: the absolute phone scene has no row to fill — use its ratio */
     .cha-phone {
-      padding: 40px 24px;
+      aspect-ratio: 1914 / 2400;
     }
     .zig-row,
     .zig-row-flip {
@@ -1193,19 +1574,11 @@ const matrix = {
     .zig-caption {
       max-width: none;
     }
-    .chc-scene {
-      padding: 24px;
-      min-height: 0;
-    }
-    .chc-placeholder {
-      min-height: 260px;
+    .chc-scroll {
+      height: 480px;
     }
     .chd-bento {
       grid-template-columns: 1fr;
-    }
-    .chd-cell {
-      min-height: 0;
-      padding: 40px 24px;
     }
     .m6 {
       padding-top: 72px;

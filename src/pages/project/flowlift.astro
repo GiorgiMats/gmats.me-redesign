@@ -6,24 +6,29 @@ import SandwichClose from '../../components/SandwichClose.astro';
 import { cases } from '../../data/cases';
 import '../../styles/dossier.css';
 
-import heroExh from '../../assets/flowlift/hero.png';
-import workflow from '../../assets/flowlift/workflow.png';
-import dsAtoms from '../../assets/flowlift/ds-atoms.png';
-import dsMolecules from '../../assets/flowlift/ds-molecules.png';
-import leakRanking from '../../assets/flowlift/leak-ranking.png';
-import leakDetail from '../../assets/flowlift/leak-detail.png';
-import proof from '../../assets/flowlift/proof.png';
-import copilot from '../../assets/flowlift/copilot.png';
-import tablet from '../../assets/flowlift/tablet.png';
-import ios from '../../assets/flowlift/ios.png';
-import lockscreen from '../../assets/flowlift/lockscreen.png';
-import onboarding from '../../assets/flowlift/onboarding.png';
-import closeBrowser from '../../assets/flowlift/close-browser.png';
-import closePhone from '../../assets/flowlift/close-phone.png';
-import closeCell1 from '../../assets/flowlift/close-cell1.png';
-import closeCell2 from '../../assets/flowlift/close-cell2.png';
+import mockHero from '../../assets/flowlift/mock-hero.png';
+import mockZigA from '../../assets/flowlift/mock-zig-a.png';
+import mockZigB from '../../assets/flowlift/mock-zig-b.png';
+import mockSystem from '../../assets/flowlift/mock-system.png';
+import mockProof from '../../assets/flowlift/mock-proof.png';
+import mockCopilot from '../../assets/flowlift/mock-copilot.png';
+import mockTablet from '../../assets/flowlift/mock-tablet.png';
+import mockPhoneA from '../../assets/flowlift/mock-phone-a.png';
+import mockPhoneB from '../../assets/flowlift/mock-phone-b.png';
+import mockOnboarding from '../../assets/flowlift/mock-onboarding.png';
+import marketingFull1 from '../../assets/flowlift/marketing-full-1.png';
+import marketingFull2 from '../../assets/flowlift/marketing-full-2.png';
 
 const c = cases.flowlift;
+
+const wfStages = [
+  { t: 'Brief', sub: 'the problem, the scope, the bar' },
+  { t: 'Research swarm', sub: 'many agents + adversarial skeptics' },
+  { t: 'I lock strategy', sub: 'the call only I can make', gate: true },
+  { t: 'Design system', sub: 'tokens, then components' },
+  { t: 'Screens', sub: 'built to consume the system' },
+  { t: 'Adversarial QA', sub: 'reviewers hunt for defects' },
+];
 ---
 
 <Base title={c.metaTitle} description={c.metaDescription} caseTheme="flowlift" ogImage="/og/flowlift.png">
@@ -84,13 +89,13 @@ const c = cases.flowlift;
   <!-- hero exhibit -->
   <section class="container fl-hero-exh">
     <figure>
-      <div class="d-cell exhibit" style="view-transition-name: cover-flowlift">
+      <div class="d-cell" style="view-transition-name: cover-flowlift">
         <Picture
-          src={heroExh}
-          widths={[720, 1200, 2400]}
+          src={mockHero}
+          widths={[792, 1584]}
           sizes="(max-width: 900px) 100vw, 1200px"
           formats={['avif', 'webp']}
-          alt="The FlowLift dashboard rendered on InvoicePilot, the invented customer"
+          alt="The FlowLift dashboard staged in a browser, rendered on InvoicePilot, the invented customer"
           loading="eager"
           fetchpriority="high"
         />
@@ -119,15 +124,26 @@ const c = cases.flowlift;
       Keep your stack, we tell you what to fix.
     </p>
     <figure class="fl-wide">
-      <div class="d-cell exhibit">
-        <Picture
-          src={workflow}
-          widths={[720, 1200, 2400]}
-          sizes="(max-width: 900px) 100vw, 1200px"
-          formats={['avif', 'webp']}
-          alt="The week's workflow strip: every path runs through a judgment gate"
-          loading="lazy"
-        />
+      <div class="wf-board">
+        <div class="wf-track">
+          {
+            wfStages.map((stage, i) => (
+              <>
+                {i > 0 && (
+                  <span class="wf-arrow" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M2 9h13m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                )}
+                <span class:list={['wf-stage', { 'wf-gate': stage.gate }]}>
+                  <span class="wf-stage-t">{stage.t}</span>
+                  <span class="wf-stage-s">{stage.sub}</span>
+                </span>
+              </>
+            ))
+          }
+        </div>
       </div>
       <figcaption class="fig-caption">
         FIG. 02 · THE WEEK’S WORKFLOW — EVERY PATH RUNS THROUGH A JUDGMENT GATE
@@ -152,30 +168,18 @@ const c = cases.flowlift;
       <strong>was killed on day one</strong>: faster for the first twenty screens, unmaintainable
       by the sixtieth. When a component changed, sixty screens changed with it.
     </p>
-    <div class="fl-bento-2">
-      <div class="d-cell exhibit">
-        <Picture
-          src={dsAtoms}
-          widths={[588, 1176]}
-          sizes="(max-width: 900px) 100vw, 588px"
-          formats={['avif', 'webp']}
-          alt="FlowLift atoms with full state coverage"
-          loading="lazy"
-        />
-      </div>
-      <div class="d-cell exhibit">
-        <Picture
-          src={dsMolecules}
-          widths={[588, 1176]}
-          sizes="(max-width: 900px) 100vw, 588px"
-          formats={['avif', 'webp']}
-          alt="FlowLift molecules assembled from approved atoms"
-          loading="lazy"
-        />
-      </div>
+    <div class="fl-scene d-cell">
+      <Picture
+        src={mockSystem}
+        widths={[800, 1600]}
+        sizes="(max-width: 900px) 100vw, 1104px"
+        formats={['avif', 'webp']}
+        alt="The atoms sheet from the design system, staged on the case green: buttons, inputs, selects and states, token-bound"
+        loading="lazy"
+      />
     </div>
     <p class="fig-caption">
-      FIG. 03 · ATOMS AND MOLECULES — FULL STATE COVERAGE BEFORE A SINGLE SCREEN
+      FIG. 03 · THE ATOMS — EVERY STATE, TOKEN-BOUND, BEFORE A SINGLE SCREEN
     </p>
   </section>
 
@@ -200,13 +204,13 @@ const c = cases.flowlift;
     </p>
     <div class="zig">
       <div class="zig-row">
-        <div class="d-cell exhibit zig-img">
+        <div class="d-cell zig-img">
           <Picture
-            src={leakRanking}
+            src={mockZigA}
             widths={[760, 1520]}
             sizes="(max-width: 900px) 100vw, 760px"
             formats={['avif', 'webp']}
-            alt="The leak ranking: every leak is a row with a dollar figure"
+            alt="The leak ranking staged in a browser: every leak is a row with a dollar figure and an owner"
             loading="lazy"
           />
         </div>
@@ -219,13 +223,13 @@ const c = cases.flowlift;
         </div>
       </div>
       <div class="zig-row zig-row-flip">
-        <div class="d-cell exhibit zig-img">
+        <div class="d-cell zig-img">
           <Picture
-            src={leakDetail}
+            src={mockZigB}
             widths={[760, 1520]}
             sizes="(max-width: 900px) 100vw, 760px"
             formats={['avif', 'webp']}
-            alt="Leak detail with the activation-path diagram"
+            alt="The leak detail staged in a browser, with the activation-path diagram and cohort heatmap"
             loading="lazy"
           />
         </div>
@@ -239,23 +243,23 @@ const c = cases.flowlift;
       </div>
     </div>
     <div class="fl-bento-2">
-      <div class="d-cell exhibit">
+      <div class="d-cell">
         <Picture
-          src={proof}
+          src={mockProof}
           widths={[588, 1176]}
           sizes="(max-width: 900px) 100vw, 588px"
           formats={['avif', 'webp']}
-          alt="Fix proof: treated versus control"
+          alt="The fix proof staged in a browser: treated versus control, with the shipped nudge beside the chart"
           loading="lazy"
         />
       </div>
-      <div class="d-cell exhibit">
+      <div class="d-cell">
         <Picture
-          src={copilot}
+          src={mockCopilot}
           widths={[588, 1176]}
           sizes="(max-width: 900px) 100vw, 588px"
           formats={['avif', 'webp']}
-          alt="The copilot: an assistant that shows its sources"
+          alt="The copilot staged in a browser: an answer with its sources and audit trail listed"
           loading="lazy"
         />
       </div>
@@ -281,50 +285,75 @@ const c = cases.flowlift;
       <strong>Which platform was allowed to be ugly was decided on day one</strong>, before a
       single screen could argue about it.
     </p>
-    <div class="fl-platforms">
-      <div class="d-cell exhibit fl-plat-tall">
+    <div class="fl-bento-2">
+      <div class="d-cell">
         <Picture
-          src={tablet}
-          widths={[486, 972]}
-          sizes="(max-width: 900px) 100vw, 486px"
+          src={mockTablet}
+          widths={[588, 1176]}
+          sizes="(max-width: 900px) 100vw, 588px"
           formats={['avif', 'webp']}
-          alt="FlowLift on tablet"
+          alt="The dashboard on a tablet, staged"
           loading="lazy"
         />
       </div>
-      <div class="fl-plat-col">
-        <div class="d-cell exhibit">
-          <Picture
-            src={ios}
-            widths={[690, 1380]}
-            sizes="(max-width: 900px) 100vw, 690px"
-            formats={['avif', 'webp']}
-            alt="FlowLift native iOS dashboard"
-            loading="lazy"
-          />
-        </div>
-        <div class="d-cell exhibit">
-          <Picture
-            src={lockscreen}
-            widths={[690, 1380]}
-            sizes="(max-width: 900px) 100vw, 690px"
-            formats={['avif', 'webp']}
-            alt="The lock-screen live activity"
-            loading="lazy"
-          />
-        </div>
+      <div class="d-cell">
+        <Picture
+          src={mockPhoneA}
+          widths={[588, 1176]}
+          sizes="(max-width: 900px) 100vw, 588px"
+          formats={['avif', 'webp']}
+          alt="The dashboard on a phone, staged"
+          loading="lazy"
+        />
       </div>
     </div>
-    <p class="fig-caption">FIG. 07 · TABLET, NATIVE IOS, AND THE LOCK-SCREEN LIVE ACTIVITY</p>
+    <p class="fig-caption">FIG. 07 · TABLET AND MOBILE — ONE GRAMMAR AT EVERY WIDTH</p>
   </section>
 
   <!-- LOG 05 -->
   <div class="log container cv-auto">
     <div class="log-left">
       <span class="log-num tnum">LOG 05</span>
-      <span class="log-name">The honest week</span>
+      <span class="log-name">The public face</span>
     </div>
     <span class="log-ghost tnum" aria-hidden="true">05</span>
+  </div>
+  <section class="fl-body container cv-auto">
+    <h2 class="m-claim">The pitch is the product’s own words.</h2>
+    <p class="m-para">
+      The surviving thesis became the homepage, almost word for word: keep your stack, we tell
+      you what to fix. The marketing site is drawn from the same tokens and components as the
+      product, and the numbers on it are InvoicePilot’s, labelled invented like everything else.
+      <strong>One system draws the product and the pitch.</strong>
+    </p>
+    <div class="d-cell exhibit fl-landing-scroll" tabindex="0" role="region" aria-label="The full marketing landing page, scrollable">
+      <Picture
+        src={marketingFull1}
+        widths={[792, 1584]}
+        sizes="(max-width: 900px) 100vw, 1104px"
+        formats={['avif', 'webp']}
+        alt="The marketing landing page, upper half: the activation-layer pitch, the leak diagram and the product tour"
+        loading="lazy"
+      />
+      <Picture
+        src={marketingFull2}
+        widths={[792, 1584]}
+        sizes="(max-width: 900px) 100vw, 1104px"
+        formats={['avif', 'webp']}
+        alt="The marketing landing page, lower half: proof, pricing and the closing call to connect a data source"
+        loading="lazy"
+      />
+    </div>
+    <p class="fig-caption">FIG. 08 · THE MARKETING SITE, IN FULL — SCROLL THE FRAME</p>
+  </section>
+
+  <!-- LOG 06 -->
+  <div class="log container cv-auto">
+    <div class="log-left">
+      <span class="log-num tnum">LOG 06</span>
+      <span class="log-name">The honest week</span>
+    </div>
+    <span class="log-ghost tnum" aria-hidden="true">06</span>
   </div>
   <section class="fl-body container cv-auto">
     <h2 class="m-claim">The AI was fast and frequently wrong.</h2>
@@ -362,21 +391,21 @@ const c = cases.flowlift;
     </div>
     <div class="zig">
       <div class="zig-row">
-        <div class="d-cell exhibit zig-img">
+        <div class="d-cell zig-img">
           <Picture
-            src={onboarding}
+            src={mockOnboarding}
             widths={[760, 1520]}
             sizes="(max-width: 900px) 100vw, 760px"
             formats={['avif', 'webp']}
-            alt="Onboarding's last screen with Lift, the mascot"
+            alt="Onboarding's payoff staged in a browser: the number one revenue leak found, stated in dollars"
             loading="lazy"
           />
         </div>
         <div class="zig-cap">
-          <p class="d-caps">FIG. 08 · ONBOARDING’S LAST SCREEN</p>
+          <p class="d-caps">FIG. 09 · ONBOARDING’S PAYOFF</p>
           <p>
-            Lift, the mascot, appears only at milestones. Personality was designed, not
-            defaulted, and it stays out of the way the rest of the time.
+            In 38 seconds, reading data the customer already had: the number one leak, in
+            dollars, with the fix one click away. No new SDK, and nothing to configure first.
           </p>
         </div>
       </div>
@@ -397,14 +426,16 @@ const c = cases.flowlift;
 
   <SandwichClose
     slug="flowlift"
-    browserScreen={closeBrowser}
-    browserAlt="The FlowLift dashboard on desktop"
-    phoneScreen={closePhone}
-    phoneAlt="FlowLift on mobile"
-    cell1={closeCell1}
-    cell1Alt="FlowLift screen detail"
-    cell2={closeCell2}
-    cell2Alt="FlowLift screen detail"
+    stagedBrowser={true}
+    phoneFill={true}
+    browserScreen={mockHero}
+    browserAlt="The FlowLift dashboard staged in a browser"
+    phoneScreen={mockPhoneA}
+    phoneAlt="The dashboard on a phone, staged"
+    cell1={mockPhoneB}
+    cell1Alt="Adding a data source on mobile, staged"
+    cell2={mockZigB}
+    cell2Alt="The leak detail staged in a browser"
     signoffCaps="SEVEN DAYS · NO USERS, SAID TWICE"
     chips={['~60 SCREENS · 4 PLATFORMS', 'SYSTEM BEFORE SCREENS', 'NO USERS · INVENTED DATA']}
     nextClaim="BLUFF. Fifteen months on a real casino’s money flows."
@@ -559,6 +590,83 @@ const c = cases.flowlift;
     gap: 24px;
   }
 
+  .fl-scene {
+    margin-top: 48px;
+  }
+  .fl-scene :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ---- the week's workflow, drawn in code so it reflows on mobile ---- */
+  .wf-board {
+    background: #101210;
+    border-radius: var(--r-cell);
+    padding: clamp(28px, 4vw, 56px) clamp(20px, 3vw, 44px);
+  }
+  .wf-track {
+    border: 1px solid #262a20;
+    border-radius: 16px;
+    padding: clamp(20px, 3vw, 40px) clamp(16px, 2vw, 28px);
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .wf-stage {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    border: 1px solid #33372c;
+    border-radius: 12px;
+    padding: 18px 12px;
+  }
+  .wf-stage-t {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #f2f2ef;
+    letter-spacing: -0.01em;
+  }
+  .wf-stage-s {
+    font-size: 0.78125rem;
+    line-height: 1.45;
+    color: #8b8e85;
+  }
+  .wf-gate {
+    border-color: #a0f554;
+    background: rgba(160, 245, 84, 0.05);
+    box-shadow: 0 0 28px rgba(160, 245, 84, 0.16);
+  }
+  .wf-gate .wf-stage-s {
+    color: #a0f554;
+  }
+  .wf-arrow {
+    align-self: center;
+    flex: 0 0 auto;
+    display: flex;
+    color: #69b12a;
+  }
+
+  /* the full marketing page inside a fixed window — scroll to read it all */
+  .fl-landing-scroll {
+    margin-top: 48px;
+    max-height: 760px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .fl-landing-scroll :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .fl-landing-scroll:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
   .zig {
     margin-top: 48px;
     display: flex;
@@ -590,23 +698,6 @@ const c = cases.flowlift;
     color: var(--ink-secondary);
   }
 
-  .fl-platforms {
-    margin-top: 48px;
-    display: grid;
-    grid-template-columns: 486fr 690fr;
-    gap: 24px;
-  }
-  .fl-plat-col {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
-  .fl-plat-tall :global(img),
-  .fl-plat-col :global(img) {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 
   /* ---- split table (machine layer stays commodity-quiet) ---- */
   .split-table {
@@ -692,9 +783,18 @@ const c = cases.flowlift;
       -webkit-text-stroke-width: 1.5px;
     }
     .fl-bento-2,
-    .fl-platforms,
     .split-table {
       grid-template-columns: 1fr;
+    }
+    .wf-track {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .wf-arrow {
+      transform: rotate(90deg);
+    }
+    .fl-landing-scroll {
+      max-height: 540px;
     }
     .zig-row,
     .zig-row-flip {

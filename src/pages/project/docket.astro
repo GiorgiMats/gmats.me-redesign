@@ -6,22 +6,19 @@ import SandwichClose from '../../components/SandwichClose.astro';
 import { cases } from '../../data/cases';
 import '../../styles/dossier.css';
 
-import heroExh from '../../assets/docket/hero.png';
-import reviewView from '../../assets/docket/review-view.png';
-import claimFull from '../../assets/docket/claim-full.png';
-import citedLine from '../../assets/docket/cited-line.png';
-import fail1 from '../../assets/docket/fail-1.png';
-import fail2 from '../../assets/docket/fail-2.png';
-import fail3 from '../../assets/docket/fail-3.png';
-import fail4 from '../../assets/docket/fail-4.png';
-import inkMode from '../../assets/docket/ink-mode.png';
-import sealedRecord from '../../assets/docket/sealed-record.png';
-import twoClocks from '../../assets/docket/two-clocks.png';
-import masterStyle from '../../assets/docket/master-style.png';
-import closeBrowser from '../../assets/docket/close-browser.png';
-import closePhone from '../../assets/docket/close-phone.png';
-import closeCell1 from '../../assets/docket/close-cell1.png';
-import closeCell2 from '../../assets/docket/close-cell2.png';
+import mockHero from '../../assets/docket/mock-hero.png';
+import mockZigA from '../../assets/docket/mock-zig-a.png';
+import mockZigB from '../../assets/docket/mock-zig-b.png';
+import mockRecord from '../../assets/docket/mock-record.png';
+import mockWide from '../../assets/docket/mock-wide.png';
+import mockFail1 from '../../assets/docket/mock-fail-1.png';
+import mockFail2 from '../../assets/docket/mock-fail-2.png';
+import mockFail3 from '../../assets/docket/mock-fail-3.png';
+import mockFail4 from '../../assets/docket/mock-fail-4.png';
+import mockMaster from '../../assets/docket/mock-master.png';
+import mockCloseBrowser from '../../assets/docket/mock-close-browser.png';
+import mockPhoneCell from '../../assets/docket/mock-phone-cell.png';
+import mockPhoneWide from '../../assets/docket/mock-phone-wide.png';
 
 const c = cases.docket;
 
@@ -76,13 +73,13 @@ const dod = [
   <!-- hero exhibit -->
   <section class="container dk-hero-exh">
     <figure>
-      <div class="d-cell exhibit" style="view-transition-name: cover-docket">
+      <div class="d-cell" style="view-transition-name: cover-docket">
         <Picture
-          src={heroExh}
-          widths={[720, 1200, 2400]}
+          src={mockHero}
+          widths={[792, 1584]}
           sizes="(max-width: 900px) 100vw, 1200px"
           formats={['avif', 'webp']}
-          alt="The Docket queue: every case, its flags, and where the work stands"
+          alt="The Docket queue staged in a browser: every case, its flags, and where the work stands"
           loading="eager"
           fetchpriority="high"
         />
@@ -115,13 +112,13 @@ const dod = [
     </p>
     <div class="zig">
       <div class="zig-row">
-        <div class="d-cell exhibit zig-img">
+        <div class="d-cell zig-img">
           <Picture
-            src={reviewView}
+            src={mockZigA}
             widths={[760, 1520]}
             sizes="(max-width: 900px) 100vw, 760px"
             formats={['avif', 'webp']}
-            alt="The Docket review view: claims on the left, evidence on the right"
+            alt="The Docket review view staged in a tilted browser: claims on the left, evidence on the right"
             loading="lazy"
           />
         </div>
@@ -130,25 +127,6 @@ const dod = [
           <p>
             Claims on the left, the evidence on the right. The analyst works through statements,
             not documents, and the screen keeps both in view.
-          </p>
-        </div>
-      </div>
-      <div class="zig-row zig-row-flip">
-        <div class="d-cell exhibit zig-img">
-          <Picture
-            src={claimFull}
-            widths={[760, 1520]}
-            sizes="(max-width: 900px) 100vw, 760px"
-            formats={['avif', 'webp']}
-            alt="One claim in full: statement, citations and decision constraint"
-            loading="lazy"
-          />
-        </div>
-        <div class="zig-cap">
-          <p class="d-caps">FIG. 03 · ONE CLAIM, IN FULL</p>
-          <p>
-            A statement, its citations, and the decision constraint it carries. The verdict
-            belongs to a person, the model only reports what it read.
           </p>
         </div>
       </div>
@@ -175,18 +153,18 @@ const dod = [
       review earns trust by showing its work, not by being sure.
     </p>
     <figure class="dk-wide">
-      <div class="d-cell exhibit">
+      <div class="d-cell">
         <Picture
-          src={citedLine}
-          widths={[720, 1200, 2400]}
+          src={mockRecord}
+          widths={[792, 1584, 2400]}
           sizes="(max-width: 900px) 100vw, 1200px"
           formats={['avif', 'webp']}
-          alt="A cited line highlighted at source with the OCR boundary visible"
+          alt="The record view staged in a browser: every claim as answered, with dwell times, sources and who asserted what"
           loading="lazy"
         />
       </div>
       <figcaption class="fig-caption">
-        FIG. 04 · THE CITED LINE — HIGHLIGHTED AT SOURCE, OCR BOUNDARY VISIBLE
+        FIG. 03 · WHAT THE MECHANIC LEAVES BEHIND — EVERY VERDICT WITH ITS SOURCE AND DWELL TIME
       </figcaption>
     </figure>
   </section>
@@ -211,12 +189,12 @@ const dod = [
     <div class="fail-bento">
       {
         [
-          { img: fail1, alt: 'Failure state: analyst override, model reading preserved' },
-          { img: fail2, alt: 'Failure state: a citation that will not resolve' },
-          { img: fail3, alt: 'Failure state: two sources that conflict' },
-          { img: fail4, alt: 'Failure state: a rule that changed mid-case' },
+          { img: mockFail1, alt: 'Failure state staged in a browser: analyst override, model reading preserved' },
+          { img: mockFail2, alt: 'Failure state staged in a browser: a citation that will not resolve' },
+          { img: mockFail3, alt: 'Failure state staged in a browser: two sources that conflict' },
+          { img: mockFail4, alt: 'Failure state staged in a browser: a rule that changed mid-case' },
         ].map((f) => (
-          <div class="d-cell exhibit">
+          <div class="d-cell">
             <Picture
               src={f.img}
               widths={[588, 1176]}
@@ -230,26 +208,26 @@ const dod = [
       }
     </div>
     <p class="fig-caption">
-      FIG. 05 · OVERRIDE · UNRESOLVABLE CITATION · CONFLICTING SOURCES · RULE CHANGED
+      FIG. 04 · OVERRIDE · UNRESOLVABLE CITATION · CONFLICTING SOURCES · RULE CHANGED
     </p>
   </section>
   <section class="dk-ink cv-auto">
     <div class="container">
       <div class="zig-row">
-        <div class="d-cell zig-img">
+        <div class="d-cell zig-img zig-img-mock">
           <Picture
-            src={inkMode}
+            src={mockZigB}
             widths={[760, 1520]}
             sizes="(max-width: 900px) 100vw, 760px"
             formats={['avif', 'webp']}
-            alt="Docket's dark mode: the same record in the ink theme"
+            alt="Docket's dark mode staged in a browser: the queue in the ink theme"
             loading="lazy"
           />
         </div>
         <div class="zig-cap zig-cap-ink">
-          <p class="d-caps dk-ink-label">FIG. 06 · INK</p>
+          <p class="d-caps dk-ink-label">FIG. 05 · INK</p>
           <p>
-            The console’s dark mode is a first-class theme, not an afterthought: the same record,
+            The console’s dark mode is a first-class theme, not an afterthought: the same console,
             44 frames audited in both modes, 3,560 contrast checks, zero failures.
           </p>
         </div>
@@ -278,40 +256,22 @@ const dod = [
     </p>
     <div class="zig">
       <div class="zig-row">
-        <div class="d-cell exhibit zig-img">
+        <div class="d-cell zig-img">
           <Picture
-            src={sealedRecord}
+            src={mockWide}
             widths={[760, 1520]}
             sizes="(max-width: 900px) 100vw, 760px"
             formats={['avif', 'webp']}
-            alt="The sealed record: time-ordered, versioned, signed twice"
+            alt="The request-evidence dialog staged in a browser: what it asks, what it does to the clocks, and the tipping-off note"
             loading="lazy"
           />
         </div>
         <div class="zig-cap">
-          <p class="d-caps">FIG. 07 · THE SEALED RECORD</p>
+          <p class="d-caps">FIG. 06 · THE EVIDENCE REQUEST</p>
           <p>
-            Time-ordered, versioned, signed twice. This page is what the analyst hands a reviewer
-            months later, and it answers the question before it is asked.
-          </p>
-        </div>
-      </div>
-      <div class="zig-row zig-row-flip">
-        <div class="d-cell exhibit zig-img">
-          <Picture
-            src={twoClocks}
-            widths={[760, 1520]}
-            sizes="(max-width: 900px) 100vw, 760px"
-            formats={['avif', 'webp']}
-            alt="The reporting officer's view with the two statutory clocks"
-            loading="lazy"
-          />
-        </div>
-        <div class="zig-cap">
-          <p class="d-caps">FIG. 08 · THE TWO CLOCKS</p>
-          <p>
-            The reporting officer’s view: statutory deadlines as timelines, not as tribal
-            knowledge. The law sits in the interface, where it is hardest to forget.
+            Asking a player for a document, with the consequences on the surface: what it asks
+            for, what it does to each clock, and the tipping-off rule keyed off the state of the
+            case. The law sits in the interface, where it is hardest to forget.
           </p>
         </div>
       </div>
@@ -350,9 +310,9 @@ const dod = [
       </div>
     </div>
     <figure class="dk-wide">
-      <div class="d-cell exhibit">
+      <div class="d-cell">
         <Picture
-          src={masterStyle}
+          src={mockMaster}
           widths={[720, 1200, 2400]}
           sizes="(max-width: 900px) 100vw, 1200px"
           formats={['avif', 'webp']}
@@ -361,7 +321,7 @@ const dod = [
         />
       </div>
       <figcaption class="fig-caption">
-        FIG. 09 · THE MASTER STYLE FRAME — TOKENS, TYPE AND BOTH MODES ON ONE SHEET
+        FIG. 07 · THE MASTER STYLE FRAME — TOKENS, TYPE AND BOTH MODES ON ONE SHEET
       </figcaption>
     </figure>
   </section>
@@ -390,14 +350,16 @@ const dod = [
 
   <SandwichClose
     slug="docket"
-    browserScreen={closeBrowser}
-    browserAlt="The Docket queue on desktop"
-    phoneScreen={closePhone}
-    phoneAlt="Docket on mobile"
-    cell1={closeCell1}
-    cell1Alt="Docket review view detail"
-    cell2={closeCell2}
-    cell2Alt="Docket case record detail"
+    stagedBrowser={true}
+    phoneFill={true}
+    browserScreen={mockCloseBrowser}
+    browserAlt="The escalations queue staged in a browser"
+    phoneScreen={mockPhoneCell}
+    phoneAlt="The Docket queue on mobile, staged"
+    cell1={mockPhoneWide}
+    cell1Alt="The Docket queue on a phone, staged wide"
+    cell2={mockZigA}
+    cell2Alt="The review view staged in a browser"
     signoffCaps="SELF-INITIATED · THE RECORD IS THE PRODUCT"
     chips={['CLAIMS AS THE ATOM', 'FIVE FAILURE STATES, PRESERVED', '3,560 CHECKS · 0 FAILURES']}
     nextClaim="FlowLift. Sixty screens in seven days, with every decision argued."
@@ -564,6 +526,10 @@ const dod = [
     border-radius: var(--r-cell);
     outline: 1px solid rgba(255, 255, 255, 0.08);
     outline-offset: -1px;
+  }
+  /* staged scenes carry their own stage — no hairline on top */
+  .dk-ink .zig-img-mock :global(img) {
+    outline: none;
   }
   .dk-ink-label {
     color: var(--accent-bright);

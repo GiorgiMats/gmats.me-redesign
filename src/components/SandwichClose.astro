@@ -3,7 +3,6 @@ import { Picture } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import Icon from './Icon.astro';
 import BrowserMockup from './BrowserMockup.astro';
-import PhoneMockup from './PhoneMockup.astro';
 import ArtefactButtons from './ArtefactButtons.astro';
 import { cases, type CaseMeta } from '../data/cases';
 import { SITE } from '../data/site';
@@ -30,6 +29,10 @@ interface Props {
   chips: string[];
   /** Per-page next-case line (each Figma frame words it differently). */
   nextClaim?: string;
+  /** browserScreen is a self-contained staged scene — render it plain, no CSS chrome. */
+  stagedBrowser?: boolean;
+  /** phoneScreen is sized for the cell — fill it edge to edge instead of centring. */
+  phoneFill?: boolean;
 }
 
 const {
@@ -45,6 +48,8 @@ const {
   signoffCaps,
   chips,
   nextClaim,
+  stagedBrowser = false,
+  phoneFill = false,
 } = Astro.props;
 
 const covers = {
@@ -68,10 +73,32 @@ const next = cases[c.next];
 <section class="close cv-auto">
   <div class="collage container">
     <div class="collage-browser">
-      <BrowserMockup screen={browserScreen} alt={browserAlt} />
+      {
+        stagedBrowser ? (
+          <div class="collage-browser-staged">
+            <Picture
+              src={browserScreen}
+              widths={[736, 1472]}
+              sizes="(max-width: 900px) 100vw, 736px"
+              formats={['avif', 'webp']}
+              alt={browserAlt}
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <BrowserMockup screen={browserScreen} alt={browserAlt} />
+        )
+      }
     </div>
-    <div class="collage-phone-cell">
-      <PhoneMockup screen={phoneScreen} alt={phoneAlt} width="300px" class="collage-phone" />
+    <div class:list={['collage-phone-cell', { 'collage-phone-fill': phoneFill }]}>
+      <Picture
+        src={phoneScreen}
+        widths={phoneFill ? [384, 768] : [261, 522]}
+        sizes={phoneFill ? '(max-width: 900px) 100vw, 384px' : '(max-width: 900px) 60vw, 240px'}
+        formats={['avif', 'webp']}
+        alt={phoneAlt}
+        loading="lazy"
+      />
     </div>
     <div class="collage-cell exhibit">
       <Picture
@@ -154,18 +181,42 @@ const next = cases[c.next];
   .collage-browser {
     grid-column: 1 / 3;
   }
-  .collage-phone-cell {
-    position: relative;
-    background: var(--accent-tint);
+  .collage-browser-staged {
     border-radius: var(--r-cell);
     overflow: hidden;
-    min-height: 400px;
   }
-  .collage-phone-cell :global(.collage-phone) {
-    position: absolute;
-    left: 50%;
-    top: 15%;
-    transform: translateX(-50%) rotate(8deg);
+  .collage-browser-staged :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  /* self-contained phone scene: frame, shadow and stage live in the image */
+  .collage-phone-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collage-phone-cell :global(img) {
+    width: 62%;
+    max-width: 240px;
+    height: auto;
+    border-radius: var(--r-cell);
+  }
+  /* the scene is cut for this exact cell — fill it edge to edge */
+  .collage-phone-fill {
+    border-radius: var(--r-cell);
+    overflow: hidden;
+  }
+  .collage-phone-fill :global(picture) {
+    width: 100%;
+    height: 100%;
+  }
+  .collage-phone-fill :global(img) {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    border-radius: 0;
   }
   .collage-cell {
     border-radius: var(--r-cell);
@@ -319,8 +370,17 @@ const next = cases[c.next];
     .collage-browser {
       grid-column: auto;
     }
-    .collage-phone-cell {
-      min-height: 360px;
+    .collage-phone-cell :global(img) {
+      width: 56%;
+      max-width: 220px;
+    }
+    /* stacked: the fill cell has no row to inherit height from — use the scene's ratio */
+    .collage-phone-fill {
+      aspect-ratio: 957 / 1200;
+    }
+    .collage-phone-fill :global(img) {
+      width: 100%;
+      max-width: none;
     }
     .next-case {
       flex-direction: column;
