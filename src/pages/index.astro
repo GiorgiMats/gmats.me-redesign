@@ -73,21 +73,10 @@ const description =
         aspect="4 / 3"
         start={30}
       />
-      <figcaption class="band-label caps-sm">PAYMENTX · FIG. 01 · THE PUBLIC LANDING</figcaption>
-      <p class="band-basis caps-sm" aria-hidden="true">REAL PRODUCT SCREENS · NOT MOCKUPS</p>
-      <div class="band-stat" role="img" aria-label="Checkout drop: 14% before, 0 after the inline call">
-        <p class="caps-sm stat-label">CHECKOUT DROP</p>
-        <p class="stat-line tnum">
-          <span>14%</span>
-          <Icon name="arrow-right" size={22} class="stat-arrow" />
-          <span class="stat-zero">0</span>
-        </p>
-        <p class="caps-xs stat-basis">AFTER THE INLINE CALL</p>
-      </div>
-      <p class="band-chip caps-sm">
-        <Icon name="git-pull-request" size={16} />
-        FIX #3 APPROVED
-      </p>
+      <figcaption class="band-caption caps-sm">
+        <span>PAYMENTX · FIG. 01 · THE PUBLIC LANDING</span>
+        <span>REAL PRODUCT SCREENS · NOT MOCKUPS</span>
+      </figcaption>
     </figure>
   </section>
 
@@ -478,74 +467,13 @@ const description =
     padding-bottom: 72px;
   }
 
-  .band-exhibit {
-    position: relative; /* floating stat card + chip overhang the edges */
-  }
-
-  .band-label {
-    position: absolute;
-    z-index: 1;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #fff;
-    pointer-events: none;
-  }
-  .band-basis {
-    position: absolute;
-    z-index: 1;
-    bottom: 25px;
-    right: 32px;
-    color: #fff;
-    pointer-events: none;
-  }
-
-  .band-stat {
-    position: absolute;
-    z-index: 1;
-    left: 280px;
-    bottom: -14px;
-    pointer-events: none;
+  .band-caption {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    background: var(--surface);
-    border-radius: 14px;
-    padding: 16px 20px;
-    box-shadow: 0 12px 32px rgba(20, 26, 36, 0.12);
-  }
-  .stat-label,
-  .stat-basis {
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
     color: var(--ink-secondary);
-  }
-  .stat-line {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.875rem;
-    font-weight: 500;
-    line-height: 1.1;
-    color: var(--ink);
-  }
-  .stat-line :global(.stat-arrow) {
-    color: var(--cobalt);
-  }
-  .stat-zero {
-    color: var(--cobalt);
-  }
-
-  .band-chip {
-    position: absolute;
-    z-index: 1; /* above the exhibit's hairline overlay */
-    top: 16px;
-    right: -30px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--ink);
-    color: #fff;
-    border-radius: var(--r-pill);
-    padding: 10px 14px;
   }
 
   /* ---------- judgment ---------- */
@@ -708,6 +636,14 @@ const description =
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+  }
+  /* the three step cards read as one balanced row */
+  .offer-cards li {
+    display: flex;
+    flex-direction: column;
+  }
+  .offer-cards .offer-card {
+    flex: 1;
   }
   .offer-num {
     font-size: var(--fs-small);
@@ -982,24 +918,10 @@ const description =
     .band {
       padding-bottom: 48px;
     }
-    .band-label,
-    .band-basis {
-      display: none; /* the overlay caps don't fit the short mobile crop */
-    }
-    .band-stat {
-      left: 12px;
-      bottom: -12px;
-      padding: 12px 14px;
-      border-radius: 12px;
-    }
-    .stat-line {
-      font-size: 1.375rem;
-    }
-    .band-chip {
-      top: 10px;
-      right: -6px;
-      padding: 8px 12px;
-      display: none; /* collides with the AFTER chip on the narrow crop */
+    .band-caption {
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 12px;
     }
 
     .judgment-wrap {

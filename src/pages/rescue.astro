@@ -7,6 +7,12 @@ import { SITE } from '../data/site';
 
 import baBefore from '../assets/home/ba-before.png';
 import baAfter from '../assets/home/ba-after.png';
+import baFlowliftBefore from '../assets/rescue/ba-flowlift-before.png';
+import baFlowliftAfter from '../assets/rescue/ba-flowlift-after.png';
+import baBluffBefore from '../assets/rescue/ba-bluff-before.png';
+import baBluffAfter from '../assets/rescue/ba-bluff-after.png';
+import baDocketBefore from '../assets/rescue/ba-docket-before.png';
+import baDocketAfter from '../assets/rescue/ba-docket-after.png';
 import figTeardown from '../assets/rescue/fig-teardown.png';
 import figFunnel from '../assets/rescue/fig-funnel.png';
 import portrait from '../assets/home/portrait.png';
@@ -59,16 +65,25 @@ const alts = [
 
 const stories = [
   {
-    title: 'Four button styles on one screen, three reading as primary.',
-    sub: 'Every extra primary splits the click. After: one primary per screen, and the eye stops arguing.',
+    caption: 'FLOWLIFT · LANDING PAGE HERO',
+    before: baFlowliftBefore,
+    beforeAlt: 'The FlowLift landing hero before the redesign',
+    after: baFlowliftAfter,
+    afterAlt: 'The FlowLift landing hero after the redesign',
   },
   {
-    title: 'Six type sizes where three carry the product.',
-    sub: 'Hierarchy noise reads as generated, and trust drops before the copy is read. After: three sizes, one scale, the claim lands first.',
+    caption: 'BLUFF · HOME PAGE',
+    before: baBluffBefore,
+    beforeAlt: 'The BLUFF casino home before the redesign',
+    after: baBluffAfter,
+    afterAlt: 'The BLUFF casino home after the redesign',
   },
   {
-    title: 'An empty state that says “No data” and looks broken.',
-    sub: 'The first screen a new user meets decides whether there is a second. After: the empty state sells the next step.',
+    caption: 'DOCKET · DASHBOARD',
+    before: baDocketBefore,
+    beforeAlt: 'The Docket case queue before the redesign',
+    after: baDocketAfter,
+    afterAlt: 'The Docket case queue after the redesign',
   },
 ];
 
@@ -85,16 +100,20 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
       standard a paying customer expects. Fixes land inside your product, as changes you approve
       one by one.
     </p>
-    <div class="r-slider">
+    <figure class="r-slider">
       <BeforeAfter
         before={baBefore}
         beforeAlt="The landing page as an AI build ships it: generic hero, grey blocks, no voice"
         after={baAfter}
         afterAlt="The same landing page redesigned: the real hero, staged in a browser"
-        aspect="1200 / 640"
+        aspect="4 / 3"
         start={50}
       />
-    </div>
+      <figcaption class="band-caption caps-r">
+        <span>PAYMENTX · FIG. 01 · THE PUBLIC LANDING</span>
+        <span>REAL PRODUCT SCREENS · NOT MOCKUPS</span>
+      </figcaption>
+    </figure>
   </section>
 
   <!-- s03 · identification -->
@@ -160,7 +179,7 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
         </ol>
       </div>
 
-      <details class="how" open>
+      <details class="how">
         <summary>
           <span class="caps-r">HOW I DO IT</span>
           <Icon name="caret-right" size={14} class="how-caret" />
@@ -253,19 +272,30 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
       stories.map((story) => (
         <figure class="story">
           <div class="story-cells">
-            <div class="story-cell story-before">
+            <div class="story-cell">
+              <Picture
+                src={story.before}
+                widths={[640, 1176, 2352]}
+                sizes="(max-width: 900px) 100vw, 588px"
+                formats={['avif', 'webp']}
+                alt={story.beforeAlt}
+                loading="lazy"
+              />
               <span class="story-chip caps-r">BEFORE</span>
-              <p class="caps-r story-slot">REAL CAPTURE DROPS HERE</p>
             </div>
-            <div class="story-cell story-after">
-              <span class="story-chip caps-r">AFTER</span>
-              <p class="caps-r story-slot story-slot-accent">THE REDESIGN DROPS HERE</p>
+            <div class="story-cell">
+              <Picture
+                src={story.after}
+                widths={[640, 1176, 2352]}
+                sizes="(max-width: 900px) 100vw, 588px"
+                formats={['avif', 'webp']}
+                alt={story.afterAlt}
+                loading="lazy"
+              />
+              <span class="story-chip story-chip-after caps-r">AFTER</span>
             </div>
           </div>
-          <figcaption class="story-caption">
-            <p class="story-title">{story.title}</p>
-            <p class="story-sub">{story.sub}</p>
-          </figcaption>
+          <figcaption class="story-caption caps-r">{story.caption}</figcaption>
         </figure>
       ))
     }
@@ -495,6 +525,14 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
   }
   .r-slider {
     margin-top: 40px;
+  }
+  .band-caption {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    color: var(--ink-secondary);
   }
 
   /* ---- s03 identify ---- */
@@ -834,7 +872,7 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
     color: var(--ink-secondary);
   }
   .story {
-    margin-top: 32px;
+    margin-top: 40px;
   }
   .story-cells {
     display: grid;
@@ -843,17 +881,15 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
   }
   .story-cell {
     position: relative;
-    aspect-ratio: 588 / 382;
+    aspect-ratio: 4 / 3;
     border-radius: var(--r-card);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
   }
-  .story-before {
-    background: var(--sunken);
-  }
-  .story-after {
-    background: var(--accent-tint);
+  .story-cell :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
   .story-chip {
     position: absolute;
@@ -863,29 +899,16 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
     border-radius: var(--r-pill);
     padding: 6px 12px;
     color: var(--ink);
+    box-shadow: 0 4px 14px rgba(20, 26, 36, 0.1);
+    pointer-events: none;
   }
-  .story-after .story-chip {
+  .story-chip-after {
     background: var(--accent);
     color: #fff;
   }
-  .story-slot {
-    color: var(--ink-secondary);
-  }
-  .story-slot-accent {
-    color: var(--accent);
-  }
   .story-caption {
-    margin-top: 16px;
+    margin-top: 14px;
     text-align: center;
-  }
-  .story-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .story-sub {
-    margin-top: 4px;
-    font-size: var(--fs-small);
     color: var(--ink-secondary);
   }
 
@@ -970,7 +993,6 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    align-items: start;
   }
   .tier {
     background: var(--surface);
@@ -1120,6 +1142,11 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
     }
     .r-slider {
       margin-top: 28px;
+    }
+    .band-caption {
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 12px;
     }
 
     .r-identify {
