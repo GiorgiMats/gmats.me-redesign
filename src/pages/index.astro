@@ -3,10 +3,16 @@ import { Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import WorkGrid from '../components/WorkGrid.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
 import { SITE } from '../data/site';
 
-import heroPaymentx from '../assets/home/hero-paymentx.png';
+import baBefore from '../assets/home/ba-before.png';
+import baAfter from '../assets/home/ba-after.png';
 import portrait from '../assets/home/portrait.png';
+import offerStep2 from '../assets/home/offer-step2-slider.png';
+import offerStep3 from '../assets/home/offer-step3-thumb.png';
+import thesisImproved from '../assets/home/thesis-improved-site.png';
+import thesisBraces from '../assets/home/thesis-braces.png';
 
 const title = 'Giorgi Matsukatovi · Senior Product Designer';
 const description =
@@ -26,8 +32,8 @@ const description =
     </h1>
     <div class="hero-row">
       <p class="hero-sub">
-        I design the screens that make people trust it: the error states, the money flows, the
-        moments that read generated today. Shipped as working product you can check.
+        A senior designer with six years of shipped products, hands on yours. I design the screens
+        that make people trust it, shipped as working product you can check.
       </p>
       <div class="hero-ctas">
         <a
@@ -57,18 +63,17 @@ const description =
   </section>
 
   <!-- ============ EXHIBIT BAND ============ -->
-  <section class="band container" aria-label="PaymentX product exhibit">
-    <figure class="band-exhibit exhibit">
-      <Picture
-        src={heroPaymentx}
-        widths={[640, 960, 1200, 2400]}
-        sizes="(max-width: 900px) 100vw, 1200px"
-        formats={['avif', 'webp']}
-        alt="PaymentX provider directory: a real product screen with search, provider cards and payment gateway filters"
-        loading="eager"
-        fetchpriority="high"
+  <section class="band container" aria-label="PaymentX product exhibit, before and after">
+    <figure class="band-exhibit">
+      <BeforeAfter
+        before={baBefore}
+        beforeAlt="The PaymentX landing page as an AI build ships it: generic hero, grey blocks, no voice"
+        after={baAfter}
+        afterAlt="The PaymentX landing page as designed: the real hero, staged in a browser"
+        aspect="4 / 3"
+        start={30}
       />
-      <figcaption class="band-label caps-sm">PAYMENTX · FIG. 01 · PROVIDER DIRECTORY</figcaption>
+      <figcaption class="band-label caps-sm">PAYMENTX · FIG. 01 · THE PUBLIC LANDING</figcaption>
       <p class="band-basis caps-sm" aria-hidden="true">REAL PRODUCT SCREENS · NOT MOCKUPS</p>
       <div class="band-stat" role="img" aria-label="Checkout drop: 14% before, 0 after the inline call">
         <p class="caps-sm stat-label">CHECKOUT DROP</p>
@@ -91,7 +96,8 @@ const description =
     <div class="judgment">
       <p class="chip caps-sm">(THE PART YOU HIRE)</p>
       <h2 class="judgment-statement">
-        <span class="ghost">Anyone can run the machine.</span> The calls are the product.
+        <span class="ghost">Anyone can give prompts to AI.</span><br />I’ll make your product
+        convert.
       </h2>
       <div class="judgment-cols">
         <div class="portrait-col">
@@ -113,9 +119,18 @@ const description =
         <div class="judgment-right">
           <p class="judgment-lead">AI gets you to working. The part you hire is the judgment:</p>
           <ul class="calls">
-            <li>What happens when the model is wrong</li>
-            <li>Which of the sixty screens gets killed</li>
-            <li>Why a refund can’t live in a modal</li>
+            <li>
+              <Icon name="browsers" size={24} class="call-icon" />
+              How to stop looking like every other AI-built site
+            </li>
+            <li>
+              <Icon name="user-plus" size={24} class="call-icon" />
+              How to win back clients who passed because it felt cheap
+            </li>
+            <li>
+              <Icon name="funnel" size={24} class="call-icon" />
+              Why your signup flow loses half its visitors
+            </li>
           </ul>
           <p class="judgment-note">The cases below show the calls, marked in blue.</p>
           <a href="/project" class="arrow-link">
@@ -138,42 +153,112 @@ const description =
     <div class="container">
       <p class="chip chip-on-tint caps-sm">(THE OFFER)</p>
       <div class="offer-head">
-        <h2 class="offer-h2">From repo link<br />to merged fixes.</h2>
+        <h2 class="offer-h2">Send a link.<br />Get fixes back.</h2>
         <div class="offer-paras">
           <p>
             I direct Claude Code against your product’s code myself, so every fix arrives as a
             change you can review, question and approve.
           </p>
-          <p>
-            The $750 teardown comes first, so the first thing you risk is small and the first thing
-            you get is a list of what’s costing you customers.
-          </p>
         </div>
       </div>
-      <ol class="offer-rows">
+      <ol class="offer-cards">
         <li>
-          <div class="offer-left">
-            <span class="offer-num tnum">01</span>
+          <p class="offer-num caps-sm tnum">01</p>
+          <h3 class="offer-title">
             <Icon name="link-simple" size={22} class="offer-icon" />
-            <h3 class="offer-title">Send the repository link</h3>
+            You send me your site link
+          </h3>
+          <div class="offer-card">
+            <p class="caps-xs offer-card-label">STEP 01</p>
+            <div class="dm">
+              <div class="dm-row">
+                <span class="dm-avatar" aria-hidden="true"></span>
+                <div class="dm-bubbles">
+                  <p class="dm-bubble">Here’s my site: amazing.com</p>
+                  <p class="dm-bubble">Go!</p>
+                </div>
+              </div>
+              <div class="dm-row dm-mine">
+                <p class="dm-bubble dm-bubble-accent">On it!</p>
+                <span class="dm-avatar dm-avatar-me">
+                  <Picture
+                    src={portrait}
+                    widths={[48, 96]}
+                    sizes="24px"
+                    formats={['avif', 'webp']}
+                    alt=""
+                    loading="lazy"
+                  />
+                </span>
+              </div>
+            </div>
           </div>
           <p class="offer-desc">That’s the whole onboarding. No workshop, no discovery deck.</p>
         </li>
         <li>
-          <div class="offer-left">
-            <span class="offer-num tnum">02</span>
+          <p class="offer-num caps-sm tnum">02</p>
+          <h3 class="offer-title">
             <Icon name="magnifying-glass" size={22} class="offer-icon" />
-            <h3 class="offer-title">The teardown lands in days</h3>
+            I review and improve it
+          </h3>
+          <div class="offer-card">
+            <p class="caps-xs offer-card-label">STEP 02</p>
+            <div class="offer-card-art">
+              <Picture
+                src={offerStep2}
+                widths={[335, 670]}
+                sizes="(max-width: 900px) 84vw, 335px"
+                formats={['avif', 'webp']}
+                alt="A generic wireframe site turning into the designed version, split by a comparison divider"
+                loading="lazy"
+              />
+            </div>
           </div>
           <p class="offer-desc">
-            A list of what reads generated and what it’s costing you, every call marked.
+            A short list of what looks off and what it costs you, then the fixes themselves.
           </p>
         </li>
         <li>
-          <div class="offer-left">
-            <span class="offer-num tnum">03</span>
+          <p class="offer-num caps-sm tnum">03</p>
+          <h3 class="offer-title">
             <Icon name="git-pull-request" size={22} class="offer-icon" />
-            <h3 class="offer-title">Fixes arrive ready to approve</h3>
+            I send fixes for approval
+          </h3>
+          <div class="offer-card">
+            <p class="caps-xs offer-card-label">STEP 03</p>
+            <div class="dm">
+              <div class="dm-row dm-mine">
+                <div class="dm-bubbles dm-bubbles-mine">
+                  <span class="dm-thumb">
+                    <Picture
+                      src={offerStep3}
+                      widths={[148, 296, 444]}
+                      sizes="148px"
+                      formats={['avif', 'webp']}
+                      alt="A small screenshot of the fixed site"
+                      loading="lazy"
+                    />
+                  </span>
+                  <p class="dm-bubble dm-bubble-accent">Here you go! <span class="dm-link">https://amazing.com/</span></p>
+                </div>
+                <span class="dm-avatar dm-avatar-me">
+                  <Picture
+                    src={portrait}
+                    widths={[48, 96]}
+                    sizes="24px"
+                    formats={['avif', 'webp']}
+                    alt=""
+                    loading="lazy"
+                  />
+                </span>
+              </div>
+              <div class="dm-row">
+                <span class="dm-avatar" aria-hidden="true"></span>
+                <div class="dm-bubbles">
+                  <p class="dm-bubble">This is awesome! 🔥</p>
+                </div>
+              </div>
+            </div>
           </div>
           <p class="offer-desc">
             You review, question and approve each one. Stop whenever the value stops.
@@ -201,15 +286,35 @@ const description =
   <!-- ============ TWO OPINIONS ============ -->
   <section class="theses container cv-auto" aria-label="Two opinions">
     <div class="opinion">
+      <div class="opinion-art">
+        <Picture
+          src={thesisImproved}
+          widths={[576, 1152]}
+          sizes="(max-width: 900px) 100vw, 576px"
+          formats={['avif', 'webp']}
+          alt="A crowd queues at the booth labelled improved site while the vibe-coded booth stands quiet"
+          loading="lazy"
+        />
+      </div>
+      <div class="opinion-rule" aria-hidden="true"></div>
       <Icon name="eye" size={24} />
-      <p class="caps-sm opinion-label">(OPINION 01)</p>
       <p class="opinion-text">
         Visual quality converts. People decide if your product works by how it looks while working.
       </p>
     </div>
     <div class="opinion">
+      <div class="opinion-art">
+        <Picture
+          src={thesisBraces}
+          widths={[576, 1152]}
+          sizes="(max-width: 900px) 100vw, 576px"
+          formats={['avif', 'webp']}
+          alt="A designer holding a paintbrush in one hand and curly braces in the other"
+          loading="lazy"
+        />
+      </div>
+      <div class="opinion-rule" aria-hidden="true"></div>
       <Icon name="brackets-curly" size={24} />
-      <p class="caps-sm opinion-label">(OPINION 02)</p>
       <p class="opinion-text">
         Designers should know code. I came from front-end, and I ship what I draw.
       </p>
@@ -218,7 +323,7 @@ const description =
 
   <!-- ============ CLOSE ============ -->
   <section class="close cv-auto" data-reach="home_beat_reach" data-beat="close">
-    <h2 class="close-h2">Bold claim? Test me.</h2>
+    <h2 class="close-h2">Let’s get you more clients.</h2>
     <p class="close-sub">
       Send your product over and I’ll tell you which parts read generated, and I’ll stand by every
       call unless you prove me wrong.
@@ -374,37 +479,33 @@ const description =
   }
 
   .band-exhibit {
-    position: relative;
-    border-radius: var(--r-card);
-    overflow: visible; /* floating stat card + chip overhang the edges */
-  }
-  .band-exhibit :global(img) {
-    border-radius: var(--r-card);
-    width: 100%;
-    height: auto;
-  }
-  .band-exhibit::after {
-    border-radius: var(--r-card);
+    position: relative; /* floating stat card + chip overhang the edges */
   }
 
   .band-label {
     position: absolute;
-    top: 28px;
-    left: 32px;
+    z-index: 1;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     color: #fff;
+    pointer-events: none;
   }
   .band-basis {
     position: absolute;
+    z-index: 1;
     bottom: 25px;
     right: 32px;
     color: #fff;
+    pointer-events: none;
   }
 
   .band-stat {
     position: absolute;
-    z-index: 1; /* above the exhibit's hairline overlay */
-    left: -56px;
-    bottom: 86px;
+    z-index: 1;
+    left: 280px;
+    bottom: -14px;
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -521,22 +622,17 @@ const description =
     margin-top: 28px;
   }
   .calls li {
-    position: relative;
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 16px 0;
+    gap: 18px;
+    padding: 18px 0;
     border-top: 1px solid var(--border);
     font-size: 1.125rem;
     font-weight: 500;
     color: var(--ink);
   }
-  .calls li::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
+  .calls :global(.call-icon) {
+    color: var(--accent);
     flex-shrink: 0;
   }
 
@@ -605,48 +701,121 @@ const description =
     color: var(--ink-secondary);
   }
 
-  .offer-rows {
+  .offer-cards {
     list-style: none;
     padding: 0;
-    margin: 40px 0 0;
-    border-bottom: 1px solid var(--border-on-tint);
-  }
-  .offer-rows li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 48px;
-    border-top: 1px solid var(--border-on-tint);
-    padding: 32px 0;
-  }
-
-  .offer-left {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    min-width: 0;
+    margin: 64px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
   .offer-num {
-    width: 40px;
     font-size: var(--fs-small);
     font-weight: 600;
     color: var(--accent);
   }
-  .offer-left :global(.offer-icon) {
-    color: var(--accent);
-    flex-shrink: 0;
-  }
   .offer-title {
-    font-size: 1.6875rem;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 1.4375rem;
     font-weight: 500;
     letter-spacing: -0.01em;
     color: var(--ink);
   }
+  .offer-title :global(.offer-icon) {
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+
+  .offer-card {
+    margin-top: 30px;
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 20px 24px 24px;
+    min-height: 192px;
+  }
+  .offer-card-label {
+    color: var(--ink-secondary);
+  }
+  .offer-card-art {
+    margin-top: 18px;
+  }
+  .offer-card-art :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* the DM mockups */
+  .dm {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .dm-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .dm-row.dm-mine {
+    justify-content: flex-end;
+  }
+  .dm-avatar {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--sunken);
+    overflow: hidden;
+  }
+  .dm-avatar :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .dm-bubbles {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .dm-bubbles-mine {
+    align-items: flex-end;
+  }
+  .dm-bubble {
+    background: var(--sunken);
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    color: var(--ink);
+  }
+  .dm-bubble-accent {
+    background: var(--accent);
+    color: #fff;
+  }
+  .dm-link {
+    text-decoration: underline;
+  }
+  .dm-thumb {
+    display: block;
+    width: 148px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(20, 26, 36, 0.14);
+  }
+  .dm-thumb :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
   .offer-desc {
-    width: 480px;
-    max-width: 100%;
-    flex-shrink: 0;
+    margin-top: 24px;
     font-size: var(--fs-small);
     line-height: 1.6;
     color: var(--ink-secondary);
@@ -700,11 +869,21 @@ const description =
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
   }
-  .opinion-label {
-    color: var(--ink-secondary);
+  .opinion-art {
+    width: 100%;
+    border-radius: var(--r-card);
+    overflow: hidden;
+  }
+  .opinion-art :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .opinion-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
   }
   .opinion-text {
     font-size: 1.375rem;
@@ -808,8 +987,8 @@ const description =
       display: none; /* the overlay caps don't fit the short mobile crop */
     }
     .band-stat {
-      left: -8px;
-      bottom: 24px;
+      left: 12px;
+      bottom: -12px;
       padding: 12px 14px;
       border-radius: 12px;
     }
@@ -820,6 +999,7 @@ const description =
       top: 10px;
       right: -6px;
       padding: 8px 12px;
+      display: none; /* collides with the AFTER chip on the narrow crop */
     }
 
     .judgment-wrap {
@@ -857,23 +1037,20 @@ const description =
     .offer-paras {
       width: 100%;
     }
-    .offer-rows li {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 24px 0;
-    }
-    .offer-left {
-      gap: 16px;
-    }
-    .offer-num {
-      width: 28px;
+    .offer-cards {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 40px;
     }
     .offer-title {
       font-size: 1.25rem;
+      margin-top: 14px;
+    }
+    .offer-card {
+      margin-top: 20px;
     }
     .offer-desc {
-      width: 100%;
+      margin-top: 16px;
     }
 
     .hiring-wrap {

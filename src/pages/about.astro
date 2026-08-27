@@ -1,17 +1,29 @@
 ---
 import { Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { SITE } from '../data/site';
 import portrait from '../assets/home/portrait.png';
+import thesis01 from '../assets/about/thesis-01.png';
+import thesis02 from '../assets/about/thesis-02.png';
+import recTom from '../assets/about/rec-tom-jones.png';
+import recOwen from '../assets/about/rec-owen-manby.png';
+import recJoni from '../assets/about/rec-joni-mortimore.png';
+import recValeri from '../assets/about/rec-valeri-karageorgiev.png';
+import recGrace from '../assets/about/rec-grace-clancy.png';
+import recDarlena from '../assets/about/rec-darlena-tran.png';
+import recBilal from '../assets/about/rec-bilal-dhouib.png';
+import recPrateek from '../assets/about/rec-prateek-shukla.png';
 
 const title = 'About · Giorgi Matsukatovi';
 const description =
-  'The designer who came from code. Senior product designer in Tbilisi, 6+ years in: front-end origin, build-ready output, and the judgment those years bought.';
+  'The designer who built his own SaaS to $3.5K MRR. Senior product designer in Tbilisi, 6+ years in: front-end origin, build-ready output, and the judgment those years bought.';
 
 const recsUrl = `${SITE.linkedin}details/recommendations/`;
 
 const recommendations = [
   {
+    avatar: recTom,
     name: 'Tom Jones',
     role: 'Director of Design, SuperDuper',
     relationship: 'MANAGED GIORGI DIRECTLY',
@@ -19,6 +31,7 @@ const recommendations = [
       'His work pairs careful visual craft with product thinking, and he understands that good design is about whether a feature actually gets used, not just how it looks.',
   },
   {
+    avatar: recOwen,
     name: 'Owen Manby',
     role: 'Delivery & Product Ops Lead · ex-Dyson, The Economist',
     relationship: 'WORKED ON THE SAME TEAM',
@@ -26,6 +39,7 @@ const recommendations = [
       "He brings a strong sense of product design principles and doesn't let them slip, even when timelines are tight. He's someone you can rely on to keep standards high while still getting work out the door.",
   },
   {
+    avatar: recJoni,
     name: 'Joni Mortimore',
     role: 'Founding Designer',
     relationship: 'WORKED ON THE SAME TEAM',
@@ -33,6 +47,7 @@ const recommendations = [
       "He's one of the fastest, most meticulous designers I've ever worked with — balancing pace with pixel-perfect execution in a way that makes complex projects feel effortlessly simple.",
   },
   {
+    avatar: recValeri,
     name: 'Valeri Karageorgiev',
     role: 'Founder, Onion Creative Studio',
     relationship: 'WORKED ON THE SAME TEAM',
@@ -40,6 +55,7 @@ const recommendations = [
       'He’s great at breaking down complex problems and turning them into clear, intuitive experiences, while still maintaining a strong sense for clean and well-crafted design.',
   },
   {
+    avatar: recGrace,
     name: 'Grace Clancy',
     role: 'Principal Producer',
     relationship: 'WORKED ON THE SAME TEAM',
@@ -47,6 +63,7 @@ const recommendations = [
       'Alongside being a great product designer, he is diligent and organised in the production and delivery of his work, which is always a treat for any Producer or PM.',
   },
   {
+    avatar: recDarlena,
     name: 'Darlena Tran',
     role: 'Owner, The Darlin’ Garden',
     relationship: 'MANAGED GIORGI DIRECTLY',
@@ -54,6 +71,7 @@ const recommendations = [
       'Right off the bat, I was impressed by Giorgi’s initiative to come up with unique concepts and his ability to quickly iterate on our feedback. Giorgi’s design style is sleek, sophisticated, and modern.',
   },
   {
+    avatar: recBilal,
     name: 'Bilal Dhouib',
     role: 'Founding Head of Growth, Bud (acquired by Figma)',
     relationship: 'MANAGED GIORGI DIRECTLY',
@@ -61,6 +79,7 @@ const recommendations = [
       'Giorgi is an experienced designer and we’ve had the pleasure of working with him for nearly 5 years. Highly recommend having him on your team!',
   },
   {
+    avatar: recPrateek,
     name: 'Prateek Shukla',
     role: 'Founder, Quantamise',
     relationship: 'MANAGED GIORGI DIRECTLY',
@@ -70,10 +89,14 @@ const recommendations = [
 ];
 
 const howRows = [
-  ['Async-first', 'Written updates beat status calls, and decisions get a paper trail'],
-  ['Build-ready', 'What I hand over runs, it does not just render'],
-  ['Self-builds', 'This site is designed and built by me, which is the claim tested on itself'],
-  ['Availability', 'Freelance engagements now, and open to the right full-time role'],
+  ['clock', 'Async-first', 'Written updates beat status calls, and decisions get a paper trail'],
+  ['lightning', 'Build-ready', 'What I hand over runs, it does not just render'],
+  [
+    'brackets-curly',
+    'Self-builds',
+    'This site is designed and built by me, which is the claim tested on itself',
+  ],
+  ['broadcast', 'Availability', 'Freelance engagements now, and open to the right full-time role'],
 ];
 ---
 
@@ -81,12 +104,12 @@ const howRows = [
   <section class="a-hero container">
     <div class="a-hero-left">
       <p class="chip caps-a">(ABOUT)</p>
-      <h1>The designer who came from <em>code.</em></h1>
+      <h1>The designer who built own SaaS to $3.5K MRR.</h1>
       <p class="a-bio">
-        Giorgi Matsukatovi, senior product designer in Tbilisi, 6+ years in. I started in
-        front-end, moved into design because the screens I was building deserved better decisions,
-        and I still ship what I draw. Along the way I have watched designers grow under me, which
-        taught me more about judgment than any portfolio did.
+        Giorgi Matsukatovi, senior product designer in Tbilisi, 6+ years in. I started in front-end
+        and still ship what I draw; the SaaS I built reached $3.5K in monthly recurring revenue.
+        Along the way I have watched designers grow under me, which taught me more about judgment
+        than any portfolio did.
       </p>
     </div>
     <div class="a-portrait exhibit">
@@ -103,34 +126,61 @@ const howRows = [
 
   <section class="a-theses container" aria-label="Two theses">
     <article class="thesis" data-reach="about_thesis_reach" data-thesis="visual-quality">
-      <p class="caps-a accent">(THESIS 01)</p>
-      <h2>Visual quality converts.</h2>
-      <p>
-        People decide whether your product works by how it looks while working. That is not
-        shallow, it is how trust forms under uncertainty, and it is measurable in every funnel I
-        have touched. The door is open: show me a product that converted its way out of looking
-        broken and I will read every word.
-      </p>
+      <div class="thesis-txt">
+        <p class="caps-a accent">(THESIS 01)</p>
+        <h2>Visual quality converts.</h2>
+        <p>
+          People decide whether your product works by how it looks while working. That is not
+          shallow, it is how trust forms under uncertainty, and it is measurable in every funnel I
+          have touched. The door is open: show me a product that converted its way out of looking
+          broken and I will read every word.
+        </p>
+      </div>
+      <div class="thesis-art">
+        <Picture
+          src={thesis01}
+          widths={[440, 880]}
+          sizes="(max-width: 900px) 100vw, 440px"
+          formats={['avif', 'webp']}
+          alt="A crowd queues at the booth labelled improved site while the vibe-coded booth stands quiet"
+          loading="lazy"
+        />
+      </div>
     </article>
     <article class="thesis" data-reach="about_thesis_reach" data-thesis="designers-know-code">
-      <p class="caps-a accent">(THESIS 02)</p>
-      <h2>Designers should know code.</h2>
-      <p>
-        I came from front-end, and I ship what I draw. Knowing what a component costs to build
-        changes what you draw in the first place, and it removes the handoff where most design
-        quality dies. Not every designer needs to write production code. Every designer needs to
-        know what happens to their file after they close it.
-      </p>
+      <div class="thesis-txt">
+        <p class="caps-a accent">(THESIS 02)</p>
+        <h2>Designers should know code.</h2>
+        <p>
+          I came from front-end, and I ship what I draw. Knowing what a component costs to build
+          changes what you draw in the first place, and it removes the handoff where most design
+          quality dies. Not every designer needs to write production code. Every designer needs to
+          know what happens to their file after they close it.
+        </p>
+      </div>
+      <div class="thesis-art">
+        <Picture
+          src={thesis02}
+          widths={[440, 880]}
+          sizes="(max-width: 900px) 100vw, 440px"
+          formats={['avif', 'webp']}
+          alt="A designer holding a paintbrush in one hand and curly braces in the other"
+          loading="lazy"
+        />
+      </div>
     </article>
   </section>
 
   <section class="a-how container" id="availability" aria-label="How I work">
-    <p class="caps-a how-label">HOW I WORK, FACTS ONLY</p>
+    <h2 class="how-h2">How I work, facts only</h2>
     <dl class="how-rows">
       {
-        howRows.map(([key, value]) => (
+        howRows.map(([icon, key, value]) => (
           <div class="how-row">
-            <dt>{key}</dt>
+            <dt>
+              <Icon name={icon} size={22} class="how-icon" />
+              {key}
+            </dt>
             <dd>{value}</dd>
           </div>
         ))
@@ -140,8 +190,8 @@ const howRows = [
 
   <section class="a-recs" aria-label="LinkedIn recommendations">
     <div class="recs-labelrow container">
-      <p class="caps-a">SAID BY PEOPLE I WORKED WITH · VERBATIM, FROM LINKEDIN</p>
-      <p class="caps-a tnum">08 RECOMMENDATIONS · SCROLL</p>
+      <h2 class="recs-h2">Said by people I worked with</h2>
+      <p class="caps-a tnum">08 RECOMMENDATIONS · VERBATIM, FROM LINKEDIN · SCROLL</p>
     </div>
     <div class="recs-rail" tabindex="0">
       {
@@ -152,19 +202,31 @@ const howRows = [
             </p>
             <blockquote class="rec-quote">{rec.quote}</blockquote>
             <div class="rec-att">
-              <p class="rec-name">{rec.name}</p>
-              <p class="rec-role">{rec.role}</p>
-              <a
-                class="rec-rel caps-a"
-                href={recsUrl}
-                target="_blank"
-                rel="noopener"
-                data-event="outbound_click"
-                data-channel="linkedin"
-                data-cta="false"
-              >
-                {rec.relationship} · ON LINKEDIN
-              </a>
+              <span class="rec-avatar">
+                <Picture
+                  src={rec.avatar}
+                  widths={[44, 88]}
+                  sizes="44px"
+                  formats={['avif', 'webp']}
+                  alt=""
+                  loading="lazy"
+                />
+              </span>
+              <div class="rec-att-txt">
+                <p class="rec-name">{rec.name}</p>
+                <p class="rec-role">{rec.role}</p>
+                <a
+                  class="rec-rel caps-a"
+                  href={recsUrl}
+                  target="_blank"
+                  rel="noopener"
+                  data-event="outbound_click"
+                  data-channel="linkedin"
+                  data-cta="false"
+                >
+                  {rec.relationship} · ON LINKEDIN
+                </a>
+              </div>
             </div>
           </article>
         ))
@@ -257,10 +319,17 @@ const howRows = [
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--r-card);
-    padding: 44px 48px;
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .thesis-txt {
     display: flex;
     flex-direction: column;
     gap: 14px;
+    max-width: 560px;
   }
   .thesis h2 {
     font-size: 2rem;
@@ -268,11 +337,21 @@ const howRows = [
     letter-spacing: -0.01em;
     color: var(--ink);
   }
-  .thesis p:last-child {
-    max-width: 900px;
+  .thesis-txt p:last-child {
     font-size: 1.0625rem;
     line-height: 1.6;
     color: var(--ink-secondary);
+  }
+  .thesis-art {
+    flex-shrink: 0;
+    width: 440px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .thesis-art :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* ---- how i work ---- */
@@ -281,14 +360,18 @@ const howRows = [
     padding-bottom: 72px;
     scroll-margin-top: 24px;
   }
-  .how-label {
-    font-size: var(--fs-caps);
+  .how-h2 {
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--ink);
   }
   .how-rows {
-    margin: 20px 0 0;
+    margin: 28px 0 0;
   }
   .how-row {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 48px;
     border-top: 1px solid var(--border);
@@ -298,9 +381,16 @@ const howRows = [
     border-bottom: 1px solid var(--border);
   }
   .how-row dt {
-    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.0625rem;
     font-weight: 500;
     color: var(--ink);
+  }
+  .how-row dt :global(.how-icon) {
+    color: var(--accent);
+    flex-shrink: 0;
   }
   .how-row dd {
     margin: 0;
@@ -316,12 +406,16 @@ const howRows = [
   }
   .recs-labelrow {
     display: flex;
+    align-items: flex-end;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
-  .recs-labelrow p:first-child {
-    font-size: var(--fs-caps);
+  .recs-h2 {
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--ink);
   }
 
   /* Native horizontal overflow with scroll-snap and edge peek — every card
@@ -365,6 +459,25 @@ const howRows = [
   .rec-att {
     margin-top: auto;
     padding-top: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .rec-avatar {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--sunken);
+  }
+  .rec-avatar :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .rec-att-txt {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -418,10 +531,20 @@ const howRows = [
       width: 100%;
     }
     .thesis {
+      flex-direction: column;
+      align-items: flex-start;
       padding: 28px 24px;
+      gap: 24px;
     }
     .thesis h2 {
       font-size: 1.5rem;
+    }
+    .thesis-art {
+      width: 100%;
+    }
+    .how-h2,
+    .recs-h2 {
+      font-size: 1.625rem;
     }
     .how-row {
       flex-direction: column;
