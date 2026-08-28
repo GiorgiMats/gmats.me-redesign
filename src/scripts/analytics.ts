@@ -14,12 +14,14 @@
 import { onLCP, onINP, onCLS, type Metric } from 'web-vitals';
 
 const GA_ID = 'G-79PV2XPRMR';
+const CLARITY_ID = 'y9h4xw9d3o';
 const CONSENT_KEY = 'gmats-analytics';
 
 declare global {
   interface Window {
     dataLayer: unknown[];
     gtag: (...args: unknown[]) => void;
+    clarity: ((...args: unknown[]) => void) & { q?: unknown[] };
   }
 }
 
@@ -36,6 +38,27 @@ function loadGtag(): void {
   s.async = true;
   s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
   document.head.appendChild(s);
+}
+
+// Clarity (session recordings + heatmaps) behind the same gate. The stub
+// queues calls until the tag loads; the explicit consent signal keeps
+// Clarity's cookies running for EEA/UK visitors after the visitor opts in.
+function loadClarity(): void {
+  window.clarity =
+    window.clarity ||
+    function (...args: unknown[]) {
+      (window.clarity.q = window.clarity.q || []).push(args);
+    };
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://www.clarity.ms/tag/${CLARITY_ID}`;
+  document.head.appendChild(s);
+  window.clarity('consent');
+}
+
+function loadAnalytics(): void {
+  loadGtag();
+  loadClarity();
 }
 
 function track(name: string, params: Record<string, string | number | boolean> = {}): void {
@@ -102,7 +125,7 @@ function showBanner(): void {
   banner.querySelector('[data-consent="yes"]')?.addEventListener('click', () => {
     localStorage.setItem(CONSENT_KEY, 'granted');
     banner.hidden = true;
-    loadGtag();
+    loadAnalytics();
     wireEvents();
   });
   banner.querySelector('[data-consent="no"]')?.addEventListener('click', () => {
@@ -113,7 +136,7 @@ function showBanner(): void {
 
 const consent = localStorage.getItem(CONSENT_KEY);
 if (consent === 'granted') {
-  loadGtag();
+  loadAnalytics();
   wireEvents();
 } else if (consent === null) {
   showBanner();
