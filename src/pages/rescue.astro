@@ -16,6 +16,9 @@ import baDocketAfter from '../assets/rescue/ba-docket-after.png';
 import figTeardown from '../assets/rescue/fig-teardown.png';
 import figFunnel from '../assets/rescue/fig-funnel.png';
 import portrait from '../assets/home/portrait.png';
+import recJoni from '../assets/rescue/rec-joni.png';
+import recTom from '../assets/rescue/rec-tom.png';
+import recOwen from '../assets/rescue/rec-owen.png';
 import coverDocket from '../assets/home/cover-docket.png';
 import coverBluff from '../assets/home/cover-bluff.png';
 import coverFlowlift from '../assets/home/cover-flowlift.png';
@@ -77,6 +80,12 @@ const stories = [
     beforeAlt: 'The BLUFF casino home before the redesign',
     after: baBluffAfter,
     afterAlt: 'The BLUFF casino home after the redesign',
+    // Product-level outcomes, stated as his own count (P6 honesty rule).
+    note: 'Product-level outcomes from the Bluff launch. My own count, per the case study.',
+    stickers: [
+      { value: '15%', label: 'REGISTRATION TO PLAY', tone: 'solid' },
+      { value: '12%', label: 'ON REFERRED USERS', tone: 'outline' },
+    ],
   },
   {
     caption: 'DOCKET · DASHBOARD',
@@ -84,6 +93,33 @@ const stories = [
     beforeAlt: 'The Docket case queue before the redesign',
     after: baDocketAfter,
     afterAlt: 'The Docket case queue after the redesign',
+  },
+];
+
+const recs = [
+  {
+    quote:
+      'He\u2019s one of the fastest, most meticulous designers I\u2019ve ever worked with \u2014 balancing pace with pixel-perfect execution in a way that makes complex projects feel effortlessly simple.',
+    name: 'Joni Mortimore',
+    role: 'Founding Designer',
+    relation: 'WORKED ON THE SAME TEAM',
+    avatar: recJoni,
+  },
+  {
+    quote:
+      'His work pairs careful visual craft with product thinking, and he understands that good design is about whether a feature actually gets used, not just how it looks.',
+    name: 'Tom Jones',
+    role: 'Director of Design, SuperDuper',
+    relation: 'MANAGED GIORGI DIRECTLY',
+    avatar: recTom,
+  },
+  {
+    quote:
+      'He brings a strong sense of product design principles and doesn\u2019t let them slip, even when timelines are tight. He\u2019s someone you can rely on to keep standards high while still getting work out the door.',
+    name: 'Owen Manby',
+    role: 'Delivery & Product Ops Lead',
+    relation: 'WORKED ON THE SAME TEAM',
+    avatar: recOwen,
   },
 ];
 
@@ -294,8 +330,17 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
               />
               <span class="story-chip story-chip-after caps-r">AFTER</span>
             </div>
+            {
+              story.stickers?.map((sticker, i) => (
+                <span class:list={['story-sticker', `story-sticker-${i + 1}`, `sticker-${sticker.tone}`]}>
+                  <span class="sticker-value tnum">{sticker.value}</span>
+                  <span class="sticker-label caps-r">{sticker.label}</span>
+                </span>
+              ))
+            }
           </div>
           <figcaption class="story-caption caps-r">{story.caption}</figcaption>
+          {story.note && <p class="story-note">{story.note}</p>}
         </figure>
       ))
     }
@@ -312,6 +357,14 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
         Along the way I have watched designers grow under me, which taught me more about judgment
         than any portfolio did.
       </p>
+      <p class="designer-bio">
+        I have done this on my own product. I built a subscription SaaS with one developer and grew
+        it to about 70 paying subscribers and $3.5K a month. Every day I watched session recordings
+        in Microsoft Clarity next to the analytics, found where people stalled, and fixed it. Over a
+        few months the cost of getting one paying customer went from about $150 to about $50.
+        <strong>That habit, look at what users actually do and then change the screen, is the whole
+        method behind a rescue.</strong>
+      </p>
       <a href="/about" class="arrow-link">
         More about me
         <Icon name="arrow-right" size={16} />
@@ -326,6 +379,48 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
         alt="Giorgi Matsukatovi, black and white portrait"
         loading="lazy"
       />
+    </div>
+  </section>
+
+  <!-- s08 · recommendations -->
+  <section class="r-recs container cv-auto">
+    <h2 class="r-h2-big">From people I&rsquo;ve shipped with</h2>
+    <div class="rec-cards">
+      {
+        recs.map((rec) => (
+          <figure class="rec">
+            <span class="rec-mark" aria-hidden="true">&ldquo;</span>
+            <blockquote class="rec-quote">{rec.quote}</blockquote>
+            <figcaption class="rec-by">
+              <span class="rec-avatar">
+                <Picture
+                  src={rec.avatar}
+                  widths={[44, 88]}
+                  sizes="44px"
+                  formats={['avif', 'webp']}
+                  alt={`${rec.name}, ${rec.role}`}
+                  loading="lazy"
+                />
+              </span>
+              <span class="rec-who">
+                <span class="rec-name">{rec.name}</span>
+                <span class="rec-role">{rec.role}</span>
+                <a
+                  class="caps-r rec-rel"
+                  href={SITE.linkedin}
+                  target="_blank"
+                  rel="noopener"
+                  data-event="outbound_click"
+                  data-channel="linkedin"
+                  data-cta="false"
+                >
+                  {rec.relation} &middot; ON LINKEDIN
+                </a>
+              </span>
+            </figcaption>
+          </figure>
+        ))
+      }
     </div>
   </section>
 
@@ -911,6 +1006,68 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
     text-align: center;
     color: var(--ink-secondary);
   }
+  .story-note {
+    margin-top: 6px;
+    text-align: center;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+  }
+
+  /* --- metric stickers: the one playful moment on a sober page. They sit
+         on the AFTER cell because the numbers belong to the shipped product. --- */
+  .story-cells {
+    position: relative;
+  }
+  .story-sticker {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 14px 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(15, 23, 41, 0.18);
+    pointer-events: none;
+  }
+  .sticker-value {
+    font-size: 2.125rem;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .sticker-label {
+    font-size: 0.59375rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .sticker-solid {
+    background: var(--accent);
+    border: 3px solid #fff;
+    color: #fff;
+  }
+  .sticker-solid .sticker-label {
+    color: rgba(255, 255, 255, 0.86);
+  }
+  .sticker-outline {
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+  }
+  .sticker-outline .sticker-label {
+    color: var(--accent);
+  }
+  .story-sticker-1 {
+    left: 47.8%;
+    top: 50%;
+    transform: rotate(4deg);
+  }
+  .story-sticker-2 {
+    right: -2%;
+    top: 76%;
+    transform: rotate(-3deg);
+  }
 
   /* ---- s07b designer ---- */
   .r-designer {
@@ -949,6 +1106,84 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  /* ---- s08 recommendations ---- */
+  .r-recs {
+    padding-bottom: 96px;
+  }
+  .rec-cards {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .rec {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .rec-mark {
+    font-size: 2.5rem;
+    line-height: 0.6;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .rec-quote {
+    margin: 0;
+    flex: 1;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+  .rec-by {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .rec-avatar {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .rec-avatar :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .rec-who {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .rec-name {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .rec-role {
+    font-size: 0.8125rem;
+    color: var(--ink-secondary);
+  }
+  .rec-rel {
+    /* tighter than the page caps: this line has to hold one row in a 264px column */
+    font-size: 0.59375rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    color: var(--ink-secondary);
+    text-decoration: none;
+  }
+  .rec-rel:hover {
+    color: var(--accent);
   }
 
   /* ---- s07 proof ---- */
@@ -1241,6 +1476,45 @@ const askMail = `mailto:${SITE.email}?subject=${encodeURIComponent('My product l
     .story-cells {
       grid-template-columns: 1fr;
       gap: 16px;
+    }
+    /* Stacked cells: both stickers ride the AFTER cell (the lower one) and
+       scale with the viewport, so they never outgrow the card they sit on. */
+    .story-sticker {
+      padding: clamp(6px, 1.6vw, 10px) clamp(9px, 2.4vw, 14px);
+      border-radius: 10px;
+      gap: 1px;
+    }
+    .sticker-value {
+      font-size: clamp(1.0625rem, 4.2vw, 1.75rem);
+    }
+    .sticker-label {
+      font-size: clamp(0.4375rem, 1.5vw, 0.5625rem);
+    }
+    .sticker-solid {
+      border-width: 2px;
+    }
+    /* Anchor to the bottom (the AFTER cell) and straddle its side edges, the
+       way they hang off the cell in Figma — floating them mid-card buries
+       the hero headline underneath. */
+    .story-sticker-1 {
+      left: -6px;
+      top: auto;
+      bottom: 30%;
+    }
+    .story-sticker-2 {
+      right: -6px;
+      top: auto;
+      bottom: 6%;
+    }
+
+    .r-recs {
+      padding-bottom: 64px;
+    }
+    .rec-cards {
+      grid-template-columns: 1fr;
+    }
+    .rec {
+      padding: 24px;
     }
 
     .r-designer {
