@@ -62,11 +62,11 @@ export const cases: Record<CaseMeta['slug'], CaseMeta> = {
     slug: 'flowlift',
     name: 'FlowLift',
     cardTitle: 'Four platforms of B2B SaaS in seven days',
-    domain: 'AI-directed build log',
+    domain: 'AI-directed design log',
     receipt: '~60 SCREENS · 4 PLATFORMS · 7 DAYS',
     metaTitle: 'FlowLift: four platforms of B2B SaaS in seven days · Giorgi Matsukatovi',
     metaDescription:
-      'A seven-day build log: design system before screens, four platforms on one grammar. No users, invented data, disclosed up front.',
+      'A seven-day design log: design system before screens, four platforms on one grammar. No users, invented data, disclosed up front.',
     accent: '#0f7e49',
     accentBright: '#1fb36b',
     accentTint: '#e8f8ef',
